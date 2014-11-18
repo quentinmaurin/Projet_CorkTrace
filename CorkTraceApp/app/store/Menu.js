@@ -6,6 +6,7 @@ Ext.define('CT.store.Menu', {
         children: [
             { text: "Client", leaf: true },
             { text: "Fournisseur", leaf: true },
+            { text: "Commercial", leaf: true },
             { text: "Commande client", leaf: true },
             { text: "Commande fournisseur", leaf: true }
         ]

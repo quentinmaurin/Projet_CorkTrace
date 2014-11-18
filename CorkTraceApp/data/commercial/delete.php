@@ -5,7 +5,7 @@
 	$data = json_decode($_POST['data']);
 
 	//Vérif des données entrante
-	$com_id	= isset ($data->{'com_nom'}) ? $data->{'com_nom'} : "undefined";
+	$com_id	= isset ($data->{'com_id'}) ? $data->{'com_id'} : "undefined";
 
 
 	if( $com_id == "undefined")

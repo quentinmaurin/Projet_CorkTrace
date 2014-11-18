@@ -35,6 +35,11 @@ Ext.define('CT.controller.Menu', {
    			console.log("Fournisseur");
    			pan = {xtype: "fournisseurlist"};
 
+        }else if( name == "Commercial" ){
+
+   			console.log("Commercial");
+   			pan = {xtype: "commerciallist"};
+
         }else{
             console.log("Aucun");
         }

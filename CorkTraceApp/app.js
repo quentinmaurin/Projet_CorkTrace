@@ -7,7 +7,8 @@ Ext.application({
     controllers: [
            'Clients',
            'Menu',
-           'Fournisseurs'
+           'Fournisseurs',
+           'Commercials'
     ],
 
     launch: function() {
