@@ -7,7 +7,8 @@ Ext.define('CT.controller.Clients', {
 	   
     views: [
     	'client.List',
-		'client.Edit'
+		'client.Edit',
+		'client.Add'
     ],
 	   
     init: function() {
@@ -20,6 +21,9 @@ Ext.define('CT.controller.Clients', {
 		    },
 	        'clientedit button[action=save]': {
 	        	click: this.updateClient
+	        },
+	        'clientadd button[action=save]': {
+	        	click: this.createClient
 	        }
         });
     },
@@ -47,5 +51,33 @@ Ext.define('CT.controller.Clients', {
 		
 	  	// synchronize the store after editing the record
 	    this.getClientsStore().sync();
+    },
+
+    createClient: function(button) {
+		
+		console.log("create clients");
+		var win = button.up('window'),
+	    form = win.down('form'),
+	    record = form.getRecord(),
+	    values = form.getValues();
+
+	    var clientInstance = Ext.create('CT.model.Client', {
+
+		    cli_id : 10,
+		    cli_nom : values['cli_nom'],
+		    cli_mail : values['cli_mail'],
+		    cli_tel : values['cli_tel'],
+		    cli_fax : values['cli_fax'],
+		    cli_adr_fact : values['cli_adr_fact'],
+		    tyc_id : values['tyc_id']
+		});
+
+   		console.log(clientInstance);
+	    this.getClientsStore().add(clientInstance);
+	    win.close();
+		
+	  	// synchronize the store after editing the record
+	    this.getClientsStore().sync();
     }
+
 });

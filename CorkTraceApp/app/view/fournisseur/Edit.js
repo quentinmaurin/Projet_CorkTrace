@@ -1,41 +1,41 @@
-Ext.define('CT.view.client.Edit', {
+Ext.define('CT.view.fournisseur.Edit', {
     extend: 'Ext.window.Window',
-    alias: 'widget.clientedit',
+    alias: 'widget.fournisseuredit',
 
-    title: 'Edit Client',
+    title: 'Edit Fournisseur',
     layout: 'fit',
     autoShow: true,
 
     initComponent: function() {
-        
+
         this.items = [
             {
                 xtype: 'form',
                 items: [
                     {
                         xtype: 'textfield',
-                        name : 'cli_nom',
+                        name : 'fou_nom',
                         fieldLabel: 'Nom'
                     },{
                         xtype: 'textfield',
-                        name : 'cli_mail',
+                        name : 'fou_adresse',
+                        fieldLabel: 'Adresse'
+                    },{
+                        xtype: 'textfield',
+                        name : 'fou_mail',
                         fieldLabel: 'Mail'
                     },{
                         xtype: 'textfield',
-                        name : 'cli_tel',
+                        name : 'fou_tel',
                         fieldLabel: 'Tel'
                     },{
                         xtype: 'textfield',
-                        name : 'cli_fax',
+                        name : 'fou_fax',
                         fieldLabel: 'Fax'
                     },{
                         xtype: 'textfield',
-                        name : 'cli_adr_fact',
-                        fieldLabel: 'Adr fact' 
-                    },{
-                        xtype: 'textfield',
-                        name : 'tyc_id',
-                        fieldLabel: 'Type' 
+                        name : 'tyf_id',
+                        fieldLabel: 'Type'
                     }
                 ]
             }
