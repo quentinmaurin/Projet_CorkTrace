@@ -8,7 +8,8 @@ Ext.application({
            'Clients',
            'Menu',
            'Fournisseurs',
-           'Commercials'
+           'Commercials',
+           'Stocks'
     ],
 
     launch: function() {
