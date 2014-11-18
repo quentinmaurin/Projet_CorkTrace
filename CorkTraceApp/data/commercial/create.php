@@ -33,6 +33,9 @@
 	$Commercial = new Commercial();
 	$id = $Commercial->insertRow('"NULL", "'.$com_nom.'","'.$com_prenom.'", "'.$com_adresse.'", "'.$com_mail.'", "'.$com_tel.'", "'.$com_fax.'"');
 
-	echo $id;
+	//echo $id;
+
+	header('Content-Type: application/json');
+	echo '{"success": true, "data" : { "com_id" : '.$id.'}}';
 
 ?>

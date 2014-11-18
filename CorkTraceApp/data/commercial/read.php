@@ -6,10 +6,10 @@
 	$res = $Commercial->getAll();
 	
 	$i= 0;
-	$o["commerciaux"] = "";
+	$o["commercials"] = "";
 
 	foreach ($res as $value) {
-		$o["commerciaux"][$i] = $value;
+		$o["commercials"][$i] = $value;
 		$i++;
 	}
 
