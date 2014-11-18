@@ -6,7 +6,7 @@ Ext.define('CT.store.Clients', {
 	proxy: {
 	    type: 'ajax',
 	    api: {
-	        read: 'data/clients.php',
+	        read: 'data/clients2.php',
 	        update: 'data/updateClients.php',
 	        create: 'data/createClients.php?action=adrien',
 	        destroy: 'data/destroyClients.php'
