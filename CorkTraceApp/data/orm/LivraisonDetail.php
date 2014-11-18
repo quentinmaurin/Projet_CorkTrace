@@ -10,11 +10,11 @@ final class LivraisonDetail extends Table{
         $this->db = new Db();
 		$this->name = "t_livrdetail_lid";
         $this->fields = array(
-                "lid_id"       => "lid_id",
-                "liv_id"       => "liv_id",
-                "ard_id"       => "ard_id",
-                "lid_quantite" => "lid_quantite",
-                "cfm_id"       => "cfm_id"
+                "LID_ID"       => "LID_ID",
+                "LIV_ID"       => "LIV_ID",
+                "ARD_ID"       => "ARD_ID",
+                "LID_QUANTITE" => "LID_QUANTITE",
+                "CFM_ID"       => "CFM_ID"
         );
 	}
 	

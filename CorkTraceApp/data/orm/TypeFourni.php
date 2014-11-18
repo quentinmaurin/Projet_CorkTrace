@@ -10,8 +10,8 @@ final class TypeFourni extends Table{
         $this->db = new Db();
 		$this->name = "t_typefou_tyf";
         $this->fields = array(
-                "tyf_id"  => "tyf_id",
-                "tyf_nom" => "tyf_nom"
+                "TYF_ID"  => "TYF_ID",
+                "TYF_NOM" => "TYF_NOM"
         );
 	}
 	

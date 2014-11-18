@@ -10,13 +10,13 @@ final class Fournisseur extends Table{
         $this->db = new Db();
 		$this->name = "t_fournisseur_fou";
         $this->fields = array(
-                "fou_id"      => "fou_id",
-                "fou_nom"     => "fou_nom",
-                "fou_adresse" => "fou_adresse",
-                "fou_mail"    => "fou_mail",
-				"fou_tel"     => "fou_tel",
-				"fou_fax"     => "fou_fax",
-				"tyf_id"      => "tyf_id"
+                "FOU_ID"      => "FOU_ID",
+                "FOU_NOM"     => "FOU_NOM",
+                "FOU_ADRESSE" => "FOU_ADRESSE",
+                "FOU_MAIL"    => "FOU_MAIL",
+				"FOU_TEL"     => "FOU_TEL",
+				"FOU_FAX"     => "FOU_FAX",
+				"TYF_ID"      => "TYF_ID"
         );
 	}
 	

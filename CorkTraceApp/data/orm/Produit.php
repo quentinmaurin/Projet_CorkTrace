@@ -10,10 +10,10 @@ final class Produit extends Table{
         $this->db = new Db();
 		$this->name = "t_produit_pro";
         $this->fields = array(
-                "pro_id"      => "pro_id",
-                "pro_nom"     => "pro_nom",
-                "pro_taille"  => "pro_taille",
-                "pro_qualite" => "pro_qualite"
+                "PRO_ID"      => "PRO_ID",
+                "PRO_NOM"     => "PRO_NOM",
+                "PRO_TAILLE"  => "PRO_TAILLE",
+                "PRO_QUALITE" => "PRO_QUALITE"
         );
 	}
 	

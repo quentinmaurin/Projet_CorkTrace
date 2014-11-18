@@ -10,8 +10,8 @@ final class TypeClient extends Table{
         $this->db = new Db();
 		$this->name = "t_typecli_tyc";
         $this->fields = array(
-                "tyc_id"  => "tyc_id",
-                "tyc_nom" => "tyc_nom"
+                "TYC_ID"  => "TYC_ID",
+                "TYC_NOM" => "TYC_NOM"
         );
 	}
 	
