@@ -10,14 +10,11 @@ final class Mesure extends Table{
         $this->db = new Db();
 		$this->name = "t_mesure_mes";
         $this->fields = array(
-                "mes_id"         => "mes_id",
-                "mes_longueur"   => "mes_longueur",
-                "mes_diam1"      => "mes_diam1",
-                "mes_diam2"      => "mes_diam2",
-                "mes_humidite"   => "mes_humidite",
-                "mes_diamcomp"   => "mes_diamcomp",
-                "mes_capilarite" => "mes_capilarite",
-                "cfm_id"         => "cfm_id"
+                "MES_ID"       => "MES_ID",
+                "MES_LONGUEUR" => "MES_LONGUEUR",
+                "MES_DIAM"     => "MES_DIAM",
+                "MES_OVAL"     => "MES_OVAL",
+                "CFM_ID"       => "CFM_ID"
         );
 	}
 	

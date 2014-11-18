@@ -10,9 +10,9 @@ final class Stock extends Table{
         $this->db = new Db();
 		$this->name = "t_stock_stk";
         $this->fields = array(
-                "stk_id"    => "stk_id",
-                "stk_stock" => "stk_stock",
-                "pro_id"    => "pro_id"
+                "STK_ID"    => "STK_ID",
+                "STK_STOCK" => "STK_STOCK",
+                "PRO_ID"    => "PRO_ID"
         );
 	}
 	

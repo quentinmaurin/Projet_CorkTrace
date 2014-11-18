@@ -10,8 +10,8 @@ final class DelaiPaiement extends Table{
         $this->db = new Db();
 		$this->name = "t_delaipaye_dpy";
         $this->fields = array(
-                "dpy_id"   => "dpy_id",
-                "dpy_jour" => "dpy_jour"
+                "DPY_ID"   => "DPY_ID",
+                "DPY_JOUR" => "DPY_JOUR"
         );
 	}
 	

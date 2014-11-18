@@ -10,11 +10,15 @@ final class Conformite extends Table{
         $this->db = new Db();
 		$this->name = "t_conformite_cfm";
         $this->fields = array(
-                "cfm_id"         => "cfm_id",
-                "cfm_tca_fourni" => "cfm_tca_fourni",
-                "cfm_tca_inter"  => "cfm_tca_inter",
-                "cfm_gout"       => "cfm_gout",
-				"cfm_decision"   => "cfm_decision"
+                "CFM_ID"         => "CFM_ID",
+                "CFM_TCA_FOURNI" => "CFM_TCA_FOURNI",
+                "CFM_TCA_INTER"  => "CFM_TCA_INTER",
+                "CFM_GOUT"       => "CFM_GOUT",
+				"CFM_DECISION"   => "CFM_DECISION",
+				"CFM_CAPILARITE" => "CFM_CAPILARITE",
+				"CFM_HUMIDITE"   => "CFM_HUMIDITE",
+                "CFM_DIAMCOMPR"  => "CFM_DIAMCOMPR"
+                
         );
 	}
 	
