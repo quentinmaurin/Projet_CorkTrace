@@ -25,6 +25,9 @@
 	$Client = new Client();
 	$id = $Client->insertRow('"NULL", "'.$cli_nom.'","'.$cli_mail.'", "'.$cli_tel.'", "'.$cli_fax.'", "'.$cli_adr_fact.'", "'.$tyc_id.'"');
 
-	echo $id;
+	//echo $id;
+
+	header('Content-Type: application/json');
+	echo '{"success": true, "data" : { "cli_id" : '.$id.'}}';
 
 ?>

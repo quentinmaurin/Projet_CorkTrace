@@ -63,7 +63,7 @@ Ext.define('CT.controller.Clients', {
 
 	    var clientInstance = Ext.create('CT.model.Client', {
 
-		    cli_id : 10,
+		    cli_id : -1,
 		    cli_nom : values['cli_nom'],
 		    cli_mail : values['cli_mail'],
 		    cli_tel : values['cli_tel'],
@@ -72,7 +72,7 @@ Ext.define('CT.controller.Clients', {
 		    tyc_id : values['tyc_id']
 		});
 
-   		console.log(clientInstance);
+   		//console.log(clientInstance);
 	    this.getClientsStore().add(clientInstance);
 	    win.close();
 		
