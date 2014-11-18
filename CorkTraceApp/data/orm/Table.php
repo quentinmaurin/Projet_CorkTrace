@@ -85,7 +85,7 @@ abstract class Table{
 		$queryInsertRow = substr_replace($queryInsertRow, "", -1, 1);
 		$queryInsertRow .= ") VALUES(".$valeurs.");";
 		
-		echo $queryInsertRow;
+		//echo $queryInsertRow;
 
 		$this->db->executeQuery($queryInsertRow);
 		

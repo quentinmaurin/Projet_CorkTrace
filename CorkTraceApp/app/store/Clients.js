@@ -2,7 +2,6 @@ Ext.define('CT.store.Clients', {
     extend: 'Ext.data.Store',
 	model: 'CT.model.Client',
 	
-	//*
 	proxy: {
 	    type: 'ajax',
 	    api: {
@@ -29,14 +28,20 @@ Ext.define('CT.store.Clients', {
 			
 			console.log("load store = "+successful);
 			console.log(records);
+		},
+
+		'write' : function( storeClient, operation, eOpts ){
+
+			//console.log(operation);
+
+			if( operation.action == "create"){
+
+				response =  JSON.parse(operation.response.responseText);
+				var idInsert = response.data.cli_id;
+				var index = storeClient.find("cli_id", -1);
+				storeClient.getAt(index).set("cli_id", idInsert);
+			}
 		}
 	}
-	//*/
 	
-	/*
-    data: [
-        {"id": 1, "name": 'Ed',    "email": "ed@sencha.com"},
-        {"id": 2, "name": 'Tommy', "email": "tommy@sencha.com"}
-    ]
-	*/
 });
