@@ -1,7 +1,7 @@
 <?php
 
 	require_once("../orm/Commercial.php");
-
+	
 	$Commercial = new Commercial();
 	$res = $Commercial->getAll();
 	
