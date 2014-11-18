@@ -2,28 +2,15 @@
 
 	require_once("../orm/Client.php");
 
+	$data = json_decode($_POST['data']);
+
 	//Vérif des données entrante
-	$cli_nom		= isset ($_POST['cli_nom']) ? $_POST['cli_nom'] : "undefined";
-	$cli_mail 		= isset ($_POST['cli_mail']) ? $_POST['cli_mail'] : "undefined";
-	$cli_tel 		= isset ($_POST['cli_tel']) ? $_POST['cli_tel'] : "undefined";
-	$cli_fax 		= isset ($_POST['cli_fax']) ? $_POST['cli_fax'] : "undefined";
-	$cli_adr_fact 	= isset ($_POST['cli_adr_fact']) ? $_POST['cli_adr_fact'] : "undefined";
-	$tyc_id 		= isset ($_POST['tyc_id']) ? $_POST['tyc_id'] : "undefined";
-
-	/*$cli_nom		= isset ($_GET['cli_nom']) ? $_GET['cli_nom'] : "undefined";
-	$cli_mail 		= isset ($_GET['cli_mail']) ? $_GET['cli_mail'] : "undefined";
-	$cli_tel 		= isset ($_GET['cli_tel']) ? $_GET['cli_tel'] : "undefined";
-	$cli_fax 		= isset ($_GET['cli_fax']) ? $_GET['cli_fax'] : "undefined";
-	$cli_adr_fact 	= isset ($_GET['cli_adr_fact']) ? $_GET['cli_adr_fact'] : "undefined";
-	$tyc_id 		= isset ($_GET['tyc_id']) ? $_GET['tyc_id'] : "undefined";*/
-
-	echo $cli_nom	;
-	echo '<br>';
-	echo $cli_mail 	;echo '<br>';
-	echo $cli_tel 	;echo '<br>';
-	echo $cli_fax 	;echo '<br>';
-	echo $cli_adr_fact;echo '<br>';
-	echo $tyc_id ;
+	$cli_nom		= isset ($data->{'cli_nom'}) ? $data->{'cli_nom'} : "undefined";
+	$cli_mail 		= isset ($data->{'cli_mail'}) ? $data->{'cli_mail'} : "undefined";
+	$cli_tel 		= isset ($data->{'cli_tel'}) ? $data->{'cli_tel'} : "undefined";
+	$cli_fax 		= isset ($data->{'cli_fax'}) ? $data->{'cli_fax'} : "undefined";
+	$cli_adr_fact 	= isset ($data->{'cli_adr_fact'}) ? $data->{'cli_adr_fact'} : "undefined";
+	$tyc_id 		= isset ($data->{'tyc_id'}) ? $data->{'tyc_id'} : "undefined";
 
 	if( $cli_nom == "undefined" ||
 		$cli_mail == "undefined" ||	
