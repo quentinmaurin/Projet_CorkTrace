@@ -1,0 +1,8 @@
+{
+success : true,
+clients : [
+{ "id": 1, "name": "adrien", email:"test"},
+{ "id": 2, "name": "adrien", email:"test"}
+]
+}
+
