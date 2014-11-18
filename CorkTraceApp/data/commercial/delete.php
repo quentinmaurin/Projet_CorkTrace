@@ -1,11 +1,12 @@
 <?php
 
 	require_once("../orm/Commercial.php");
+	
+	$data = json_decode($_POST['data']);
 
 	//Vérif des données entrante
-	$com_id	= isset ($_POST['com_id']) ? $_POST['com_id'] : "undefined";
+	$com_id	= isset ($data->{'com_nom'}) ? $data->{'com_nom'} : "undefined";
 
-	//$com_id	= isset ($_GET['com_id']) ? $_GET['com_id'] : "undefined";
 
 	if( $com_id == "undefined")
 	{
