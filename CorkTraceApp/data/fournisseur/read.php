@@ -4,7 +4,7 @@
 
 	$Fournisseur = new Fournisseur();
 	$res = $Fournisseur->getAll();
-	
+
 	$i= 0;
 	$o["fournisseurs"] = "";
 
