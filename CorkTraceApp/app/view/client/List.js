@@ -3,14 +3,17 @@ Ext.define('CT.view.client.List' ,{
     alias: 'widget.clientlist',
 
     title: 'All Client',
-
+    id: 'clientlist',
     store: 'Clients',
 	
     bbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
                    var view = Ext.widget('clientadd');
-        } },   
+        } },
+        {
+            xtype: 'button', text: 'Supprimer', action: 'delete'
+        },   
         '->'
     ],
 

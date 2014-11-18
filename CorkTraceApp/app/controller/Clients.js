@@ -19,6 +19,9 @@ Ext.define('CT.controller.Clients', {
 		    'clientlist': {
 		    	itemdblclick: this.editClient
 		    },
+		    'clientlist button[action=delete]': {
+		    	click: this.deleteClient
+		    },
 	        'clientedit button[action=save]': {
 	        	click: this.updateClient
 	        },
@@ -33,6 +36,15 @@ Ext.define('CT.controller.Clients', {
 		console.log( this.getClientsStore());
     },
 	
+	deleteClient: function(button) {
+		
+		var row = Ext.getCmp('clientlist').getSelectionModel().getSelection()[0];
+		console.log("delete");
+        console.log(row);
+		this.getClientsStore().remove(row);
+		this.getClientsStore().sync();
+    },
+
     editClient: function(grid, record) {
 		
         var view = Ext.widget('clientedit');
