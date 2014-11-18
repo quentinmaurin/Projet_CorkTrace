@@ -1,8 +1,8 @@
-Ext.define('CT.view.client.Edit', {
+Ext.define('CT.view.client.Add', {
     extend: 'Ext.window.Window',
-    alias: 'widget.clientedit',
+    alias: 'widget.clientadd',
 
-    title: 'Edit Client',
+    title: 'Add Client',
     layout: 'fit',
     autoShow: true,
 

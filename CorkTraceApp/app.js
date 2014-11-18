@@ -5,7 +5,9 @@ Ext.application({
     appFolder: 'app',
 	
     controllers: [
-           'Clients'
+           'Clients',
+           'Menu',
+           'Fournisseurs'
     ],
 
     launch: function() {
@@ -19,17 +21,17 @@ Ext.application({
 			},{
 				xtype: "panel",
 				region: "west",
-				title: "Menu",
 				width: "20%",
 				layout: "fit",
-				items: []
+				items: [{ xtype: 'menulist' }]
 			},{
 				xtype: "panel",
 				region: "center",
 				layout:"fit",
 				id:"feedviewer",
 				items:[{
-					xtype: 'clientlist'
+					xtype:"panel",
+					html: "<center><h1>Application</h1><p><img src='./img/logo.png' width=200 /></p></center>"
 				}]
 			}]
         });
