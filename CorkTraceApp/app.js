@@ -9,7 +9,8 @@ Ext.application({
            'Menu',
            'Fournisseurs',
            'Commercials',
-           'Stocks'
+           'Stocks',
+           'CommandeFournisseurs'
     ],
 
     launch: function() {
