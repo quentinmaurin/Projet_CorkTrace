@@ -16,7 +16,7 @@ final class AssignAdress extends Table{
 	}
     public function getDeliveriesAdress($cli_id){
 
-        $query = "SELECT t_cliadr_cla.cla_id, t_adresse_adr.adr_id, t_adresse_adr.adr_adresse
+        $query = "SELECT t_cliadr_cla.cla_id, t_cliadr_cla.cli_id, t_adresse_adr.adr_id, t_adresse_adr.adr_adresse
         FROM t_cliadr_cla
         INNER JOIN t_adresse_adr ON t_cliadr_cla.adr_id=t_adresse_adr.adr_id
         WHERE t_cliadr_cla.cli_id=".$cli_id;
