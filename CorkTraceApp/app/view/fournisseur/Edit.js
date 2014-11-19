@@ -33,9 +33,13 @@ Ext.define('CT.view.fournisseur.Edit', {
                         name : 'fou_fax',
                         fieldLabel: 'Fax'
                     },{
-                        xtype: 'textfield',
+                        xtype: "combobox",
                         name : 'tyf_id',
-                        fieldLabel: 'Type'
+                        fieldLabel: 'Choisir type',
+                        displayField: 'tyf_nom',
+                        valueField: 'tyf_id',
+                        store: 'TypeFournisseurs',
+                        queryMode: 'local'
                     }
                 ]
             }
