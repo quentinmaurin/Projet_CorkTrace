@@ -57,7 +57,7 @@ abstract class Table{
 		$where = substr_replace($where, "", -5, 5).";";
 		
 		$query = "SELECT * FROM ".$this->name." WHERE ".$where;
-		
+
 		$rows = $this->db->getResponse($query);
         
 		return $rows;

@@ -53,8 +53,9 @@ Ext.define('CT.controller.Clients', {
 	    var AssigneAdresseInstance = Ext.create('CT.model.AssigneAdresse', {
 
 		    cla_id : -1,
-		    adr_id : values['adr_id'],
-		    cli_id : row.get("cli_id")
+		    adr_adresse : values['adr_adresse'],
+		    cli_id : row.get("cli_id"),
+		    adr_id : -1
 		});
 
    		//console.log(clientInstance);

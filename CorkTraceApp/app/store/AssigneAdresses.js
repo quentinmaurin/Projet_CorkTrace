@@ -38,8 +38,10 @@ Ext.define('CT.store.AssigneAdresses', {
 
 				response =  JSON.parse(operation.response.responseText);
 				var idInsert = response.data.cla_id;
+				var idAddressInsert = response.data.adr_id;
 				var index = storeAssigneAdresses.find("cla_id", -1);
 				storeAssigneAdresses.getAt(index).set("cla_id", idInsert);
+				storeAssigneAdresses.getAt(index).set("adr_id", idAddressInsert);
 			}
 		}
 	}
