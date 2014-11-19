@@ -1,14 +1,15 @@
 Ext.define('CT.controller.Clients', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Clients', 'TypeClients', 'AssigneAdresses'],
+    stores: ['Clients', 'TypeClients', 'AssigneAdresses', 'Adresses'],
 	
-	models: ['Client', 'TypeClient', 'AssigneAdresse'],
+	models: ['Client', 'TypeClient', 'AssigneAdresse', 'Adresse'],
 	   
     views: [
     	'client.List',
 		'client.Edit',
-		'client.Add'
+		'client.Add',
+		'assignadress.Add'
     ],
 	   
     init: function() {
