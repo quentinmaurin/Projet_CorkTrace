@@ -14,7 +14,8 @@ final class CommandeClientDetail extends Table{
             "PRO_ID" => "PRO_ID",
             "CCD_PRIX" => "CCD_PRIX",
             "CCD_QUANTITE" => "CCD_QUANTITE",
-            "CCD_MARQUAGE" => "CCD_MARQUAGE"
+            "CCD_MARQUAGE" => "CCD_MARQUAGE",
+			"CFM_ID" => "CFM_ID"
         );
 	}
 }
