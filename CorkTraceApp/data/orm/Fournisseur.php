@@ -19,6 +19,16 @@ final class Fournisseur extends Table{
 				"TYF_ID"      => "TYF_ID"
         );
 	}
+	public function getAll(){
+
+        $query = "SELECT t_fournisseur_fou.fou_id, t_fournisseur_fou.fou_nom, t_fournisseur_fou.fou_adresse, t_fournisseur_fou.fou_mail, t_fournisseur_fou.fou_tel, t_fournisseur_fou.fou_fax, t_fournisseur_fou.tyf_id, t_typefou_tyf.tyf_nom
+				  FROM t_fournisseur_fou 
+				  INNER JOIN t_typefou_tyf ON t_fournisseur_fou.tyf_id=t_typefou_tyf.tyf_id";
+
+        $allRows = $this->db->getResponse($query);
+        
+        return $allRows;
+    }
 	
 }
 
