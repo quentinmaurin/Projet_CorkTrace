@@ -18,6 +18,16 @@ final class Client extends Table{
                 "TYC_ID" => "TYC_ID"
         );
 	}
+        public function getAll(){
+
+        $query = "SELECT t_client_cli.cli_id,t_client_cli.cli_nom, t_client_cli.cli_mail, t_client_cli.cli_tel, t_client_cli.cli_fax, t_client_cli.cli_adr_fact, t_client_cli.tyc_id, t_typecli_tyc.tyc_nom 
+                  FROM t_client_cli 
+                  INNER JOIN t_typecli_tyc ON t_client_cli.tyc_id=t_typecli_tyc.tyc_id";
+
+        $allRows = $this->db->getResponse($query);
+        
+        return $allRows;
+    }
 }
 
 ?>
