@@ -36,6 +36,13 @@ Ext.define('CT.view.client.Add', {
                         xtype: 'textfield',
                         name : 'tyc_id',
                         fieldLabel: 'Type' 
+                    },{
+                        xtype: "combobox",
+                        fieldLabel: 'Choisir type',
+                        displayField: 'tyc_nom',
+                        valueField: 'tyc_id',
+                        store: 'TypeClients',
+                        queryMode: 'local'
                     }
                 ]
             }

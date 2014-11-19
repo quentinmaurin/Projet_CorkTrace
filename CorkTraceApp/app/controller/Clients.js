@@ -1,9 +1,9 @@
 Ext.define('CT.controller.Clients', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Clients'],
+    stores: ['Clients', 'TypeClients'],
 	
-	models: ['Client'],
+	models: ['Client', 'TypeClient'],
 	   
     views: [
     	'client.List',

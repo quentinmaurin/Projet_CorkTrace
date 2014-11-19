@@ -26,7 +26,8 @@ Ext.define('CT.view.client.List' ,{
             {header: 'Nom', dataIndex: 'cli_tel', flex: 1},
             {header: 'Fax', dataIndex: 'cli_fax', flex: 1},
             {header: 'Adr Fact.', dataIndex: 'cli_adr_fact', flex: 1},
-            {header: 'Type', dataIndex: 'tyc_id', flex: 1}
+            {header: 'Type Id', dataIndex: 'tyc_id', flex: 1},
+            {header: 'Type', dataIndex: 'tyc_nom', flex: 1}
         ];
 
         this.callParent(arguments);
