@@ -26,7 +26,8 @@ Ext.define('CT.view.fournisseur.List' ,{
             {header: 'Mail', dataIndex: 'fou_mail', flex: 1},
             {header: 'Tel', dataIndex: 'fou_tel', flex: 1},
             {header: 'Fax', dataIndex: 'fou_fax', flex: 1},
-            {header: 'Type', dataIndex: 'tyf_id', flex: 1}
+            {header: 'Type Id', dataIndex: 'tyf_id', flex: 1},
+            {header: 'Type', dataIndex: 'tyf_nom', flex: 1}
         ];
 
         this.callParent(arguments);

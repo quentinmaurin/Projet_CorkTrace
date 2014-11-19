@@ -5,7 +5,7 @@ Ext.define('CT.store.TypeClients', {
 	proxy: {
 	    type: 'ajax',
 	    api: {
-	        read: 'data/test.json'
+	        read: 'data/type_client/read.php'
 	    },
 	    reader: {
 	        type: 'json',

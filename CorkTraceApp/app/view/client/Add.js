@@ -33,11 +33,8 @@ Ext.define('CT.view.client.Add', {
                         name : 'cli_adr_fact',
                         fieldLabel: 'Adr fact' 
                     },{
-                        xtype: 'textfield',
-                        name : 'tyc_id',
-                        fieldLabel: 'Type' 
-                    },{
                         xtype: "combobox",
+                        name : 'tyc_id',
                         fieldLabel: 'Choisir type',
                         displayField: 'tyc_nom',
                         valueField: 'tyc_id',
