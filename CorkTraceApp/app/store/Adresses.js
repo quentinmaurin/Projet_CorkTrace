@@ -5,7 +5,7 @@ Ext.define('CT.store.Adresses', {
 	proxy: {
 	    type: 'ajax',
 	    api: {
-	        read: 'data/test.php'
+	        read: 'data/adresse/read.php'
 	    },
 	    reader: {
 	        type: 'json',
