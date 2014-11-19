@@ -4,7 +4,7 @@
 
 	$Adress = new Adress();
 
-	$res = $AssignAdress->getAll();
+	$res = $Adress->getAll();
 
 	$i= 0;
 	$o["adresses"] = "";

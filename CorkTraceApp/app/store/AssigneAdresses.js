@@ -31,8 +31,16 @@ Ext.define('CT.store.AssigneAdresses', {
 			console.log(records);
 		},
 
-		'write' : function( storeClient, operation, eOpts ){
+		'write' : function( storeAssigneAdresses, operation, eOpts ){
 			console.log("write");
+
+			if( operation.action == "create"){
+
+				response =  JSON.parse(operation.response.responseText);
+				var idInsert = response.data.cla_id;
+				var index = storeAssigneAdresses.find("cla_id", -1);
+				storeAssigneAdresses.getAt(index).set("cla_id", idInsert);
+			}
 		}
 	}
 	

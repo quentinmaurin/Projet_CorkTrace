@@ -43,8 +43,8 @@ Ext.define('CT.view.client.List' ,{
         store: 'AssigneAdresses',
         columns : [
             {header: 'Cla Id',  dataIndex: 'cla_id',  flex: 1},
-            {header: 'Adr Id', dataIndex: 'cli_id', flex: 1},
-            {header: 'Cli Id', dataIndex: 'adr_id', flex: 1},
+            {header: 'Cli Id', dataIndex: 'cli_id', flex: 1},
+            {header: 'Adr Id', dataIndex: 'adr_id', flex: 1},
             {header: 'Adresse', dataIndex: 'adr_adresse', flex: 1}
         ],
         region : "east",
@@ -52,7 +52,7 @@ Ext.define('CT.view.client.List' ,{
         bbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
-                console.log("ajotuer");
+
                 var view = Ext.widget('assignadressadd');
         } },
         {

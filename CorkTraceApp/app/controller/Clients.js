@@ -20,10 +20,13 @@ Ext.define('CT.controller.Clients', {
             'clientlist #gridclientlist': {
 		    	itemclick: this.getAdressesLivraisons
 		    },
-		    'clientlist button[action=edit]': {
+		     'clientlist #gridadresseslivraisonslist button[action=delete]': {
+		    	click: this.deleteAdresseLivraisonClient
+		    },
+		    'clientlist #gridclientlist button[action=edit]': {
 		    	click: this.editClient
 		    },
-		    'clientlist button[action=delete]': {
+		    'clientlist #gridclientlist button[action=delete]': {
 		    	click: this.deleteClient
 		    },
 	        'clientedit button[action=save]': {
@@ -31,8 +34,44 @@ Ext.define('CT.controller.Clients', {
 	        },
 	        'clientadd button[action=save]': {
 	        	click: this.createClient
+	        },
+	        'assignadressadd button[action=save]': {
+	        	click:  this.AddAdresseLivraisonClient
 	        }
         });
+    },
+
+	AddAdresseLivraisonClient: function(button) {
+		
+		var win = button.up('window'),
+	    form = win.down('form'),
+	    record = form.getRecord(),
+	    values = form.getValues();
+
+		var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
+
+	    var AssigneAdresseInstance = Ext.create('CT.model.AssigneAdresse', {
+
+		    cla_id : -1,
+		    adr_id : values['adr_id'],
+		    cli_id : row.get("cli_id")
+		});
+
+   		//console.log(clientInstance);
+	    Ext.getCmp('gridadresseslivraisonslist').getStore().add(AssigneAdresseInstance);
+	    win.close();
+		
+	  	// synchronize the store after editing the record
+	    Ext.getCmp('gridadresseslivraisonslist').getStore().sync();
+    },
+
+	deleteAdresseLivraisonClient: function(button) {
+		
+		var row = Ext.getCmp('gridadresseslivraisonslist').getSelectionModel().getSelection()[0];
+		console.log("delete");
+        console.log(row);
+		Ext.getCmp('gridadresseslivraisonslist').getStore().remove(row);
+		Ext.getCmp('gridadresseslivraisonslist').getStore().sync();
     },
 
    	getAdressesLivraisons: function( gridclientlist, record, item, index, e, eOpts) {

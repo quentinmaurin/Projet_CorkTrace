@@ -14,7 +14,7 @@
 	}
 
 	$AssignAdress = new AssignAdress();
-	$id = $AssignAdress->insertRow('"NULL", "'.$cli_id.'","'.$adr_id);
+	$id = $AssignAdress->insertRow('"NULL", "'.$cli_id.'","'.$adr_id.'"');
 
 	//echo $id;
 
