@@ -1,9 +1,9 @@
 Ext.define('CT.controller.Fournisseurs', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Fournisseurs'],
+    stores: ['Fournisseurs', 'TypeFournisseurs'],
 	
-	models: ['Fournisseur'],
+	models: ['Fournisseur', 'TypeFournisseur'],
 	   
     views: [
     	'fournisseur.List',
