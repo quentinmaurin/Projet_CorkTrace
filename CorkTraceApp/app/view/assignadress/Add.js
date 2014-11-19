@@ -13,17 +13,9 @@ Ext.define('CT.view.assignadress.Add', {
                 xtype: 'form',
                 items: [
                     {
-                        xtype: 'textfield',
-                        name : 'cli_id',
-                        fieldLabel: 'Client'
-                    },{
-                        xtype: "combobox",
-                        name : 'adr_id',
+                        xtype: "textfield",
+                        name : 'adr_adresse',
                         fieldLabel: 'Choisir adresse',
-                        displayField: 'adr_adresse',
-                        valueField: 'adr_id',
-                        store: 'Adresses',
-                        queryMode: 'local'
                     }
                 ]
             }
