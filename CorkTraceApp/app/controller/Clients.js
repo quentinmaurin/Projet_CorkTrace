@@ -1,9 +1,9 @@
 Ext.define('CT.controller.Clients', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Clients', 'TypeClients'],
+    stores: ['Clients', 'TypeClients', 'AssigneAdresses'],
 	
-	models: ['Client', 'TypeClient'],
+	models: ['Client', 'TypeClient', 'AssigneAdresse'],
 	   
     views: [
     	'client.List',
@@ -16,8 +16,11 @@ Ext.define('CT.controller.Clients', {
             'viewport > panel': {
                 render: this.onPanelRendered
             },
-		    'clientlist': {
-		    	itemdblclick: this.editClient
+            'clientlist #gridclientlist': {
+		    	itemclick: this.getAdressesLivraisons
+		    },
+		    'clientlist button[action=edit]': {
+		    	click: this.editClient
 		    },
 		    'clientlist button[action=delete]': {
 		    	click: this.deleteClient
@@ -31,6 +34,16 @@ Ext.define('CT.controller.Clients', {
         });
     },
 
+   	getAdressesLivraisons: function( gridclientlist, record, item, index, e, eOpts) {
+   		console.log("Get Adresses Livraisons");
+
+   		Ext.getCmp('gridadresseslivraisonslist').getStore().getProxy().extraParams = {
+    		cli_id: record.get("cli_id")
+		};
+
+   		Ext.getCmp('gridadresseslivraisonslist').getStore().load();
+    },
+
     onPanelRendered: function() {
         console.log('The panel client was rendered');
 		console.log( this.getClientsStore());
@@ -38,15 +51,16 @@ Ext.define('CT.controller.Clients', {
 	
 	deleteClient: function(button) {
 		
-		var row = Ext.getCmp('clientlist').getSelectionModel().getSelection()[0];
+		var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
 		console.log("delete");
         console.log(row);
 		this.getClientsStore().remove(row);
 		this.getClientsStore().sync();
     },
 
-    editClient: function(grid, record) {
+    editClient: function(button) {
 		
+		var record = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
         var view = Ext.widget('clientedit');
         view.down('form').loadRecord(record);
     },

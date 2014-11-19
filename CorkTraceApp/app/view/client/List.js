@@ -1,25 +1,31 @@
 Ext.define('CT.view.client.List' ,{
-    extend: 'Ext.grid.Panel',
+    extend: 'Ext.panel.Panel',
     alias: 'widget.clientlist',
 
     title: 'All Client',
-    id: 'clientlist',
-    store: 'Clients',
-	
-    bbar: [
+
+    layout : 'border',
+
+    items:[{
+
+        title : "Les clients",
+        xtype : "grid",
+        region : "center",
+        id: 'gridclientlist',
+        store: 'Clients',
+        bbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
                    var view = Ext.widget('clientadd');
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'
-        },   
+        },{
+            xtype: 'button', text: 'Modifier', action: 'edit' 
+        }, 
         '->'
-    ],
-
-    initComponent: function() {
-
-        this.columns = [
+        ],
+        columns : [
             {header: 'Id',  dataIndex: 'cli_id',  flex: 1},
             {header: 'Nom', dataIndex: 'cli_nom', flex: 1},
             {header: 'Mail', dataIndex: 'cli_mail', flex: 1},
@@ -28,7 +34,25 @@ Ext.define('CT.view.client.List' ,{
             {header: 'Adr Fact.', dataIndex: 'cli_adr_fact', flex: 1},
             {header: 'Type Id', dataIndex: 'tyc_id', flex: 1},
             {header: 'Type', dataIndex: 'tyc_nom', flex: 1}
-        ];
+        ]
+    },{
+        title : "Adresses de livraisons",
+        xtype : "grid",
+        region : "center",
+        id: 'gridadresseslivraisonslist',
+        store: 'AssigneAdresses',
+        columns : [
+            {header: 'Cla Id',  dataIndex: 'cla_id',  flex: 1},
+            {header: 'Adr Id', dataIndex: 'cli_id', flex: 1},
+            {header: 'Cli Id', dataIndex: 'adr_id', flex: 1},
+            {header: 'Adresse', dataIndex: 'adr_adresse', flex: 1}
+        ],
+        region : "east",
+        width : "30%"
+    }],
+ 
+
+    initComponent: function() {
 
         this.callParent(arguments);
     }
