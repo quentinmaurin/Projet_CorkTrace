@@ -1,0 +1,44 @@
+.decision{
+	text-align:center !important;
+	margin: 0 auto;
+	font-size:20px;
+	font-weight:bold;
+	padding : 0;
+}
+
+.conform{
+	color: #03FC04;
+}
+
+.rouge{
+	color:red;
+}
+
+.nonConform{
+	color: #FA0300;
+}
+
+.enAttente{
+	color: black;
+}
+
+.derogation{
+	color: blue;
+}
+
+.img_coche{
+	height: 21px;
+}
+
+.celluleCenter{
+	text-align:center !important;
+	margin: 0 auto;
+}
+
+body{
+	padding-top:20px;
+}
+
+.echantillon td, .echantillon th{
+	text-align:center;
+}
