@@ -48,7 +48,18 @@ Ext.define('CT.view.client.List' ,{
             {header: 'Adresse', dataIndex: 'adr_adresse', flex: 1}
         ],
         region : "east",
-        width : "30%"
+        width : "30%",
+        bbar: [
+        '->',
+        { xtype: 'button', text: 'Ajouter', handler: function(){
+                console.log("ajotuer");
+                var view = Ext.widget('assignadressadd');
+        } },
+        {
+            xtype: 'button', text: 'Supprimer', action: 'delete'
+        },
+        '->'
+        ],
     }],
  
 
