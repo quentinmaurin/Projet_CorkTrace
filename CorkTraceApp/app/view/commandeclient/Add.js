@@ -92,11 +92,31 @@ Ext.define('CT.view.commandeclient.Add', {
                         displayField: 'cli_nom',
                         valueField: 'cli_id',
                         store: 'Clients',
-                        queryMode: 'local'
+                        queryMode: 'local',
+                        listeners: {
+                            'afterrender': function(cb, eOpts){
+                                cb.getStore().load();
+                            },
+                            'change': function(cb, newValue, oldValue, eOpts){
+                                console.log(newValue);
+                                Ext.getCmp("form_add_cmd_cli").getForm().findField('clc_id').getStore().getProxy().extraParams={
+                                    cli_id: newValue
+                                };
+                                Ext.getCmp("form_add_cmd_cli").getForm().findField('clc_id').getStore().load();
+                                Ext.getCmp("form_add_cmd_cli").getForm().findField('cla_id').getStore().getProxy().extraParams={
+                                    cli_id: newValue
+                                };
+                                Ext.getCmp("form_add_cmd_cli").getForm().findField('cla_id').getStore().load();
+                            }
+                        }
                     },{
-                        xtype:"textfield",
-                        name: "clc_id",
-                        fieldLabel: "Id Commercial"
+                        xtype: "combobox",
+                        name : 'clc_id',
+                        fieldLabel: 'Choisir Commercial',
+                        displayField: 'com_nom',
+                        valueField: 'clc_id',
+                        store: 'AssigneCommercials',
+                        queryMode: 'local'
                     },{
                         xtype: "combobox",
                         name : 'dpy_id',
@@ -106,9 +126,13 @@ Ext.define('CT.view.commandeclient.Add', {
                         store: 'DelaiPaiements',
                         queryMode: 'local'
                     },{
-                        xtype:"textfield",
-                        name: "cla_id",
-                        fieldLabel: "Adresse livraison"
+                        xtype: "combobox",
+                        name : 'cla_id',
+                        fieldLabel: 'Choisir Adresse livraison',
+                        displayField: 'adr_adresse',
+                        valueField: 'cla_id',
+                        store: 'AssigneAdresses',
+                        queryMode: 'local'
                     }]
                 }]
             }

@@ -71,7 +71,12 @@ Ext.define('CT.view.commandefournisseur.Add', {
                     displayField: 'fou_nom',
                     valueField: 'fou_id',
                     store: 'Fournisseurs',
-                    queryMode: 'local'
+                    queryMode: 'local',
+                    listeners: {
+                            'afterrender': function(cb, eOpts){
+                                cb.getStore().load();
+                            }
+                    }
                 },{
                     xtype:"datefield",
                     name: "cfo_datecmd",
