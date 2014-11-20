@@ -10,7 +10,9 @@ Ext.application({
            'Fournisseurs',
            'Commercials',
            'Stocks',
-           'CommandeFournisseurs'
+           'CommandeFournisseurs',
+           'Arrivages',
+           'CommandeClients'
     ],
 
     launch: function() {

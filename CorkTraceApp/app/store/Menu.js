@@ -10,8 +10,9 @@ Ext.define('CT.store.Menu', {
                     { text: "Commercial", leaf: true}
             ] },
             { text: "Stock", leaf: true },
-            { text: "Commande client", leaf: true },
-            { text: "Commande fournisseur", leaf: true }
+            { text: "Commande fournisseur", leaf: true },
+            { text: "Arrivage", leaf: true },
+            { text: "Commande client", leaf: true }
         ]
     }
 });
