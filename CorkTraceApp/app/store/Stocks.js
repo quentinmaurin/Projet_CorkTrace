@@ -12,7 +12,6 @@ Ext.define('CT.store.Stocks', {
 	        root: 'stocks'
 	    }
 	},
-    autoLoad: true,
 	
 	listeners :{
 		

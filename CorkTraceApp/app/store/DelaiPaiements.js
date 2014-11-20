@@ -1,15 +1,15 @@
-Ext.define('CT.store.Produits', {
+Ext.define('CT.store.DelaiPaiements', {
     extend: 'Ext.data.Store',
-	model: 'CT.model.Produit',
+	model: 'CT.model.DelaiPaiement',
 	
 	proxy: {
 	    type: 'ajax',
 	    api: {
-	        read: 'data/produit/read.php'
+	        read: 'data/delai_paiement/read.php'
 	    },
 	    reader: {
 	        type: 'json',
-	        root: 'produits'
+	        root: 'delai_paiement'
 	    }
 	},
     autoLoad: true,
@@ -18,7 +18,7 @@ Ext.define('CT.store.Produits', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store produit = "+successful);
+			console.log("load store = "+successful);
 			console.log(records);
 		}
 	}
