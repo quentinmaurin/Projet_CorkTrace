@@ -48,8 +48,8 @@ Ext.define('CT.view.arrivage.Add', {
                 },
                 items: [{
                     xtype:"displayfield",
-                    name: "cmd_id",
-                    fieldLabel: "Commande id"
+                    name: "cfo_id",
+                    fieldLabel: "Commande cfo_id"
                 },{
                     xtype:"displayfield",
                     name: "fou_nom",
@@ -68,34 +68,31 @@ Ext.define('CT.view.arrivage.Add', {
                 action: 'save',
                 handler : function(){
 
-                    /*console.log("debut loop");
-                    var store = Ext.getCmp("gridcommandeclientdetails").getStore();
+                    console.log("debut loop");
+                    var store = Ext.getCmp("gridarrivagedetails").getStore();
 
                     var details = new Array();
                     store.each(function(record,idx){
 
                         details.push({
                             "pro_id" : record.get("pro_id"),
-                            "ccd_quantite" : record.get("ccd_quantite"),
-                            "ccd_prix" : record.get("ccd_prix"),
-                            "ccd_marquage" :  record.get("ccd_marquage")
+                            "ard_quantite" : record.get("ard_quantite")
                         });
                     });
 
-                    var values = Ext.getCmp("form_add_cmd_cli").getForm().getValues();
-
+                    var values = Ext.getCmp("form_add_arrivage").getForm().getValues();
+                    var cfo_id = Ext.getCmp("form_add_arrivage").getForm().findField("cfo_id").getValue();
+                    console.log(cfo_id);
                     var data = new Object();
-                    data.ccl_dateLiv = values.ccl_dateLiv;
-                    data.clc_id = values.clc_id;
-                    data.dpy_id = values.dpy_id;
-                    data.cla_id = values.cla_id;
+                    data.cfo_id = cfo_id;
+                    data.ari_responsable = values.ari_responsable;
                     data.details = details;
 
                     console.log(data);
                     console.log("End loop");
 
                     Ext.Ajax.request({
-                        url: 'data/commande_client/create.php',
+                        url: 'data/arrivage/create.php',
                         method: 'POST',          
                         waitTitle: 'Connecting',
                         waitMsg: 'Sending data...',                                     
@@ -105,7 +102,7 @@ Ext.define('CT.view.arrivage.Add', {
                         scope:this,
                         success: true,                                    
                         failure: function(){console.log('failure');}
-                    });*/
+                    });
 
                 }
             },
