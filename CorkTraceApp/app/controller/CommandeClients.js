@@ -1,9 +1,9 @@
 Ext.define('CT.controller.CommandeClients', {
     extend: 'Ext.app.Controller',
 
-    stores: ['CommandeClients', 'Produits', 'CommandeClientDetails'],
+    stores: ['CommandeClients', 'Produits', 'CommandeClientDetails', 'Clients', 'DelaiPaiements'],
 	
-	models: ['CommandeClient', 'Produit', 'CommandeClientDetail'],
+	models: ['CommandeClient', 'Produit', 'CommandeClientDetail', 'Client', 'DelaiPaiement'],
 	   
     views: [
     	'commandeclient.List',

@@ -86,17 +86,25 @@ Ext.define('CT.view.commandeclient.Add', {
                         labelWidth : 150
                     },
                     items:[{
-                        xtype:"textfield",
-                        name: "cli_id",
-                        fieldLabel: "Id Client"
+                        xtype: "combobox",
+                        name : 'cli_id',
+                        fieldLabel: 'Choisir client',
+                        displayField: 'cli_nom',
+                        valueField: 'cli_id',
+                        store: 'Clients',
+                        queryMode: 'local'
                     },{
                         xtype:"textfield",
                         name: "clc_id",
                         fieldLabel: "Id Commercial"
                     },{
-                        xtype:"textfield",
-                        name: "dpy_id",
-                        fieldLabel: "Delai paiement"
+                        xtype: "combobox",
+                        name : 'dpy_id',
+                        fieldLabel: 'Choisir delai',
+                        displayField: 'dpy_jour',
+                        valueField: 'dpy_id',
+                        store: 'DelaiPaiements',
+                        queryMode: 'local'
                     },{
                         xtype:"textfield",
                         name: "cla_id",

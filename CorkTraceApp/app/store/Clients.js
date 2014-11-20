@@ -1,7 +1,7 @@
 Ext.define('CT.store.Clients', {
     extend: 'Ext.data.Store',
 	model: 'CT.model.Client',
-	
+
 	proxy: {
 	    type: 'ajax',
 	    api: {
@@ -20,13 +20,12 @@ Ext.define('CT.store.Clients', {
 	        root: 'data'
 	    }
 	},
-    autoLoad: true,
 	
 	listeners :{
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store = "+successful);
+			console.log("load store client = "+successful);
 			console.log(records);
 		},
 

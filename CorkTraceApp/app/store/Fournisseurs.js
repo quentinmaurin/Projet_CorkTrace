@@ -20,7 +20,6 @@ Ext.define('CT.store.Fournisseurs', {
             root: 'data'
         }
     },
-    autoLoad: true,
 
     listeners :{
         

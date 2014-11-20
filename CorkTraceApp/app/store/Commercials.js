@@ -20,7 +20,6 @@ Ext.define('CT.store.Commercials', {
 	        root: 'data'
 	    }
 	},
-    autoLoad: true,
 	
 	listeners :{
 		

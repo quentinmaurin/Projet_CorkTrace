@@ -20,7 +20,6 @@ Ext.define('CT.store.Arrivages', {
             root: 'data'
         }
     },
-    autoLoad: true,
 
     listeners :{
         

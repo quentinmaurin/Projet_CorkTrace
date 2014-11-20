@@ -20,7 +20,6 @@ Ext.define('CT.store.CommandeClients', {
             root: 'data'
         }
     },
-    autoLoad: true,
 
     listeners :{
         
