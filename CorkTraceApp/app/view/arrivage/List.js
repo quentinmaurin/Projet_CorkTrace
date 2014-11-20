@@ -9,8 +9,45 @@ Ext.define('CT.view.arrivage.List' ,{
     bbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
+
             console.log("test");
-            //var view = Ext.widget('arrivageadd');
+
+            Ext.create('Ext.window.Window', {
+                title: 'Saisir cmd id',
+                layout: 'fit',
+                id : "window_cmd_id",
+                items: {
+                    xtype: 'form',
+                    id : "form_cmd_id",
+                    defaults : {
+                        margins : "10 10 10 10",
+                        labelWidth : 150
+                    },
+                    items:[{
+                        xtype:"textfield",
+                        name: "cmd_id",
+                        fieldLabel : "Cmd id"
+                    }],
+                    buttons: [{
+                        text: 'Annuler',
+                        handler: function() {
+                            Ext.getCmp("window_cmd_id").close();
+                        }
+                    }, {
+                        text: 'Receptionner',
+                        scope: this,
+                        handler: function() {
+           
+                            var values = Ext.getCmp("form_cmd_id").getForm().getValues();
+                            Ext.getCmp("window_cmd_id").close();
+                            var view = Ext.widget('arrivageadd');
+                            Ext.getCmp("form_add_arrivage").getForm().findField("cmd_id").setValue(values.cmd_id);
+                        }
+                    }]
+                }
+            }).show();
+
+       
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'

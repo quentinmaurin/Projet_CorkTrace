@@ -1,12 +1,13 @@
 Ext.define('CT.controller.Arrivages', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Arrivages'],
+    stores: ['Arrivages', 'CommandeFournisseurDetails'],
 	
-	models: ['Arrivage'],
+	models: ['Arrivage', 'CommandeFournisseurDetail'],
 	   
     views: [
-    	'arrivage.List'
+    	'arrivage.List',
+        'arrivage.Add'
     ],
 	   
     init: function() {
