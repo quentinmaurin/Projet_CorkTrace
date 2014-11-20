@@ -115,7 +115,7 @@ Ext.define('CT.view.commandefournisseur.Add', {
                     console.log("End loop");
 
                     Ext.Ajax.request({
-                        url: 'data/test.php',
+                        url: 'data/commande_fournisseur/create.php',
                         method: 'POST',          
                         waitTitle: 'Connecting',
                         waitMsg: 'Sending data...',                                     
