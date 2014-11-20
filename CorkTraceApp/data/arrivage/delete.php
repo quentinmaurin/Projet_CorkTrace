@@ -1,6 +1,7 @@
 <?php
 
 	require_once("../orm/Arrivage.php");
+	require_once("../orm/ArrivageDetail.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -15,7 +16,11 @@
 	}
 
 	$Arrivage = new Arrivage();
+	$ArrivageDetail = new ArrivageDetail();
+
 	$cond = array('ARI_ID' => $ari_id);
+	
+	$id = $ArrivageDetail->deleteRow($cond);
 	$id = $Arrivage->deleteRow($cond);
 
 	echo $id;

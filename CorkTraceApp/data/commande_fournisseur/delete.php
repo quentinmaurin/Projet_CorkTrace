@@ -1,6 +1,7 @@
 <?php
 
 	require_once("../orm/CommandeFournisseur.php");
+	require_once("../orm/CommandeFournisseurDetail.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -15,7 +16,11 @@
 	}
 
 	$CommandeFournisseur = new CommandeFournisseur();
-	$cond = array('CFO_ID' => $cfo_id);
+	$CommandeFournisseurDetail = new CommandeFournisseurDetail();
+
+	$cond = array( 'CFO_ID' => $cfo_id);
+
+	$details = $CommandeFournisseurDetail->deleteRow($cond);
 	$id = $CommandeFournisseur->deleteRow($cond);
 
 	echo $id;

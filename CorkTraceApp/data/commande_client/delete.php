@@ -1,6 +1,7 @@
 <?php
 
 	require_once("../orm/CommandeClient.php");
+	require_once("../orm/CommandeClientDetail.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -15,7 +16,11 @@
 	}
 
 	$CommandeClient = new CommandeClient();
+	$CommandeClientDetail = new CommandeClientDetail();
+
 	$cond = array('CCL_ID' => $ccl_id);
+	
+	$id = $CommandeClientDetail->deleteRow($cond);
 	$id = $CommandeClient->deleteRow($cond);
 
 	echo $id;
