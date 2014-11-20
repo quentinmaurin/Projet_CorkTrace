@@ -13,35 +13,41 @@ Ext.define('CT.view.arrivage.List' ,{
             console.log("test");
 
             Ext.create('Ext.window.Window', {
-                title: 'Saisir cmd id',
+                title: 'Saisir cfo_id',
                 layout: 'fit',
-                id : "window_cmd_id",
+                id : "window_cfo_id",
                 items: {
                     xtype: 'form',
-                    id : "form_cmd_id",
+                    id : "form_cfo_id",
                     defaults : {
                         margins : "10 10 10 10",
                         labelWidth : 150
                     },
                     items:[{
                         xtype:"textfield",
-                        name: "cmd_id",
-                        fieldLabel : "Cmd id"
+                        name: "cfo_id",
+                        fieldLabel : "cfo_id"
                     }],
                     buttons: [{
                         text: 'Annuler',
                         handler: function() {
-                            Ext.getCmp("window_cmd_id").close();
+                            Ext.getCmp("window_cfo_id").close();
                         }
                     }, {
                         text: 'Receptionner',
                         scope: this,
                         handler: function() {
            
-                            var values = Ext.getCmp("form_cmd_id").getForm().getValues();
-                            Ext.getCmp("window_cmd_id").close();
+                            var values = Ext.getCmp("form_cfo_id").getForm().getValues();
+                            Ext.getCmp("window_cfo_id").close();
                             var view = Ext.widget('arrivageadd');
-                            Ext.getCmp("form_add_arrivage").getForm().findField("cmd_id").setValue(values.cmd_id);
+                            Ext.getCmp("form_add_arrivage").getForm().findField("cfo_id").setValue(values.cfo_id);
+
+                            Ext.getCmp('gridarrivagedetails').getStore().getProxy().extraParams = {
+                                cfo_id: values.cfo_id
+                            };
+
+                            Ext.getCmp('gridarrivagedetails').getStore().load();
                         }
                     }]
                 }
