@@ -1,5 +1,20 @@
 <?php
 
+	function moyenne_ponderee($array,$coefficient)
+	{
+		$somme_valeurs = 0;
+		$somme_coefficients = 0;
+
+		foreach ($array as $value)
+		{
+			$somme_valeurs += $value * $coefficient[$i];
+			$somme_coefficients += $coefficient[$i];
+			$i++;
+		}
+
+		return $somme_valeurs / $somme_coefficients;
+	}
+
 	function taux_humidite($pieces)
 	{
 		$valeurs_rand = array();
@@ -103,5 +118,7 @@
 
 	show_values(valeurs_arrivage());
 	show_values(valeurs_commande());
+
+
 
 ?>
