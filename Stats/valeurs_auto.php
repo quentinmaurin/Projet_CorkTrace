@@ -5,7 +5,7 @@
 		$valeurs_rand = array();
 		$valeurs_return = array();
 
-		for ($i=0; $i<$pieces; $i++)	$valeurs_rand[$i] = rand(390,810);
+		for ($i=0; $i<$pieces; $i++)	$valeurs_rand[$i] = mt_rand(390,810);
 
 		$valeurs_return[0] = min($valeurs_rand) / 100;
 		$valeurs_return[1] = max($valeurs_rand) / 100;
@@ -16,7 +16,7 @@
 	{
 		$valeurs_rand = array();
 
-		for ($i=0; $i<$pieces; $i++)	$valeurs_rand[$i] = rand(85,100);
+		for ($i=0; $i<$pieces; $i++)	$valeurs_rand[$i] = mt_rand(85,100);
 
 		return min($valeurs_rand);
 	}
@@ -27,12 +27,12 @@
 
 		for ($i=0; $i<$pieces; $i++)
 		{
-			$random = rand(0,205);
+			$random = mt_rand(0,205);
 
 			if ($random <= 200)			$valeurs_rand[$i] = $random;
 			else
 			{
-				$random2 = rand(0,2);
+				$random2 = mt_rand(0,2);
 
 				if ($random2 == 2)		$valeurs_rand[$i] = $random;
 				else					$valeurs_rand[$i] = 100;
@@ -44,18 +44,18 @@
 
 	function TCA_interne()
 	{
-		return rand(0,205) / 100;
+		return mt_rand(0,205) / 100;
 	}
 
 	function capillarite()
 	{
-		return rand(0,120) / 100;
+		return mt_rand(0,120) / 100;
 	}
 
 	function gout()
 	{
-		if (rand(0,100) < 90)		return true;
-		else						return false;
+		if (mt_rand(0,100) < 90)		return 1;
+		else						return 0;
 	}
 
 	function valeurs_arrivage()
