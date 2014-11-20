@@ -10,7 +10,7 @@ Ext.define('CT.view.commandeclient.List' ,{
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
             console.log("test");
-            //var view = Ext.widget('arrivageadd');
+            var view = Ext.widget('commandeclientadd');
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'
