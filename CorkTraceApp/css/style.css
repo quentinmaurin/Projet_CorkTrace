@@ -53,11 +53,17 @@ body{
 .codebarreConformite{
 	border: 1px solid #dddddd;
     border-radius: 4px;
-    margin-top: 17%;
+    margin-top: 5%;
     padding: 10px;
     vertical-align: middle;
 }
 
+.codebar{
+	border: 2px solid #dddddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+
+}
 .container{
 
 	position: relative;
@@ -92,4 +98,11 @@ color:white;
 
 .echantillon td, .echantillon th{
 	text-align:center;
+
+}
+
+.tableSmall td, .tableSmall th{
+	line-height:20px;
+	padding: 2px;
+	vertical-align:middle;
 }

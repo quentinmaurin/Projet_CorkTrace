@@ -21,7 +21,8 @@
 	$assignAdress = new AssignAdress();
 	$adress = new Adress();
 	
-	$id_commande = 1;
+	$id_commande = $_GET['id'];
+	
 
 	// Récupération informations table CommandeClient
 	$condGetRows = array("CCL_ID" => $id_commande);
@@ -102,7 +103,7 @@
 					<div class="span3"><img src="../img/logo.png"/></div>
 					<div class="span6" style="text-align:center;padding-top:40px;">
 						
-						<img alt="" src="barcode.php?id=<?php echo $id_commande;?>&taille=3">
+						<img alt="" src="barcode.php?id=<?php echo $id_commande;?>&taille=3&font=14">
 						
 					</div>
 					<div class="span3">
@@ -114,14 +115,14 @@
 				</div>
 				<div class="row" style="margin-top:100px;">
 					<div class="span12" style="text-align:center;">
-						<h2>Facture n°<?php echo $id_commande;?></h2>
+						<h2>Facture Client n°<?php echo $id_commande;?></h2>
 					</div>
 				</div>
 				<br><br><br>
 				
 				<div class="row-fluid">
 					<div class="span6">
-						<table class="table table-bordered">
+						<table class="table table-bordered tableSmall">
 							<thead>
 								<tr><th colspan="2"style="text-align:center;" class="colorEnteteFact">Informations</th></tr>
 							</thead>
@@ -146,7 +147,7 @@
 						</table>
 					</div>	
 					<div class="span3">
-						<table class="table table-bordered">
+						<table class="table table-bordered tableSmall">
 							<thead>
 								<tr><th colspan="2"style="text-align:center;" class="colorEnteteFact">Facturation</th></tr>
 							</thead>
@@ -164,7 +165,7 @@
 						</table>
 					</div>	
 					<div class="span3">
-						<table class="table table-bordered">
+						<table class="table table-bordered tableSmall">
 							<thead>
 								<tr><th colspan="2"style="text-align:center;" class="colorEnteteFact">Livraison</th></tr>
 							</thead>
@@ -186,13 +187,14 @@
 				
 				<!-- ====================================================================================================== -->
 				
-				<table class="table table-bordered">
+				<table class="table table-bordered tableSmall">
 					<thead>
 						<tr class="colorEnteteFact">
 							<th class="alignCenter">Désignation</th>
 							<th class="alignCenter">Quantité</th>
 							<th class="alignCenter">PU (HT)</th>
 							<th class="alignCenter">Montant (HT)</th>
+							<th class="alignCenter">TVA</th>
 							<th class="alignCenter">Montant (TTC)</th>
 						</tr>
 					</thead>
@@ -227,6 +229,7 @@
 										<td class='alignRight'>".$detailCommande[$i]['ccd_quantite']."</td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_prix']." €</td>
 										<td class='alignRight'>".$montant." €</td>
+										<td class='alignRight'>".$taux_tva." %</td>
 										<td class='alignRight'>".$montantTtc." €</td>
 										
 									</tr>";
@@ -234,7 +237,7 @@
 							
 							// permet d'avoir toujours 10 lignes dans le tableau (ligne total comprise)
 							for($i=0; $i<$nb_ligne-1 ; $i++){
-								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
+								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
 							}
 
 							echo "
@@ -243,6 +246,7 @@
 									<td class='alignRight'>$totalQuantite</td>
 									<td class='alignRight'>$totalPU €</td>
 									<td class='alignRight'><b>$totalMontant €</b></td>
+									<td class='alignRight'>$taux_tva %</td>
 									<td class='alignRight'><b>$totalMontantTTC €</b></td>
 								</tr>";
 						?>

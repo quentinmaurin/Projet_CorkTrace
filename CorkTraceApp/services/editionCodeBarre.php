@@ -1,34 +1,16 @@
 ﻿<?php
 
-	require_once("../data/orm/CommandeClient.php");
-	require_once("../data/orm/CommandeClientDetail.php");
 	require_once("../data/orm/Produit.php");
 
-	
-	
-	$commandeClient = new CommandeClient();
-	$commandeClientDetail = new CommandeClientDetail();
 	$produit = new Produit();
 
+	$idProduit = $_GET['id'];
 	
-	$id_commande = 1234;
-
-	// Récupération informations table CommandeClient
-	$condGetRows = array("CCL_ID" => $id_commande);
-	$res = $commandeClient->getRows($condGetRows); 
-		$idClientComm = $res[0]['clc_id'];
-		$dateCmd      = $res[0]['ccl_dateCmd'];
-		$dateLivr     = $res[0]['ccl_dateLiv'];
-		$adrLivr      = $res[0]['cla_id'];
-		$idDelPaiemt  = $res[0]['dpy_id'];
-
-	// Récupération informations table CommandeClientDetail
-	$condGetRows = array("CCL_ID" => $id_commande);
-	$res = $commandeClientDetail->getListDetails($id_commande); 
-	$detailCommande = $res;
-		
-		
-
+	// Récupération Nom produit
+	$condGetRows = array("PRO_ID" => $idProduit);
+	$res = $produit->getRows($condGetRows); 
+		$nomProduit = $res[0]['pro_nom'];
+		$tailleProduit = $res[0]['pro_taille'];
 	
 ?>
 
@@ -61,10 +43,11 @@
 					<div class="span3" style="text-align:center;">
 					</div>
 					
-					<div class="span6 codebar" style="text-align:center; ">
-					
-						<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo $id_commande;?>&taille=4">
-						
+					<div class="span6" style="text-align:center;">
+						<div class="codebar">
+						<h4><?php echo $nomProduit;?></h4>
+						<img class="" alt="" src="barcode.php?id=<?php echo $idProduit;?>&taille=3&font=14">
+						</div>
 					</div>
 					
 					<div class="span3" style="text-align:center;">

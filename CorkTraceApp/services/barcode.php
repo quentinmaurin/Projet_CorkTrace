@@ -7,12 +7,13 @@
 	
 	$codebarre = $_GET['id'];
 	$tailleScale = $_GET['taille'];
+	$taillefont = $_GET['font'];
 	
 	// The arguments are R, G, and B for color.
 	$colorFont = new BCGColor(0, 0, 0);
 	$colorBack = new BCGColor(255, 255, 255);
 
-	$font = new BCGFontFile('barcodegen/font/Arial.ttf', 16);
+	$font = new BCGFontFile('barcodegen/font/Arial.ttf', $taillefont);
 	
 
 	$code = new BCGcode39(); // Or another class name from the manual
