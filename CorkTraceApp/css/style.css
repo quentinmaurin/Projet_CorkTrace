@@ -1,3 +1,5 @@
+
+
 .decision{
 	text-align:center !important;
 	margin: 0 auto;
@@ -5,6 +7,15 @@
 	font-weight:bold;
 	padding : 0;
 }
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
 
 .conform{
 	color: #03FC04;
@@ -36,7 +47,47 @@
 }
 
 body{
-	padding-top:20px;
+	/*padding-top:20px;*/
+	
+}
+.codebarreConformite{
+	border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-top: 17%;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.container{
+
+	position: relative;
+	height:1350px;
+}
+
+
+.alignCenter{
+	text-align:center !important;
+}
+.alignRight{
+	text-align:right !important;
+}
+
+.toujoursenbas{
+	position: absolute;
+	bottom: 10px;
+    color: #666666;
+    font-size: 10px;
+    left: 259px;
+    margin: 0 auto;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+.colorEnteteFact{
+background-color:#734B21;
+text-align:center !important;
+color:white;
+-webkit-print-color-adjust: exact;
 }
 
 .echantillon td, .echantillon th{
