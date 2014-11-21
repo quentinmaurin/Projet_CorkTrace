@@ -13,7 +13,7 @@ Ext.define('CT.view.client.List' ,{
         region : "center",
         id: 'gridclientlist',
         store: 'Clients',
-        bbar: [
+        tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
                    var view = Ext.widget('clientadd');
@@ -49,7 +49,7 @@ Ext.define('CT.view.client.List' ,{
         ],
         region : "east",
         width : "30%",
-        bbar: [
+        tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
 
