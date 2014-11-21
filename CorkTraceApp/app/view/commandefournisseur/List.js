@@ -14,7 +14,21 @@ Ext.define('CT.view.commandefournisseur.List' ,{
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'
-        },   
+        },
+        {
+            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/facturation.php",
+            listeners : {
+                'click' : function(){
+                    console.log("test");
+                    var row = Ext.getCmp('commandefournisseurlist').getSelectionModel().getSelection()[0];
+                    var cfo_id = row.get("cfo_id");
+                    console.log(cfo_id);
+                    this.href = "services/facturation.php?id="+cfo_id;
+                    this.el.dom.href = this.getHref();
+                    console.log(this.href);
+                }
+            }
+        },
         '->'
     ],
 

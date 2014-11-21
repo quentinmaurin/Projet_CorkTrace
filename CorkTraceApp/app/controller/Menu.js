@@ -63,6 +63,9 @@ Ext.define('CT.controller.Menu', {
 
         }else if( name == "Ascendante" ){
 
+            pan = {xtype: "tracabiliteascendantelist"};
+            grid_id= "gridtracabiliteascendantelist";
+
         }else if( name == "Descendante" ){
 
         }else if( name == "Stats Fournisseur" ){
@@ -80,7 +83,11 @@ Ext.define('CT.controller.Menu', {
         }
 		
 		feed.add(pan);
-        Ext.getCmp(grid_id).getStore().load();
+
+        if( grid_id != null ){
+
+            Ext.getCmp(grid_id).getStore().load();
+        }
 	}
 
 });
