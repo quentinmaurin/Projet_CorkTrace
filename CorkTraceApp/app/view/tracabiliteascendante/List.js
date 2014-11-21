@@ -3,15 +3,13 @@ Ext.define('CT.view.tracabiliteascendante.List' ,{
     alias: 'widget.tracabiliteascendantelist',
 
     title: 'Tracabilite ascendante',
-    id: 'tracabiliteascendantelist',
-	
     layout: "border",
 
     items: [{
         title : "Liste des lots",
         xtype : "grid",
         region : "center",
-        id: 'gridtracabiliteascendantelist',
+        id: 'gridtracabiliteascendantelot',
         store: 'ArrivageDetails',
         columns : [
             {header: 'Ard Id',  dataIndex: 'ard_id',  flex: 1},
@@ -21,10 +19,16 @@ Ext.define('CT.view.tracabiliteascendante.List' ,{
             {header: 'Ard qte', dataIndex: 'ard_quantite', flex: 1}
         ]
     },{
-        xtype :"panel",
-        title: "Liste des clients ayant recus le lot",
+        title : "Liste des  clients ayant ce lot",
+        xtype : "grid",
         region : "east",
-        width : "50%"
+        width: "50%",
+        id: 'gridtracabiliteascendanteclient',
+        store: 'TracabiliteAscendantes',
+        columns : [
+            {header: 'Cli Id',  dataIndex: 'cli_id',  flex: 1},
+            {header: 'Cli Nom', dataIndex: 'cli_nom', flex: 1}
+        ]
     }],
 
 
