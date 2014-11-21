@@ -27,9 +27,8 @@
 	$assignAdress = new AssignAdress();
 	$adress = new Adress();
 	
-	
-	$id_livraison = 1;
 
+	$id_livraison = $_GET['id'];
 	
 	// Récupération informations table CommandeClient
 	$condGetRows = array("LIV_ID" => $id_livraison);
@@ -145,10 +144,10 @@
 		<legend>Informations :</legend>
 			<div class="row">
 				<div class="span6">
-					<table class="table table-bordered">
+					<table class="table table-bordered tableSmall">
 						<tr>
 							<th>N° de commande</th>
-							<td><?php echo $id_livraison;?></td>
+							<td><?php echo "CMD$id_livraison";?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -181,16 +180,16 @@
 					</table>
 				</div>
 				<div class="span6" style="text-align:center;">
-					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo $id_livraison;?>&taille=3">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "CMD$id_livraison";?>&taille=3&font=14">
 				</div>
 			</div>
 			
 			<!-- ====================================================================================================== -->
 			
 			<legend>Détails de l’échantillonage :</legend>	
-			<table class="table table-bordered echantillon">
+			<table class="table table-bordered echantillon tableSmall">
 				<thead>
-				<tr>
+				<tr class="colorEnteteFact">
 					<th>Bouchons</th>
 					<th>Hauteur</th>
 					<th>Diamètre</th>
@@ -232,7 +231,7 @@
 				
 							echo "
 								<tr>
-									<td>".$mesures[$i]['mes_id']."</td>
+									<td>".($i+1)."</td>
 									<td><span class='".(($spanRougeH==1)?'rouge':'')."'>".$mesures[$i]['mes_longueur']."</span></td>
 									<td><span class='".(($spanRougeD==1)?'rouge':'')."'>".$mesures[$i]['mes_diam']."</span></td>
 									<td><span class='".(($spanRougeO==1)?'rouge':'')."'>".$mesures[$i]['mes_oval']."</span></td>
@@ -260,9 +259,9 @@
 			
 			<!-- ====================================================================================================== -->
 			
-			<table class="table table-bordered">
+			<table class="table table-bordered tableSmall">
 				<thead>
-					<tr>
+					<tr class="colorEnteteFact">
 						<th class="celluleCenter">Paramètres</th>
 						<th class="celluleCenter">Détails et valeurs</th>
 						<th class="celluleCenter">Validation</th>
@@ -359,13 +358,13 @@
 									case 'En attente':
 										echo "<span class='enAttente'>".$decision."</span>";
 										break;
-									case 'Accepté':
+									case 'Conforme':
 										echo "<span class='conform'>".$decision."</span>";
 										break;
-									case 'Refusé':
+									case 'Non Conforme':
 										echo "<span class='nonConform'>".$decision."</span>";
 										break;
-									case 'Dérogation':
+									case 'Exception':
 										echo "<span class='derogation'>".$decision."</span>";
 										break;
 								}
