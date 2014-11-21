@@ -1,129 +1,59 @@
 <?php
+	// PHPMailer
+	// tuto : http://www.dewep.net/Blog/Article-15/Envoyer-un-E-Mail-avec-PHPMailer
+	
+	require_once('phpmailer/class.phpmailer.php');
+	require_once('phpmailer/class.smtp.php');
+	
+	$mail = $_GET['mail'];
+	$pdf = $_GET['pdf'];
+	$module = $_GET['module'];
+		
+	echo "$mail<br>$pdf<br>$module";
 
-class Mail{
+	$mail = new PHPMailer();
+	
+	// authentification SMTP
+	$mail->IsSMTP();
+	$mail->SMTPAuth   = true;
+	$mail->SMTPSecure = "ssl";
+	$mail->Host       = "smtp.gmail.com";     
+	$mail->Port       = 465;                  
+	$mail->Username   = "mnebob66@gmail.com"; 
+	$mail->Password   = "mnebob66+";        
+	
+	// format HTML 
+	$mail->IsHTML(true);
 
-	private $header;
-	private $objet;
-	private $message;
-	
-	
-	public function __construct(){
-	
-		$headers ='From: "CorkTrace"<info@corktrace.fr>'."\n";
-		$headers .='Reply-To: no-reply'."\n";
-		$headers .='Content-Type: text/plain; charset="iso-8859-1"'."\n";
-		$headers .='Content-Transfer-Encoding: 8bit'; 
-		
-		$this->header = $headers; 
-	}
-	
-	public function envoiMail($mailClient){
-	
-	
-		$testmail = mail($mailClient , $this->objet , $this->message , $this->header); 
-		
-		echo "reponse : $testmail";
-		
-		$this->header=  "";
-		$this->objet = "";
-		$this->message = "";
-	}
-	
-	public function messageSimple($prenom, $nom){
-	
-		$this->objet = "Test Envoi Mail";
-				$message = "Bonjour ".$prenom." ".$nom.",";
-				$message .="\n\nCeci est un test d'envoi de mail! Merci de bien vouloir garder votre calme et attendre la fin de l'exercice.";
-				$message .="\n\nCordialement";
-				$message .="\n\nLoïc TRICHAUD";
-				$message .="\nService clientèle de CorkTrace";
-				$message .="\n06.61.09.10.65";
-				$message .="\nloic.trichaud@corktrace.fr";
-				
-		$this->message = $message;
-	}
-	
-	public function messageCreationClient($prenom, $nom, $mailClient, $mdp){
-	
-		$this->objet = "Création compte Client UGI";
-				$message = "Bonjour ".$prenom." ".$nom.", \nVotre compte Client Urgence-Informatique a été créé.";
-				$message .=" Vous pouvez suivre l'avancée des travaux effectués sur vos produits en vous connectant sur notre site http://urgence-informatique.fr avec les identifiants suivants :\n\n";
-				$message .="\tEmail : ".$mailClient."\n\tMot de passe : ".$mdp."\n\n";
-				$message .="Merci de votre fidélité.\nCordialement\n\nL'équipe d'Urgence-Informatique";
-				$message .="\n\n\nCe message a été généré automatiquement, merci de ne pas y répondre.";
-		$this->message = $message;
-	}
-	
-	public function messageIntervention($terminer, $nom, $prenom, $detail){
-	
-				$message = "Bonjour ".$prenom." ".$nom.",\n\n";
-				
-				if( $terminer == 1){
-					$this->objet = "Maintenance Terminée";
-					$message .="Nous avons fini la réparation de votre produit. Vous pouvez venir le récuperer dans notre centre.";
-				}
-				else{
-					$this->objet = "Suivi de Maintenance";
-					$message .="Votre produit est toujours en cours de réparation.";
-				}
-		
-				$message .="\nVoici les details que l'employé a laissé au sujet de votre produit :\n";
-				$message .= $detail;
-				$message .="\n\nMerci de votre fidélité.\nCordialement\n\nL'équipe d'Urgence-Informatique";
-				$message .="\n\n\nCe message a été généré automatiquement, merci de ne pas y répondre.";
-	
+	// Encodage
+	$mail->CharSet = "utf-8";
 
-		$this->message = $message;
-		
-	}
-	
-	
-	public function messagePrisEnCharge($prenom, $nom, $date, $detail){
-	
-		$this->objet = "Prise en charge de votre matériel";
-				$message = "Bonjour ".$prenom." ".$nom.", \n\nVotre matériel a été pris en charge par l'un de nos employés.";
-				$message .="Vous pouvez suivre l'avancée des travaux effectués sur votre produit en vous connectant sur notre site.\n";
-				$message .="Vous serez averti par mail à chaque étape de la maintenance. \nL'intervention débutera le ".$date;
-				$message .="\nVoici les details que l'employé a laissé au sujet de votre produit :\n";
-				$message .= $detail;
-				$message .="\n\nMerci de votre fidélité.\nCordialement\n\nL'équipe d'Urgence-Informatique";
-				$message .="\n\n\nCe message a été généré automatiquement, merci de ne pas y répondre.";
-		$this->message = $message;
-	}
-	
-	public function messageCreationContrat($nom, $prenom, $dateDebut, $dateFin, $marque, $forfait, $prix, $categorie){
-	
-		$this->objet = "Création de votre contrat";
-				$message = "Bonjour ".$prenom." ".$nom.", \n\nSuite à votre demande, nous avons réalisé votre contrat.";
-				$message .=" Vous trouverez ci-dessous le récapitulatif de ce dernier ci dessous :\n";
-				$message .="Votre Appareil : ".$categorie." ".$marque;
-				$message .="\nVotre forfait : ".$forfait." (".$prix." €/mois)";
-				$message .="\nDébut du contrat : ".$dateDebut;
-				$message .="\nFin du contrat : ".$dateFin;
-				$message .="\nPrix Total du contrat :";
-				$message .="\n\nMerci de votre fidélité.\nCordialement\n\nL'équipe d'Urgence-Informatique";
-				$message .="\n\n\nCe message a été généré automatiquement, merci de ne pas y répondre.";
-		$this->message = $message;
-	}
-	
-	public function messageSignalerIncident($nom, $prenom){
-	
-		$this->objet = "Enregistrement de votre incident";
-				$message = "Bonjour ".$prenom." ".$nom.", \n\nNous avons bien reçu le signalement au sujet de votre incident.";
-				$message .="\nNos techniciens vont s'occuper au plus vite de votre problème.\n";
-				$message .="Vous recevrez un mail lorsque votre matériel sera pris en charge.";
-				
-				$message .="\n\nMerci de votre fidélité.\nCordialement\n\nL'équipe d'Urgence-Informatique";
-				$message .="\n\n\nCe message a été généré automatiquement, merci de ne pas y répondre.";
-		$this->message = $message;
-	}
-    	
+	// ExpÃ©diteur
+	$mail->SetFrom('info@corktrace.fr', 'CorkTrace');
 
-    public function affiche(){
-    
-        return ("<br><br>".$this->header."<br><br>".$this->objet."<br><br>".$this->message."<br><br>");
-    }
+	// Objet
+	$mail->Subject = 'Corktrace';
+
+	// Contenu mail
+	$mail->Body = "<p><b>E-Mail</b> <h2>GROS TEST d'envoi de MAIL !!!!!!!!!!!!</h2> </p>
+
+	";
 	
-}
+	// Destinataire
+	$mail->AddAddress($mail);
+	
+	// Image
+	//$mail->AddEmbeddedImage('../img/logo.png','mon_logo', 'logo.png');
+	
+	// piece jointe PDF
+	$mail->AddAttachment('facture.pdf');
+	
+	//envoi mail
+	if(!$mail->Send()) {
+		echo "<br>Mailer Error: " . $mail->ErrorInfo;
+	} else {
+		echo "<br>Message sent!";
+	}
+
 
 ?>

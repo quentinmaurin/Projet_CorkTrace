@@ -40,18 +40,13 @@
 		<div class="container">
 		
 				<div class="row" style="margin-top:100px;">
-					<div class="span3" style="text-align:center;">
-					</div>
-					
-					<div class="span6" style="text-align:center;">
+					<div class="span12" style="text-align:center;">
 						<div class="codebar">
 						<h4><?php echo $nomProduit;?></h4>
 						<img class="" alt="" src="barcode.php?id=<?php echo $idProduit;?>&taille=3&font=14">
 						</div>
 					</div>
-					
-					<div class="span3" style="text-align:center;">
-					</div>
+				
 				</div>
 
 		</div>

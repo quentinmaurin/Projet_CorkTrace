@@ -32,6 +32,14 @@
 		
 		<div class="container">
 		
+
+			<?php
+				$mail   = "loic.trichaud@imerir.com";
+				$pdf    = "coucou.pdf";
+				$module = "confirmClient";
+				echo "<a class='btn' href='mail.php?mail=$mail&pdf=$pdf&module=$module'>Test envoi mail</a>"
+			?>
+			
 				
 		</div>
 		

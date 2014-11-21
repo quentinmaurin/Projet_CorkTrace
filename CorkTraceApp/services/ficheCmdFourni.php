@@ -21,7 +21,7 @@
 		$dateRecept   =  $res[0]['cfo_dateRecept'];
 
 	// Récupération informations table CommandeFournisseurDetail
-	$condGetRows = array("CFD_ID" => $idCommande);
+	$condGetRows = array("CFO_ID" => $idCommande);
 	$res = $commandeFournisseurDetail->getRows($condGetRows); 
 		$detailCommande = $res;
 		
