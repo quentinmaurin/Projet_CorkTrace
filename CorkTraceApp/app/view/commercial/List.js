@@ -6,7 +6,7 @@ Ext.define('CT.view.commercial.List' ,{
     id: 'commerciallist',
     store: 'Commercials',
 	
-    bbar: [
+    tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
                    var view = Ext.widget('commercialadd');

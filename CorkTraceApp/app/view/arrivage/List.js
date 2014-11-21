@@ -6,7 +6,7 @@ Ext.define('CT.view.arrivage.List' ,{
     id: 'arrivagelist',
     store: 'Arrivages',
 	
-    bbar: [
+    tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
 

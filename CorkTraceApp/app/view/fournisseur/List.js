@@ -6,7 +6,7 @@ Ext.define('CT.view.fournisseur.List' ,{
     id: 'fournisseurlist',
     store: 'Fournisseurs',
 	
-    bbar: [
+    tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
                    var view = Ext.widget('fournisseuradd');

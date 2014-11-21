@@ -6,7 +6,7 @@ Ext.define('CT.view.commandefournisseur.List' ,{
     id: 'commandefournisseurlist',
     store: 'CommandeFournisseurs',
 	
-    bbar: [
+    tbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
 
