@@ -119,6 +119,8 @@ Ext.define('CT.controller.Clients', {
 	    record = form.getRecord(),
 	    values = form.getValues();
 
+ 		var tyc_nom_value = form.getForm().findField("tyc_id").getRawValue();
+
 	    var clientInstance = Ext.create('CT.model.Client', {
 
 		    cli_id : -1,
@@ -127,7 +129,8 @@ Ext.define('CT.controller.Clients', {
 		    cli_tel : values['cli_tel'],
 		    cli_fax : values['cli_fax'],
 		    cli_adr_fact : values['cli_adr_fact'],
-		    tyc_id : values['tyc_id']
+		    tyc_id : values['tyc_id'],
+		    tyc_nom : tyc_nom_value
 		});
 
 	    this.getClientsStore().add(clientInstance);

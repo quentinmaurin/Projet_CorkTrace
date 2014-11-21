@@ -39,7 +39,8 @@ Ext.define('CT.view.fournisseur.Add', {
                         displayField: 'tyf_nom',
                         valueField: 'tyf_id',
                         store: 'TypeFournisseurs',
-                        queryMode: 'local'
+                        queryMode: 'local',
+                        hiddenName: 'tyf_nom'
                     }
                 ]
             }
