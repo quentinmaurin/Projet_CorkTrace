@@ -79,6 +79,46 @@ Ext.define('CT.controller.Menu', {
 
         }else if( name == "Client/Produit" ){
 
+        }else if( name == "Edition etiquette" ){
+
+            Ext.create('Ext.window.Window', {
+                title: 'Saisir un numero',
+                layout: 'fit',
+                id : "window_code_barre",
+                items: {
+                    xtype: 'form',
+                    id : "form_code_barre",
+                    defaults : {
+                        margins : "10 10 10 10",
+                        labelWidth : 150
+                    },
+                    items:[{
+                        xtype:"textfield",
+                        name: "tf_code_barre",
+                        fieldLabel : "Numero"
+                    }],
+                    buttons: [{
+                        text: 'Annuler',
+                         handler: function() {
+                            
+                            Ext.getCmp("window_code_barre").close();
+                        }
+                    }, {
+                        text: 'Editer etiquette',
+                        href:"services/editionCodeBarre.php",
+                        listeners : {
+                            'click' : function(){
+
+                                var values = Ext.getCmp("form_code_barre").getForm().getValues();
+                                this.href = "services/editionCodeBarre.php?id="+values.tf_code_barre;
+                                this.el.dom.href = this.getHref();
+                                Ext.getCmp("window_code_barre").close();
+                            }
+                        }
+                    }]
+                }
+            }).show();
+
         }else{
             // Nothing
         }
