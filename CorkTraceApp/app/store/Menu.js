@@ -12,7 +12,6 @@ Ext.define('CT.store.Menu', {
             { text: "Stock", leaf: true },
             { text: "Commande fournisseur", leaf: true },
             { text: "Arrivage", leaf: true },
-            { text: "Controle arrivage", leaf: true },
             { text: "Commande client", leaf: true },
             { text: "Livraison", leaf: true },
             { text: "Traçabilité", expanded: true, children: [

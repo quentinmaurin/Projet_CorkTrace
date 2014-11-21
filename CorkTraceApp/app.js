@@ -13,7 +13,8 @@ Ext.application({
            'CommandeFournisseurs',
            'Arrivages',
            'CommandeClients',
-           'TracabiliteAscendantes'
+           'TracabiliteAscendantes',
+            'TracabiliteDescendantes'
     ],
 
     launch: function() {

@@ -69,6 +69,8 @@ Ext.define('CT.view.arrivage.List' ,{
                     console.log(this.href);
                 }
             }
+        },{
+            xtype: 'button', text: 'Controler arrivage', action: 'controleArrivage'
         },
         '->'
     ],

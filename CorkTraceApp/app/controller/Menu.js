@@ -64,9 +64,12 @@ Ext.define('CT.controller.Menu', {
         }else if( name == "Ascendante" ){
 
             pan = {xtype: "tracabiliteascendantelist"};
-            grid_id= "gridtracabiliteascendantelist";
+            grid_id= "gridtracabiliteascendantelot";
 
         }else if( name == "Descendante" ){
+
+            pan = {xtype: "tracabilitedescendantelist"};
+            grid_id= "gridtracabilitedescendantelot";
 
         }else if( name == "Stats Fournisseur" ){
 
@@ -75,8 +78,6 @@ Ext.define('CT.controller.Menu', {
         }else if( name == "Fournisseur/Produit" ){
 
         }else if( name == "Client/Produit" ){
-
-        }else if( name == "Controle arrivage" ){
 
         }else{
             // Nothing
