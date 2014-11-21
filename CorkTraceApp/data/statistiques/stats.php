@@ -1,7 +1,6 @@
 <?php
 		
-	
-		
+			
 	function moyenne($tableauDeValeurs)
 	{
 		return array_sum($tableauDeValeurs)/count($tableauDeValeurs);
@@ -113,26 +112,34 @@
 		return $info_equation;
 	}
 
-
-	function valeur_probable($index, $equation_regression)
+	// Paramètre 1 : TABLEAU DES QUANTITES DE PRODUITS A L'ARRIVAGE PAR ORDRE CHRONOLOGIQUE
+	// Paramètre 2 : TABLEAU DES CONFORMITES (1 pour conforme et -1 pour non-conforme)
+	// Retour : pourcentage de non-conformité
+	function proba_non_conformite($array_quantite, $array_conformite)
 	{
-		$a = $equation_regression[0];
-		$b = $equation_regression[1];
-		$R2 = $equation_regression[2];
+		$quantite_totale = 0;
+		$quantite_non_conforme = 0;
 
-		$valeur_proba = $a * $index + $b;
-		$marge = $valeur_proba * (1-$R2);
+		for($i=0; $i<count($array_quantite); $i++)
+		{
+			$quantite_totale += $array_quantite[$i];
 
-		echo "Equation de regression : y = " . $a . " x + " . $b . "<br>";
-		echo "Coefficient de correlation : R2 = " . $R2 . "<br>";
-		echo "Valeur probable : " . $valeur_proba . "<br>";
-		echo "Marge d'erreur : " . $marge . "<br>";
+			if ($array_conformite[$i] == -1)
+			{
+				$quantite_non_conforme += $array_quantite[$i];
+			}
+		}
 
-		//return array($valeur_proba,$marge,$index_zero); 
+		echo "NC : " . ($quantite_non_conforme / $quantite_totale) . "<br>";
+		//return $quantite_non_conforme / $quantite_totale;
 	}
 
-	$array = array(10,10,9,8,7,6,5,5,4,2);
-	$equation = equation_courbe_regression($array);
-	valeur_probable(11, $equation);
+	//$array = array(10,10,9,8,7,6,5,5,4,2);
+	//$equation = equation_courbe_regression($array);
+	//valeur_probable(11, $equation);
+
+	$array_qtt = array(150000,10000,150000,65800,50000,10000,10000,12000,15400,18700);
+	$array_conf = array(1,-1,-1,-1,1,1,1,-1,1,1);
+	proba_non_conformite($array_qtt,$array_conf);
 
 ?>
