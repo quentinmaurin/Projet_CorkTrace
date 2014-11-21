@@ -9,8 +9,8 @@ Ext.define('CT.view.commandefournisseur.List' ,{
     bbar: [
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
-            console.log("test");
-                  var view = Ext.widget('commandefournisseuradd');
+
+            var view = Ext.widget('commandefournisseuradd');
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'

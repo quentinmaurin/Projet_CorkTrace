@@ -25,13 +25,10 @@ Ext.define('CT.store.Clients', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store client = "+successful);
-			console.log(records);
 		},
 
 		'write' : function( storeClient, operation, eOpts ){
 
-			//console.log(operation);
 
 			if( operation.action == "create"){
 

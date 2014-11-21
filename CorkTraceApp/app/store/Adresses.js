@@ -18,8 +18,6 @@ Ext.define('CT.store.Adresses', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store = "+successful);
-			console.log(records);
 		}
 	}
 	

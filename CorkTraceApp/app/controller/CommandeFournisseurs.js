@@ -27,8 +27,6 @@ Ext.define('CT.controller.CommandeFournisseurs', {
     deleteCommandeFournisseur: function(button) {
 		
 		var row = Ext.getCmp('commandefournisseurlist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		Ext.getCmp('commandefournisseurlist').getStore().remove(row);
 		Ext.getCmp('commandefournisseurlist').getStore().sync();
     },
@@ -40,13 +38,10 @@ Ext.define('CT.controller.CommandeFournisseurs', {
         if( pro_exist == -1){
             Ext.getCmp("gridcommandefournisseurdetails").getStore().add(record);
         }
-
-        console.log("test");
     },
 
     removeProduit: function( gridcommandefournisseurdetails, record, item, index, e, eOpts){
         
         gridcommandefournisseurdetails.getStore().remove(record);
-        console.log("test");
     }
 });

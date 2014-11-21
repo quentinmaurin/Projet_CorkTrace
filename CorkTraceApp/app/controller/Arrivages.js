@@ -21,8 +21,6 @@ Ext.define('CT.controller.Arrivages', {
     deleteArrivage: function(button) {
 		
 		var row = Ext.getCmp('arrivagelist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		Ext.getCmp('arrivagelist').getStore().remove(row);
 		Ext.getCmp('arrivagelist').getStore().sync();
     }

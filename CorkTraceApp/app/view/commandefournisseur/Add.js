@@ -91,16 +91,10 @@ Ext.define('CT.view.commandefournisseur.Add', {
                 action: 'save',
                 handler : function(){
 
-                    console.log("debut loop");
                     var store = Ext.getCmp("gridcommandefournisseurdetails").getStore();
 
                     var details = new Array();
-                    var detail = new Object();
                     store.each(function(record,idx){
-                
-                        detail.pro_id = record.get("pro_id");
-                        detail.cfd_quantite = record.get("cfd_quantite");
-                        detail.cfd_prix = record.get("cfd_prix");
 
                         details.push({
                             "pro_id" : record.get("pro_id"),
@@ -115,9 +109,6 @@ Ext.define('CT.view.commandefournisseur.Add', {
                     data.fou_id = values.fou_id;
                     data.cfo_datecmd = values.cfo_datecmd;
                     data.details = details;
-
-                    console.log(data);
-                    console.log("End loop");
 
                     Ext.Ajax.request({
                         url: 'data/commande_fournisseur/create.php',

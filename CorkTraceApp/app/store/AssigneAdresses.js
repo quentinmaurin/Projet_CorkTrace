@@ -26,13 +26,10 @@ Ext.define('CT.store.AssigneAdresses', {
 	listeners :{
 		
 		'load' : function( st, records, successful, eOpts ){
-			
-			console.log("load store = "+successful);
-			console.log(records);
+
 		},
 
 		'write' : function( storeAssigneAdresses, operation, eOpts ){
-			console.log("write");
 
 			if( operation.action == "create"){
 

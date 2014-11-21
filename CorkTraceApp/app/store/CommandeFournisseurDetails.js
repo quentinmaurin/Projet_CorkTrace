@@ -17,8 +17,6 @@ Ext.define('CT.store.CommandeFournisseurDetails', {
         
         'load' : function( st, records, successful, eOpts ){
             
-            console.log("load store commande fournisseur details = "+successful);
-            console.log(records);
         },
 
         'write' : function( storeFournisseur, operation, eOpts ){

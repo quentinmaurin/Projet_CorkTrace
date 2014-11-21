@@ -18,8 +18,6 @@ Ext.define('CT.store.Produits', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store produit = "+successful);
-			console.log(records);
 		}
 	}
 	

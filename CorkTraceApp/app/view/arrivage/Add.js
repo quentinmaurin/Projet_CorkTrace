@@ -68,7 +68,6 @@ Ext.define('CT.view.arrivage.Add', {
                 action: 'save',
                 handler : function(){
 
-                    console.log("debut loop");
                     var store = Ext.getCmp("gridarrivagedetails").getStore();
 
                     var details = new Array();
@@ -82,14 +81,11 @@ Ext.define('CT.view.arrivage.Add', {
 
                     var values = Ext.getCmp("form_add_arrivage").getForm().getValues();
                     var cfo_id = Ext.getCmp("form_add_arrivage").getForm().findField("cfo_id").getValue();
-                    console.log(cfo_id);
+
                     var data = new Object();
                     data.cfo_id = cfo_id;
                     data.ari_responsable = values.ari_responsable;
                     data.details = details;
-
-                    console.log(data);
-                    console.log("End loop");
 
                     Ext.Ajax.request({
                         url: 'data/arrivage/create.php',

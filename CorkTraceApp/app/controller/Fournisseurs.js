@@ -31,8 +31,6 @@ Ext.define('CT.controller.Fournisseurs', {
 	deleteFournisseur: function(button) {
 		
 		var row = Ext.getCmp('fournisseurlist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		this.getFournisseursStore().remove(row);
 		this.getFournisseursStore().sync();
     },
@@ -58,9 +56,8 @@ Ext.define('CT.controller.Fournisseurs', {
     },
     createFournisseur: function(button) {
 		
-		console.log("create fournisseur");
-		var win = button.up('window'),
-	    form = win.down('form'),
+		var win = button.up('window');
+	    form = win.down('form');
 	    record = form.getRecord(),
 	    values = form.getValues();
 
@@ -75,7 +72,6 @@ Ext.define('CT.controller.Fournisseurs', {
 		    tyf_id : values['tyf_id']
 		});
 
-   		//console.log(clientInstance);
 	    this.getFournisseursStore().add(fournisseurInstance);
 	    win.close();
 		

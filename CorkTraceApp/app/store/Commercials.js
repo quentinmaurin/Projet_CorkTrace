@@ -25,13 +25,9 @@ Ext.define('CT.store.Commercials', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store = "+successful);
-			console.log(records);
 		},
 
 		'write' : function( storeCommercial, operation, eOpts ){
-
-			//console.log(operation);
 
 			if( operation.action == "create"){
 
