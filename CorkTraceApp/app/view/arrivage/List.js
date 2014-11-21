@@ -57,14 +57,14 @@ Ext.define('CT.view.arrivage.List' ,{
             xtype: 'button', text: 'Supprimer', action: 'delete'
         },
         {
-            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/facturation.php",
+            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheArrivage.php",
             listeners : {
                 'click' : function(){
                     console.log("test");
                     var row = Ext.getCmp('arrivagelist').getSelectionModel().getSelection()[0];
                     var ari_id = row.get("ari_id");
                     console.log(ari_id);
-                    this.href = "services/facturation.php?id="+ari_id;
+                    this.href = "services/ficheArrivage.php?id="+ari_id;
                     this.el.dom.href = this.getHref();
                     console.log(this.href);
                 }
