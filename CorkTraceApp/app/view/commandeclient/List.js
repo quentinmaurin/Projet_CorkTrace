@@ -14,7 +14,21 @@ Ext.define('CT.view.commandeclient.List' ,{
         } },
         {
             xtype: 'button', text: 'Supprimer', action: 'delete'
-        },   
+        },
+        {
+            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/facturation.php",
+            listeners : {
+                'click' : function(){
+                    console.log("test");
+                    var row = Ext.getCmp('commandeclientlist').getSelectionModel().getSelection()[0];
+                    var ccl_id = row.get("ccl_id");
+                    console.log(ccl_id);
+                    this.href = "services/facturation.php?id="+ccl_id;
+                    this.el.dom.href = this.getHref();
+                    console.log(this.href);
+                }
+            }
+        }, 
         '->'
     ],
 
