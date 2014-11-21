@@ -1,6 +1,5 @@
 <?php
 		
-			
 	function moyenne($tableauDeValeurs)
 	{
 		return array_sum($tableauDeValeurs)/count($tableauDeValeurs);
@@ -93,29 +92,19 @@
 	}
 
 
-	function equation_courbe_regression($tableauDeValeurs)
+	function pente_courbe_regression($tableauDeValeurs)
 	{
 		$xi = array();
-		$info_equation = array();
 		$yi = $tableauDeValeurs;
 
 		for($i=0; $i<count($yi); $i++)		$xi[$i] = $i+1;
 
-		$a = covariance($xi,$yi) / variance($xi);
-		$b = moyenne($yi) - $a * moyenne($xi);
-		$R2 = pow(covariance($xi,$yi),2) / (variance($xi)*variance($yi));
-		
-		$info_equation[0] = $a;
-		$info_equation[1] = $b;
-		$info_equation[2] = $R2;
-
-		return $info_equation;
+		return (covariance($xi,$yi) / variance($xi));
 	}
 
-	// Paramètre 1 : TABLEAU DES QUANTITES DE PRODUITS A L'ARRIVAGE PAR ORDRE CHRONOLOGIQUE
-	// Paramètre 2 : TABLEAU DES CONFORMITES (1 pour conforme et -1 pour non-conforme)
-	// Retour : pourcentage de non-conformité
-	function proba_non_conformite($array_quantite, $array_conformite)
+	// Param1 : TABLEAU DES QUANTITES DE PRODUITS A L'ARRIVAGE PAR ORDRE CHRONOLOGIQUE
+	// Param2 : TABLEAU DES CONFORMITES (1 pour conforme et -1 pour non conforme)
+	function taux_non_conformite($array_quantite, $array_conformite)
 	{
 		$quantite_totale = 0;
 		$quantite_non_conforme = 0;
@@ -130,16 +119,14 @@
 			}
 		}
 
-		echo "NC : " . ($quantite_non_conforme / $quantite_totale) . "<br>";
-		//return $quantite_non_conforme / $quantite_totale;
+		return ($quantite_non_conforme / $quantite_totale);
 	}
-
-	//$array = array(10,10,9,8,7,6,5,5,4,2);
-	//$equation = equation_courbe_regression($array);
-	//valeur_probable(11, $equation);
 
 	$array_qtt = array(150000,10000,150000,65800,50000,10000,10000,12000,15400,18700);
 	$array_conf = array(1,-1,-1,-1,1,1,1,-1,1,1);
-	proba_non_conformite($array_qtt,$array_conf);
+
+	echo "Le fournisseur propose des produits a " . taux_non_conformite($array_qtt,$array_conf) . "%, ";
+	if (pente_courbe_regression($array_conf) > 0) 	 echo "avec une qualite ascendante. <br>";
+	else 											 echo "avec une qualite descendante. <br>";
 
 ?>
