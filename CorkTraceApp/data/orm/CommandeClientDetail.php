@@ -17,6 +17,18 @@ final class CommandeClientDetail extends Table{
             "CCD_MARQUAGE" => "CCD_MARQUAGE"
         );
 	}
+	
+	public function getListDetails($id_cmd_client){
+
+        $query = "SELECT t_cmdclidetail_ccd.ccd_id, t_cmdclidetail_ccd.pro_id, t_produit_pro.pro_nom, t_cmdclidetail_ccd.ccd_quantite, t_cmdclidetail_ccd.ccd_prix
+				  FROM t_cmdclidetail_ccd 
+					INNER JOIN t_produit_pro 
+					ON t_cmdclidetail_ccd.pro_id = t_produit_pro.pro_id 
+				  WHERE ccl_id = $id_cmd_client";
+        $allRows = $this->db->getResponse($query);
+        
+        return $allRows;
+    }
 }
 
 ?>

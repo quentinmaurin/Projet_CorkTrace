@@ -1,7 +1,9 @@
 ﻿<?php
 
+	require_once("../data/orm/Livraison.php");
+	require_once("../data/orm/LivraisonDetail.php");
 	require_once("../data/orm/CommandeClient.php");
-	require_once("../data/orm/CommandeClientDetail.php");
+	require_once("../data/orm/ArrivageDetail.php");
 	require_once("../data/orm/Conformite.php");
 	require_once("../data/orm/Mesure.php");
 	require_once("../data/orm/Produit.php");
@@ -12,8 +14,10 @@
 	require_once("../data/orm/Adress.php");
 	
 	
+	$livraison = new Livraison();
 	$commandeClient = new CommandeClient();
-	$commandeClientDetail = new CommandeClientDetail();
+	$livraisonDetail = new LivraisonDetail();
+	$arrivageDetail = new ArrivageDetail();
 	$conformite = new Conformite();
 	$mesure = new Mesure();
 	$produit = new Produit();
@@ -24,48 +28,32 @@
 	$adress = new Adress();
 	
 	
-	$id_commande = 1234;
+	$id_livraison = 1;
 
 	
 	// Récupération informations table CommandeClient
-	$condGetRows = array("CCL_ID" => $id_commande);
-	$res = $commandeClient->getRows($condGetRows); 
-		$idClientComm = $res[0]['clc_id'];
-		$dateLivr     = $res[0]['ccl_dateLiv'];
-		$adrLivr      = $res[0]['cla_id'];
+	$condGetRows = array("LIV_ID" => $id_livraison);
+	$res = $livraison->getRows($condGetRows); 
+		$idCommande   = $res[0]['ccl_id'];
+		$dateLivr     = $res[0]['liv_dateLiv'];
+		$responsable  = $res[0]['liv_responsable'];
+
 
 	// Récupération informations table CommandeClientDetail
-	$condGetRows = array("CCL_ID" => $id_commande);
-	$res = $commandeClientDetail->getRows($condGetRows); 
-		$idCommandeDetail = $res[0]['ccd_id'];
-		$idProduit        = $res[0]['pro_id'];
+	$condGetRows = array("LIV_ID" => $id_livraison);
+	$res = $livraisonDetail->getRows($condGetRows); 
+		$idLivDetail      = $res[0]['lid_id'];
+		$idArrivageDetail = $res[0]['ard_id'];
+		$quantite         = $res[0]['lid_quantite'];
 		$idConformite     = $res[0]['cfm_id'];
-		$quantite         = $res[0]['ccd_quantite'];
-		
-		
-	// Récupération informations table Conformité
-	$condGetRows = array("CFM_ID" => $idConformite);
-	$res = $conformite->getRows($condGetRows); 
-		$tca_fourni  = $res[0]['cfm_tca_fourni'];
-		$tca_interne = $res[0]['cfm_tca_inter'];
-		$gout        = $res[0]['cfm_gout'];
-		$decision    = $res[0]['cfm_decision'];
-		$capilarite  = $res[0]['cfm_capilarite'];
-		$humidite    = $res[0]['cfm_humidite'];
-		$diamCompr   = $res[0]['cfm_diamcompr'];
 	
-	// Récupération informations table Mesure
-	$condGetRows = array("CFM_ID" => $idConformite);
-	$res = $mesure->getRows($condGetRows); 
-	$mesures = $res;
+	// Récupération informations table CommandeClient
+	$condGetRows = array("CCL_ID" => $idCommande);
+	$res = $commandeClient->getRows($condGetRows); 
+		$idClientComm = $res[0]['clc_id'];
+		$adrLivr      = $res[0]['cla_id'];
 		
-	// Récupération Nom produit + taille
-	$condGetRows = array("PRO_ID" => $idProduit);
-	$res = $produit->getRows($condGetRows); 
-		$nomProduit = $res[0]['pro_nom'];
-		$tailleProduit = $res[0]['pro_taille'];
-	
-	// Récupération id Assignement client/commercial 
+		// Récupération id Assignement client/commercial 
 	$condGetRows = array("CLC_ID" => $idClientComm);
 	$res = $assignCommercial->getRows($condGetRows); 
 		$idClient     = $res[0]['cli_id'];
@@ -91,26 +79,64 @@
 	$res = $adress->getRows($condGetRows); 
 		$nom_adresse = $res[0]['adr_adresse'];
 		
+	// Récupération informations table ArrivageDetail
+	$condGetRows = array("ARD_ID" => $idArrivageDetail);
+	$res = $arrivageDetail->getRows($condGetRows); 
+		$idArrivage       = $res[0]['ari_id'];
+		$idProduit        = $res[0]['pro_id'];
 	
+	// Récupération Nom produit + taille
+	$condGetRows = array("PRO_ID" => $idProduit);
+	$res = $produit->getRows($condGetRows); 
+		$nomProduit = $res[0]['pro_nom'];
+		$tailleProduit = $res[0]['pro_taille'];
 		
-		
+	// Récupération informations table Conformité
+	$condGetRows = array("CFM_ID" => $idConformite);
+	$res = $conformite->getRows($condGetRows); 
+		$tca_fourni  = $res[0]['cfm_tca_fourni'];
+		$tca_interne = $res[0]['cfm_tca_inter'];
+		$gout        = $res[0]['cfm_gout'];
+		$decision    = $res[0]['cfm_decision'];
+		$capilarite  = $res[0]['cfm_capilarite'];
+		$humidite    = $res[0]['cfm_humidite'];
+		$diamCompr   = $res[0]['cfm_diamcompr'];
 	
+	// Récupération informations table Mesure
+	$condGetRows = array("CFM_ID" => $idConformite);
+	$res = $mesure->getRows($condGetRows); 
+	$mesures = $res;
+	
+
 ?>
 
 <html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
-		<title>Résultat de conformité COMMANDE</title>
+		<title>Résultat de conformité LIVRAISON</title>
 		<link href="../css/bootstrap.css" rel="stylesheet"/>
 		<link href="../css/style.css" rel="stylesheet"/>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="html2canvas/build/html2canvas.js"></script>
+		<script type="text/javascript" src="html2canvas/build/jquery.plugin.html2canvas.js"></script>
 	</head>
 
 	<body>
+		<div class="navbar no-print">
+			<div class="navbar-inner">
+				<a class="brand" href="#">Résultat de conformité</a>
+				<button class="btn" onclick="capture();">Edition PDF</button>
+				<ul class="nav pull-right">
+					<li><a href="index.php">Retour</a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="container">
 		    
 			<div class="row">
 				<div class="span3"><img src="../img/logo.png"/></div>
-				<div class="span9" style="text-align:center;"><h1>Résultat de conformité COMMANDE</h1></div>
+				<div class="span6" style="text-align:center;"><h1>Résultat de conformité<br>LIVRAISON</h1></div>
+				<div class="span3"><img src="../img/commande.png"/></div>
 			</div>
 			
 			<br/>
@@ -122,7 +148,7 @@
 					<table class="table table-bordered">
 						<tr>
 							<th>N° de commande</th>
-							<td><?php echo $id_commande;?></td>
+							<td><?php echo $id_livraison;?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -138,7 +164,7 @@
 						</tr>
 						<tr>
 							<th>Date livraison</th>
-							<td><?php echo $dateLivr;?></td>
+							<td><?php echo date("d/m/Y", strtotime($dateLivr));?></td>
 						</tr>
 						<tr>
 							<th>Client</th>
@@ -154,7 +180,8 @@
 						</tr>
 					</table>
 				</div>
-				<div class="span6">
+				<div class="span6" style="text-align:center;">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo $id_livraison;?>&taille=3">
 				</div>
 			</div>
 			
@@ -362,8 +389,24 @@
 					Signature du responsable :
 				</div>
 			</div>
-			
-			 
-		</div>
+
+		</div> 
+		
+		<form method="POST" enctype="multipart/form-data" action="editPdf.php" id="myForm">
+			<input type="hidden" name="img_val" id="img_val" value="" />
+		</form>
+
+		<script type="text/javascript">
+			function capture() {
+				$('.container').html2canvas({
+					onrendered: function (canvas) {
+						//Set hidden field's value to image data (base-64 string)
+						$('#img_val').val(canvas.toDataURL("image/jpeg"));
+						//Submit the form manually
+						document.getElementById("myForm").submit();
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

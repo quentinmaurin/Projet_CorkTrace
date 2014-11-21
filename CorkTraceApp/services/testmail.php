@@ -5,7 +5,7 @@
 	echo "Envoi mail";
 
 	$mail = new Mail();
-	$mail->messageSimple('TRICHAUD', 'Loic');
+	$mail->messageSimple('Jacques', 'SPARROT');
 	$mail->envoiMail('loic.trichaud@gmail.com');
 
 

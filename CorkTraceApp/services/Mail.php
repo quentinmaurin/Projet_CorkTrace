@@ -6,8 +6,6 @@ class Mail{
 	private $objet;
 	private $message;
 	
-	//$mail = new Mail();
-    //$mail->fonctionMail();
 	
 	public function __construct(){
 	
@@ -22,7 +20,9 @@ class Mail{
 	public function envoiMail($mailClient){
 	
 	
-		mail($mailClient , $this->objet , $this->message , $this->header); 
+		$testmail = mail($mailClient , $this->objet , $this->message , $this->header); 
+		
+		echo "reponse : $testmail";
 		
 		$this->header=  "";
 		$this->objet = "";
@@ -32,8 +32,13 @@ class Mail{
 	public function messageSimple($prenom, $nom){
 	
 		$this->objet = "Test Envoi Mail";
-				$message = "Bonjour ".$prenom." ".$nom.", \nJe vous envoie un mail test";
-				$message .="Youpi !!!! ";
+				$message = "Bonjour ".$prenom." ".$nom.",";
+				$message .="\n\nCeci est un test d'envoi de mail! Merci de bien vouloir garder votre calme et attendre la fin de l'exercice.";
+				$message .="\n\nCordialement";
+				$message .="\n\nLoïc TRICHAUD";
+				$message .="\nService clientèle de CorkTrace";
+				$message .="\n06.61.09.10.65";
+				$message .="\nloic.trichaud@corktrace.fr";
 				
 		$this->message = $message;
 	}
