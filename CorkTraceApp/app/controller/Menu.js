@@ -59,6 +59,22 @@ Ext.define('CT.controller.Menu', {
             pan = {xtype: "commandeclientlist"};
             grid_id= "commandeclientlist";
 
+        }else if( name == "Livraison" ){
+
+        }else if( name == "Ascendante" ){
+
+        }else if( name == "Descendante" ){
+
+        }else if( name == "Stats Fournisseur" ){
+
+        }else if( name == "Stats Client" ){
+
+        }else if( name == "Fournisseur/Produit" ){
+
+        }else if( name == "Client/Produit" ){
+
+        }else if( name == "Controle arrivage" ){
+
         }else{
             // Nothing
         }

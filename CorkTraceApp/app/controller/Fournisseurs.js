@@ -61,6 +61,9 @@ Ext.define('CT.controller.Fournisseurs', {
 	    record = form.getRecord(),
 	    values = form.getValues();
 
+
+ 		var tyf_nom_value = form.getForm().findField("tyf_id").getRawValue();
+
 	    var fournisseurInstance = Ext.create('CT.model.Fournisseur', {
 
 		    fou_id : -1,
@@ -69,7 +72,8 @@ Ext.define('CT.controller.Fournisseurs', {
 		    fou_mail : values['fou_mail'],
 		    fou_tel : values['fou_tel'],
 		    fou_fax : values['fou_fax'],
-		    tyf_id : values['tyf_id']
+		    tyf_id : values['tyf_id'],
+		    tyf_nom : tyf_nom_value
 		});
 
 	    this.getFournisseursStore().add(fournisseurInstance);
