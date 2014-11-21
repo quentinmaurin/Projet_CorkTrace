@@ -3,7 +3,7 @@
 	require_once("../orm/Arrivage.php");
 	require_once("../orm/ArrivageDetail.php");
 	require_once("../orm/CommandeFournisseur.php");
-
+	require_once("../orm/Conformite.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -20,22 +20,19 @@
 	$Arrivage = new Arrivage();
 	$ArrivageDetail = new ArrivageDetail();
 	$CommandeFournisseur = new CommandeFournisseur();
+	$Conformite = new Conformite();
 
 	$date = date('Y-m-d');
 
 	$recep_id = $Arrivage->insertRow("'NULL', '0', '".$date."', '".$ari_responsable."'");
-	
-	$newValue = array( "ARI_NUM_ARRIVAGE" => date('Y').$recep_id);
-	$cond = array( "ARI_ID" => $recep_id);
-	$Arrivage->updateRow($newValue, $cond);
 
 	$newValue = array( "ARI_ID" => $recep_id);
 	$cond = array( "CFO_ID" => $cfo_id);
 	$CommandeFournisseur->updateRow($newValue, $cond);
 
 	foreach ($details as $detail) {
-		//$ArrivageDetail->insertRow("'NULL', ".$recep_id.", ".$detail->{'pro_id'}.", ".$detail->{'cfm_id'}.", ".$detail->{'ard_quantite'});
-		$ArrivageDetail->insertRow("'NULL', ".$recep_id.", ".$detail->{'pro_id'}.", '1', ".$detail->{'ard_quantite'});
+		$cfm_id = $Conformite->insertRow("'NULL', '0', '0', 'En attente', 'En attente', '0', '0', '0'");
+		$ArrivageDetail->insertRow("'NULL', ".$recep_id.", ".$detail->{'pro_id'}.", '".$cfm_id."', ".$detail->{'ard_quantite'});
 	}
 
 	header('Content-Type: application/json');
