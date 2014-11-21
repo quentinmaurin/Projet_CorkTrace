@@ -16,8 +16,6 @@ Ext.define('CT.controller.Menu', {
     },
 
 	showPanel : function(treeMenu, record, item, index, e, eOpts ){
-
-		console.log("MENU");
 		
 		var name = record.get("text");
 		var feed = Ext.getCmp("feedviewer");
@@ -28,31 +26,26 @@ Ext.define('CT.controller.Menu', {
 		
 		if( name == "Client" ){
 
-            console.log("Client");
             pan = {xtype: "clientlist"};
             grid_id= "gridclientlist";
 
         }else if( name == "Fournisseur" ){
 
-   			console.log("Fournisseur");
    			pan = {xtype: "fournisseurlist"};
             grid_id= "fournisseurlist";
 
         }else if( name == "Commercial" ){
 
-   			console.log("Commercial");
    			pan = {xtype: "commerciallist"};
             grid_id= "commerciallist";
 
         }else if( name == "Stock" ){
 
-            console.log("Stock");
             pan = {xtype: "stocklist"};
             grid_id= "stocklist";
 
         }else if( name == "Commande fournisseur" ){
 
-            console.log("Commande fournisseur");
             pan = {xtype: "commandefournisseurlist"};
             grid_id= "commandefournisseurlist";
 
@@ -63,12 +56,11 @@ Ext.define('CT.controller.Menu', {
 
         }else if( name == "Commande client" ){
 
-            console.log("Commande client");
             pan = {xtype: "commandeclientlist"};
             grid_id= "commandeclientlist";
 
         }else{
-            console.log("Aucun");
+            // Nothing
         }
 		
 		feed.add(pan);

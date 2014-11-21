@@ -58,7 +58,6 @@ Ext.define('CT.controller.Clients', {
 		    adr_id : -1
 		});
 
-   		//console.log(clientInstance);
 	    Ext.getCmp('gridadresseslivraisonslist').getStore().add(AssigneAdresseInstance);
 	    win.close();
 		
@@ -69,14 +68,11 @@ Ext.define('CT.controller.Clients', {
 	deleteAdresseLivraisonClient: function(button) {
 		
 		var row = Ext.getCmp('gridadresseslivraisonslist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		Ext.getCmp('gridadresseslivraisonslist').getStore().remove(row);
 		Ext.getCmp('gridadresseslivraisonslist').getStore().sync();
     },
 
    	getAdressesLivraisons: function( gridclientlist, record, item, index, e, eOpts) {
-   		console.log("Get Adresses Livraisons");
 
    		Ext.getCmp('gridadresseslivraisonslist').getStore().getProxy().extraParams = {
     		cli_id: record.get("cli_id")
@@ -86,15 +82,11 @@ Ext.define('CT.controller.Clients', {
     },
 
     onPanelRendered: function() {
-        console.log('The panel client was rendered');
-		console.log( this.getClientsStore());
     },
 	
 	deleteClient: function(button) {
 		
 		var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		this.getClientsStore().remove(row);
 		this.getClientsStore().sync();
     },
@@ -122,9 +114,8 @@ Ext.define('CT.controller.Clients', {
 
     createClient: function(button) {
 		
-		console.log("create clients");
-		var win = button.up('window'),
-	    form = win.down('form'),
+		var win = button.up('window');
+	    form = win.down('form');
 	    record = form.getRecord(),
 	    values = form.getValues();
 
@@ -139,7 +130,6 @@ Ext.define('CT.controller.Clients', {
 		    tyc_id : values['tyc_id']
 		});
 
-   		//console.log(clientInstance);
 	    this.getClientsStore().add(clientInstance);
 	    win.close();
 		

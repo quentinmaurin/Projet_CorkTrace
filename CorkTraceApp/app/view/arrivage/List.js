@@ -10,8 +10,6 @@ Ext.define('CT.view.arrivage.List' ,{
         '->',
         { xtype: 'button', text: 'Ajouter', handler: function(){
 
-            console.log("test");
-
             Ext.create('Ext.window.Window', {
                 title: 'Saisir cfo_id',
                 layout: 'fit',

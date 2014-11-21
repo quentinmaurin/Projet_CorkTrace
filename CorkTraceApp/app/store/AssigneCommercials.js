@@ -19,8 +19,6 @@ Ext.define('CT.store.AssigneCommercials', {
 		
 		'load' : function( st, records, successful, eOpts ){
 			
-			console.log("load store assign commercial = "+successful);
-			console.log(records);
 		}
 	}
 	

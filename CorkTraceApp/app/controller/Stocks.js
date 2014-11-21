@@ -18,7 +18,5 @@ Ext.define('CT.controller.Stocks', {
     },
 
     onPanelRendered: function() {
-        console.log('The panel stock was rendered');
-		console.log( this.getStocksStore());
     }
 });

@@ -32,15 +32,11 @@ Ext.define('CT.controller.Commercials', {
     },
 
     onPanelRendered: function() {
-        console.log('The panel commercial was rendered');
-		console.log( this.getCommercialsStore());
     },
 	
 	deleteCommercial: function(button) {
 		
 		var row = Ext.getCmp('commerciallist').getSelectionModel().getSelection()[0];
-		console.log("delete");
-        console.log(row);
 		this.getCommercialsStore().remove(row);
 		this.getCommercialsStore().sync();
     },
@@ -67,9 +63,8 @@ Ext.define('CT.controller.Commercials', {
 
     createCommercial: function(button) {
 		
-		console.log("create commericals");
-		var win = button.up('window'),
-	    form = win.down('form'),
+		var win = button.up('window');
+	    form = win.down('form');
 	    record = form.getRecord(),
 	    values = form.getValues();
 
@@ -84,7 +79,6 @@ Ext.define('CT.controller.Commercials', {
 		    com_fax : values['com_fax']
 		});
 
-   		//console.log(clientInstance);
 	    this.getCommercialsStore().add(commercialInstance);
 	    win.close();
 		

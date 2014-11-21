@@ -17,9 +17,7 @@ Ext.define('CT.store.TypeClients', {
 	listeners :{
 		
 		'load' : function( st, records, successful, eOpts ){
-			
-			console.log("load store = "+successful);
-			console.log(records);
+
 		}
 	}
 	

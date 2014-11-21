@@ -98,7 +98,7 @@ Ext.define('CT.view.commandeclient.Add', {
                                 cb.getStore().load();
                             },
                             'change': function(cb, newValue, oldValue, eOpts){
-                                console.log(newValue);
+                            
                                 Ext.getCmp("form_add_cmd_cli").getForm().findField('clc_id').getStore().getProxy().extraParams={
                                     cli_id: newValue
                                 };
@@ -144,7 +144,7 @@ Ext.define('CT.view.commandeclient.Add', {
                 action: 'save',
                 handler : function(){
 
-                    console.log("debut loop");
+           
                     var store = Ext.getCmp("gridcommandeclientdetails").getStore();
 
                     var details = new Array();
@@ -166,9 +166,6 @@ Ext.define('CT.view.commandeclient.Add', {
                     data.dpy_id = values.dpy_id;
                     data.cla_id = values.cla_id;
                     data.details = details;
-
-                    console.log(data);
-                    console.log("End loop");
 
                     Ext.Ajax.request({
                         url: 'data/commande_client/create.php',
