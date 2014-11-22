@@ -23,15 +23,16 @@
 	$CommandeClient = new CommandeClient();
 	$CommandeClientDetail = new CommandeClientDetail();
 
+	$ccl_dateLiv = str_replace('/', '-', $ccl_dateLiv);
 	$ccl_dateLiv = date_create($ccl_dateLiv);
 	$ccl_dateLiv = date_format($ccl_dateLiv, 'Y-m-d');
 
 	$date = date('Y-m-d');
 
-	$com_id = $CommandeClient->insertRow("'NULL', '".$date."', '".$ccl_dateLiv."', '".$clc_id."', '".$dpy_id."', '".$date."', 'FALSE',  '".$cla_id."' ");
+	$com_id = $CommandeClient->insertRow("'NULL', '".$date."', '".$ccl_dateLiv."', '".$clc_id."', '".$dpy_id."', '".$date."', '0',  '".$cla_id."' ");
 
 	foreach ($details as $detail) {
-		$CommandeClientDetail->insertRow("'NULL', ".$com_id.", ".$detail->{'pro_id'}.", ".$detail->{'ccd_prix'}.", ".$detail->{'ccd_quantite'}.", ".$detail->{'ccd_marquage'});
+		$CommandeClientDetail->insertRow("'NULL', ".$com_id.", ".$detail->{'pro_id'}.", ".$detail->{'ccd_prix'}.", ".$detail->{'ccd_quantite'}.", '".$detail->{'ccd_marquage'}."'");
 	}
 
 	header('Content-Type: application/json');
