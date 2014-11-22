@@ -1,15 +1,16 @@
 Ext.define('CT.controller.Clients', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Clients', 'TypeClients', 'AssigneAdresses', 'Adresses'],
+    stores: ['Clients', 'TypeClients', 'AssigneAdresses', 'Adresses', 'Commercials', 'AssigneCommercials'],
 	
-	models: ['Client', 'TypeClient', 'AssigneAdresse', 'Adresse'],
+	models: ['Client', 'TypeClient', 'AssigneAdresse', 'Adresse', 'Commercial', 'AssigneCommercial'],
 	   
     views: [
     	'client.List',
 		'client.Edit',
 		'client.Add',
-		'assignadress.Add'
+		'assignadress.Add',
+		'assigncommercial.Add'
     ],
 	   
     init: function() {
@@ -22,6 +23,9 @@ Ext.define('CT.controller.Clients', {
 		    },
 		     'clientlist #gridadresseslivraisonslist button[action=delete]': {
 		    	click: this.deleteAdresseLivraisonClient
+		    },
+		    'clientlist #gridcommerciallist button[action=delete]': {
+		    	click: this.deleteCommercialClient
 		    },
 		    'clientlist #gridclientlist button[action=edit]': {
 		    	click: this.editClient
@@ -37,8 +41,43 @@ Ext.define('CT.controller.Clients', {
 	        },
 	        'assignadressadd button[action=save]': {
 	        	click:  this.AddAdresseLivraisonClient
+	        },
+	        'assigncommercialadd button[action=save]': {
+	        	click:  this.AddCommercialClient
 	        }
         });
+    },
+
+	AddCommercialClient: function(button) {
+		
+		var win = button.up('window'),
+	    form = win.down('form'),
+	    record = form.getRecord(),
+	    values = form.getValues();
+
+		var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
+		var com_nom_value = form.getForm().findField("com_id").getRawValue();
+
+	    var CommercialInstance = Ext.create('CT.model.AssigneCommercial', {
+
+		    clc_id : -1,
+		    com_nom : com_nom_value,
+		    cli_id : row.get("cli_id"),
+		    com_id : values['com_id']
+		});
+
+	    Ext.getCmp('gridcommerciallist').getStore().add(CommercialInstance);
+	    win.close();
+		
+	  	// synchronize the store after editing the record
+	    Ext.getCmp('gridcommerciallist').getStore().sync();
+    },
+
+    deleteCommercialClient : function(button) {
+		
+		var row = Ext.getCmp('gridcommerciallist').getSelectionModel().getSelection()[0];
+		Ext.getCmp('gridcommerciallist').getStore().remove(row);
+		Ext.getCmp('gridcommerciallist').getStore().sync();
     },
 
 	AddAdresseLivraisonClient: function(button) {
@@ -79,6 +118,12 @@ Ext.define('CT.controller.Clients', {
 		};
 
    		Ext.getCmp('gridadresseslivraisonslist').getStore().load();
+
+   		Ext.getCmp('gridcommerciallist').getStore().getProxy().extraParams = {
+    		cli_id: record.get("cli_id")
+		};
+
+   		Ext.getCmp('gridcommerciallist').getStore().load();
     },
 
     onPanelRendered: function() {

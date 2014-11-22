@@ -36,30 +36,62 @@ Ext.define('CT.view.client.List' ,{
             {header: 'Type', dataIndex: 'tyc_nom', flex: 1}
         ]
     },{
-        title : "Adresses de livraisons",
-        xtype : "grid",
-        region : "center",
-        id: 'gridadresseslivraisonslist',
-        store: 'AssigneAdresses',
-        columns : [
-            {header: 'Cla Id',  dataIndex: 'cla_id',  flex: 1},
-            {header: 'Cli Id', dataIndex: 'cli_id', flex: 1},
-            {header: 'Adr Id', dataIndex: 'adr_id', flex: 1},
-            {header: 'Adresse', dataIndex: 'adr_adresse', flex: 1}
-        ],
+        xtype : "panel",
         region : "east",
         width : "30%",
-        tbar: [
-        '->',
-        { xtype: 'button', text: 'Ajouter', handler: function(){
+        layout : "border",
+        items: [{
+            title : "Adresses de livraisons",
+            xtype : "grid",
+            region : "center",
+            id: 'gridadresseslivraisonslist',
+            store: 'AssigneAdresses',
+            columns : [
+                {header: 'Cla Id',  dataIndex: 'cla_id',  flex: 1},
+                {header: 'Cli Id', dataIndex: 'cli_id', flex: 1},
+                {header: 'Adr Id', dataIndex: 'adr_id', flex: 1},
+                {header: 'Adresse', dataIndex: 'adr_adresse', flex: 1}
+            ],
+     
+            tbar: [
+            '->',
+            { xtype: 'button', text: 'Ajouter', handler: function(){
 
-                var view = Ext.widget('assignadressadd');
-        } },
-        {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
-        },
-        '->'
-        ],
+                    var view = Ext.widget('assignadressadd');
+            } },
+            {
+                xtype: 'button', text: 'Supprimer', action: 'delete'
+            },
+            '->'
+            ]
+        },{
+            title : "Commeriaux affectés",
+            xtype : "grid",
+            region : "south",
+            height: "50%",
+            id: 'gridcommerciallist',
+            store: 'AssigneCommercials',
+            columns : [
+                {header: 'Clc Id',  dataIndex: 'clc_id',  flex: 1},
+                {header: 'Cli Id', dataIndex: 'cli_id', flex: 1},
+                {header: 'Com Id', dataIndex: 'com_id', flex: 1},
+                {header: 'Com nom', dataIndex: 'com_nom', flex: 1}
+            ],
+     
+            tbar: [
+            '->',
+            { xtype: 'button', text: 'Ajouter', handler: function(){
+
+                    var view = Ext.widget('assigncommercialadd');
+                    Ext.getCmp('form_assign_commercial').getForm().findField("com_id").getStore().load();
+
+            } },
+            {
+                xtype: 'button', text: 'Supprimer', action: 'delete'
+            },
+            '->'
+            ]
+        }]
     }],
  
 
