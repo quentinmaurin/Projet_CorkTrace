@@ -7,6 +7,7 @@ Ext.define('CT.view.arrivage.Add', {
     autoShow: true,
     width:"100%",
     height:"100%",
+    id:"window_arrivage_add",
 
     initComponent: function() {
         
@@ -32,7 +33,7 @@ Ext.define('CT.view.arrivage.Add', {
                         xtype: 'numberfield',
                         allowBlank: false,
                         minValue: 0,
-                        maxValue: 100000
+                        maxValue: 99999999
                     }}
                 ]
             },{
@@ -99,6 +100,10 @@ Ext.define('CT.view.arrivage.Add', {
                         success: true,                                    
                         failure: function(){console.log('failure');}
                     });
+
+                    Ext.getCmp("arrivagelist").getStore().reload();
+                    Ext.getCmp("arrivagelist").getView().refresh();
+                    Ext.getCmp("window_arrivage_add").close();
 
                 }
             },

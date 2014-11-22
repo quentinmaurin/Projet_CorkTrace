@@ -7,6 +7,7 @@ Ext.define('CT.view.commandeclient.Add', {
     autoShow: true,
     width:"100%",
     height:"100%",
+    id: "window_commandecli_add",
 
     initComponent: function() {
         
@@ -185,6 +186,10 @@ Ext.define('CT.view.commandeclient.Add', {
                         success: true,                                    
                         failure: function(){console.log('failure');}
                     });
+
+                    Ext.getCmp("commandeclientlist").getStore().reload();
+                    Ext.getCmp("commandeclientlist").getView().refresh();
+                    Ext.getCmp("window_commandecli_add").close();
 
                 }
             },
