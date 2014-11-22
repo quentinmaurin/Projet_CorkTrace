@@ -8,6 +8,7 @@ Ext.define('CT.view.commandeclient.Add', {
     width:"100%",
     height:"100%",
     id: "window_commandecli_add",
+    closable: false,
 
     initComponent: function() {
         
@@ -189,6 +190,7 @@ Ext.define('CT.view.commandeclient.Add', {
 
                     Ext.getCmp("commandeclientlist").getStore().reload();
                     Ext.getCmp("commandeclientlist").getView().refresh();
+                    Ext.getCmp("gridcommandeclientdetails").getStore().removeAll();
                     Ext.getCmp("window_commandecli_add").close();
 
                 }
@@ -196,7 +198,11 @@ Ext.define('CT.view.commandeclient.Add', {
             {
                 text: 'Annuler',
                 scope: this,
-                handler: this.close
+                handler: function(){
+
+                    Ext.getCmp("gridcommandeclientdetails").getStore().removeAll();
+                    Ext.getCmp("window_commandecli_add").close();
+                }
             }
         ];
 

@@ -25,7 +25,7 @@
 
 	$dateCommande = date('Y-m-d');
 
-	$com_id = $CommandeFournisseur->insertRow("'NULL', '".$dateCommande."', '".$dateRecep."', ".$fou_id.", -1 ");
+	$com_id = $CommandeFournisseur->insertRow("'NULL', '".$dateCommande."', '".$dateRecep."', '".$fou_id."', -1 ");
 
 	foreach ($details as $detail) {
 		$CommandeFournisseurDetail->insertRow("'NULL', ".$com_id.", ".$detail->{'pro_id'}.", ".$detail->{'cfd_quantite'}.", ".$detail->{'cfd_prix'});

@@ -8,6 +8,7 @@ Ext.define('CT.view.arrivage.Add', {
     width:"100%",
     height:"100%",
     id:"window_arrivage_add",
+    closable:false,
 
     initComponent: function() {
         

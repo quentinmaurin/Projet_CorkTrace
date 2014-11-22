@@ -35,9 +35,22 @@ Ext.define('CT.controller.CommandeClients', {
         
         var pro_exist = Ext.getCmp("gridcommandeclientdetails").getStore().find("pro_id", record.get("pro_id"));
 
+        var cmdCliDetailInstance = Ext.create('CT.model.CommandeClientDetail', {
+
+            pro_id : record.get("pro_id"),
+            pro_nom : record.get("pro_nom"),
+            pro_taille : record.get("pro_taille"),
+            pro_qualite : record.get("pro_qualite"),
+            ccd_quantite : 0,
+            ccd_prix : 0,
+            ccd_id : "",
+            ccl_id : "",
+            ccd_marquage : ""
+        });
+
         if( pro_exist == -1){
-            Ext.getCmp("gridcommandeclientdetails").getStore().add(record);
-            record.set("ccd_marquage", "");
+            Ext.getCmp("gridcommandeclientdetails").getStore().add(cmdCliDetailInstance);
+            cmdCliDetailInstance.set("ccd_marquage", "");
         }
     },
 
