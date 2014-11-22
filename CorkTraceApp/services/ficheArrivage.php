@@ -29,7 +29,7 @@
 	// Récupération informations table Commande Fournisseur
 	$condGetRows = array("ARI_ID" => $idArrivage);
 	$res = $commandeFournisseur->getRows($condGetRows); 
-		$idFourni =  $res[0]['ari_id'];
+		$idFourni =  $res[0]['fou_id'];
 		
 		// Récupération informations table  Fournisseur
 	$condGetRows = array("FOU_ID" => $idFourni);
