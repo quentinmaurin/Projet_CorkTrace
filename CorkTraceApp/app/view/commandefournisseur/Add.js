@@ -30,14 +30,14 @@ Ext.define('CT.view.commandefournisseur.Add', {
                         xtype: 'numberfield',
                         allowBlank: false,
                         minValue: 0,
-                        maxValue: 100000
+                        maxValue: 99999999
                     }},
                     {header: 'Prix', dataIndex: 'cfd_prix', flex: 1,
                     field: {
                         xtype: 'numberfield',
                         allowBlank: false,
                         minValue: 0,
-                        maxValue: 100000
+                        maxValue: 99999999
                     }}
                 ]
             },{
@@ -72,6 +72,7 @@ Ext.define('CT.view.commandefournisseur.Add', {
                     valueField: 'fou_id',
                     store: 'Fournisseurs',
                     queryMode: 'local',
+                    editable:false,
                     listeners: {
                             'afterrender': function(cb, eOpts){
                                 cb.getStore().load();
@@ -80,7 +81,9 @@ Ext.define('CT.view.commandefournisseur.Add', {
                 },{
                     xtype:"datefield",
                     name: "cfo_datecmd",
-                    fieldLabel: "Date de commmande"
+                    fieldLabel: "Date de commmande",
+                    editable:false,
+                    format : "d/m/Y"
                 }]
             }
         ];

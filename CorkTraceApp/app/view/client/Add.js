@@ -40,7 +40,8 @@ Ext.define('CT.view.client.Add', {
                         valueField: 'tyc_id',
                         store: 'TypeClients',
                         queryMode: 'local',
-                        hiddenName: 'tyc_nom'
+                        hiddenName: 'tyc_nom',
+                        editable : false
                     }
                 ]
             }
