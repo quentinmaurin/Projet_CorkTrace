@@ -20,7 +20,8 @@
 	$CommandeFournisseur = new CommandeFournisseur();
 	$CommandeFournisseurDetail = new CommandeFournisseurDetail();
 
-	$dateRecep = date_create($cfo_datecmd);
+	$dateRecep = str_replace('/', '-', $cfo_datecmd);
+	$dateRecep = date_create($dateRecep);
 	$dateRecep = date_format($dateRecep, 'Y-m-d');
 
 	$dateCommande = date('Y-m-d');
