@@ -8,6 +8,7 @@ Ext.define('CT.view.commandefournisseur.Add', {
     width:"100%",
     height:"100%",
     id: "window_commandefou_add",
+    closable:false,
 
     initComponent: function() {
         
@@ -129,6 +130,7 @@ Ext.define('CT.view.commandefournisseur.Add', {
 
                     Ext.getCmp("commandefournisseurlist").getStore().reload();
                     Ext.getCmp("commandefournisseurlist").getView().refresh();
+                    Ext.getCmp("gridcommandefournisseurdetails").getStore().removeAll();
                     Ext.getCmp("window_commandefou_add").close();
 
                 }
@@ -136,7 +138,11 @@ Ext.define('CT.view.commandefournisseur.Add', {
             {
                 text: 'Annuler',
                 scope: this,
-                handler: this.close
+                handler: function(){
+
+                    Ext.getCmp("gridcommandefournisseurdetails").getStore().removeAll();
+                    Ext.getCmp("window_commandefou_add").close();
+                }
             }
         ];
 
