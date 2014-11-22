@@ -7,6 +7,7 @@ Ext.define('CT.view.commandefournisseur.Add', {
     autoShow: true,
     width:"100%",
     height:"100%",
+    id: "window_commandefou_add",
 
     initComponent: function() {
         
@@ -125,6 +126,10 @@ Ext.define('CT.view.commandefournisseur.Add', {
                         success: true,                                    
                         failure: function(){console.log('failure');}
                     });
+
+                    Ext.getCmp("commandefournisseurlist").getStore().reload();
+                    Ext.getCmp("commandefournisseurlist").getView().refresh();
+                    Ext.getCmp("window_commandefou_add").close();
 
                 }
             },
