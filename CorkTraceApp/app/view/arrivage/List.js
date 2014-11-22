@@ -54,7 +54,15 @@ Ext.define('CT.view.arrivage.List' ,{
        
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+                    
+                    var row = Ext.getCmp('arrivagelist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('arrivagelist').getStore().remove(row);
+                    Ext.getCmp('arrivagelist').getStore().sync();
+                }
+            }
         },
         {
             xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheArrivage.php",

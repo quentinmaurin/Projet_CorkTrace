@@ -19,12 +19,29 @@ Ext.define('CT.view.client.List' ,{
                    var view = Ext.widget('clientadd');
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+
+                    var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('gridclientlist').getStore().remove(row);
+                    Ext.getCmp('gridclientlist').getStore().sync();
+                }
+            }
         },{
-            xtype: 'button', text: 'Modifier', action: 'edit' 
-        }, 
+            xtype: 'button', text: 'Modifier',
+            listeners : {
+                'click' : function(){
+
+                        var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
+                        var view = Ext.widget('clientedit');
+                        view.down('form').loadRecord(row);
+                }
+            }
+        },
         '->'
         ],
+
         columns : [
             {header: 'Id',  dataIndex: 'cli_id',  flex: 1},
             {header: 'Nom', dataIndex: 'cli_nom', flex: 1},

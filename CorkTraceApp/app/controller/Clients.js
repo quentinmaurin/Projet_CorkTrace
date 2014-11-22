@@ -27,12 +27,6 @@ Ext.define('CT.controller.Clients', {
 		    'clientlist #gridcommerciallist button[action=delete]': {
 		    	click: this.deleteCommercialClient
 		    },
-		    'clientlist #gridclientlist button[action=edit]': {
-		    	click: this.editClient
-		    },
-		    'clientlist #gridclientlist button[action=delete]': {
-		    	click: this.deleteClient
-		    },
 	        'clientedit button[action=save]': {
 	        	click: this.updateClient
 	        },
@@ -127,20 +121,6 @@ Ext.define('CT.controller.Clients', {
     },
 
     onPanelRendered: function() {
-    },
-	
-	deleteClient: function(button) {
-		
-		var row = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
-		this.getClientsStore().remove(row);
-		this.getClientsStore().sync();
-    },
-
-    editClient: function(button) {
-		
-		var record = Ext.getCmp('gridclientlist').getSelectionModel().getSelection()[0];
-        var view = Ext.widget('clientedit');
-        view.down('form').loadRecord(record);
     },
 	
     updateClient: function(button) {

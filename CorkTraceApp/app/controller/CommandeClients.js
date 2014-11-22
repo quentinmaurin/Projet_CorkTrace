@@ -12,9 +12,6 @@ Ext.define('CT.controller.CommandeClients', {
 	   
     init: function() {
         this.control({
-        	'commandeclientlist button[action=delete]': {
-		    	click: this.deleteCommandeClient
-		    },
             'commandeclientadd #gridajoutproduit': {
                 itemdblclick: this.ajoutProduitToDetails
             },
@@ -22,13 +19,6 @@ Ext.define('CT.controller.CommandeClients', {
                 itemdblclick: this.removeProduit
             },
         });
-    },
-
-    deleteCommandeClient: function(button) {
-		
-		var row = Ext.getCmp('commandeclientlist').getSelectionModel().getSelection()[0];
-		Ext.getCmp('commandeclientlist').getStore().remove(row);
-		Ext.getCmp('commandeclientlist').getStore().sync();
     },
     
     ajoutProduitToDetails: function( gridajoutproduit, record, item, index, e, eOpts){

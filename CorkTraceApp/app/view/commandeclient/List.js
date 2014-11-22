@@ -13,7 +13,15 @@ Ext.define('CT.view.commandeclient.List' ,{
             var view = Ext.widget('commandeclientadd');
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+                
+                    var row = Ext.getCmp('commandeclientlist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('commandeclientlist').getStore().remove(row);
+                    Ext.getCmp('commandeclientlist').getStore().sync();
+                }
+            }
         },
         {
             xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheCmdClient.php",

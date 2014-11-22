@@ -12,8 +12,27 @@ Ext.define('CT.view.fournisseur.List' ,{
                    var view = Ext.widget('fournisseuradd');
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
-        },   
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+
+                    var row = Ext.getCmp('fournisseurlist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('fournisseurlist').getStore().remove(row);
+                    Ext.getCmp('fournisseurlist').getStore().sync();
+                }
+            }
+        },
+        {
+            xtype: 'button', text: 'Modifier',
+            listeners : {
+                'click' : function(){
+
+                        var row = Ext.getCmp('fournisseurlist').getSelectionModel().getSelection()[0];
+                        var view = Ext.widget('fournisseuredit');
+                        view.down('form').loadRecord(row);
+                }
+            }
+        },
         '->'
     ],
 
