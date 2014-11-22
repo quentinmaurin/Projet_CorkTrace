@@ -37,6 +37,7 @@ Ext.define('CT.controller.CommandeClients', {
 
         if( pro_exist == -1){
             Ext.getCmp("gridcommandeclientdetails").getStore().add(record);
+            record.set("ccd_marquage", "");
         }
     },
 

@@ -21,7 +21,8 @@ Ext.define('CT.view.assigncommercial.Add', {
                         valueField: 'com_id',
                         store: 'Commercials',
                         queryMode: 'local',
-                        hiddenName: 'com_nom'
+                        hiddenName: 'com_nom',
+                        editable : false
                     }
                 ]
             }

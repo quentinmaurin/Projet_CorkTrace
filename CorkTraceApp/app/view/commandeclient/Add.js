@@ -32,14 +32,14 @@ Ext.define('CT.view.commandeclient.Add', {
                         xtype: 'numberfield',
                         allowBlank: false,
                         minValue: 0,
-                        maxValue: 100000
+                        maxValue: 99999999
                     }},
                     {header: 'Qte', dataIndex: 'ccd_quantite', flex: 1,
                     field: {
                         xtype: 'numberfield',
                         allowBlank: false,
                         minValue: 0,
-                        maxValue: 100000
+                        maxValue: 99999999
                     }},
                     {header: 'Marquage', dataIndex: 'ccd_marquage', flex: 1,
                     field: {xtype: 'textfield'}}
@@ -75,7 +75,9 @@ Ext.define('CT.view.commandeclient.Add', {
                     items : [{
                         xtype:"datefield",
                         name: "ccl_dateLiv",
-                        fieldLabel: "Date de livraison"
+                        fieldLabel: "Date de livraison",
+                        editable:false,
+                        format : "d/m/Y"
                     }]
                 },{
                     xtype:"panel",
@@ -93,6 +95,7 @@ Ext.define('CT.view.commandeclient.Add', {
                         valueField: 'cli_id',
                         store: 'Clients',
                         queryMode: 'local',
+                        editable:false,
                         listeners: {
                             'afterrender': function(cb, eOpts){
                                 cb.getStore().load();
@@ -116,7 +119,8 @@ Ext.define('CT.view.commandeclient.Add', {
                         displayField: 'com_nom',
                         valueField: 'clc_id',
                         store: 'AssigneCommercials',
-                        queryMode: 'local'
+                        queryMode: 'local',
+                        editable:false
                     },{
                         xtype: "combobox",
                         name : 'dpy_id',
@@ -124,7 +128,8 @@ Ext.define('CT.view.commandeclient.Add', {
                         displayField: 'dpy_jour',
                         valueField: 'dpy_id',
                         store: 'DelaiPaiements',
-                        queryMode: 'local'
+                        queryMode: 'local',
+                        editable:false
                     },{
                         xtype: "combobox",
                         name : 'cla_id',
@@ -132,7 +137,8 @@ Ext.define('CT.view.commandeclient.Add', {
                         displayField: 'adr_adresse',
                         valueField: 'cla_id',
                         store: 'AssigneAdresses',
-                        queryMode: 'local'
+                        queryMode: 'local',
+                        editable:false
                     }]
                 }]
             }
