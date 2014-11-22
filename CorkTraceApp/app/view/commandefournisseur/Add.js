@@ -124,14 +124,20 @@ Ext.define('CT.view.commandefournisseur.Add', {
                         "data" : JSON.stringify(data)
                         },
                         scope:this,
-                        success: true,                                    
-                        failure: function(){console.log('failure');}
+                        success: function(response, opts) {
+   
+                            Ext.getCmp("commandefournisseurlist").getStore().reload();
+                            Ext.getCmp("commandefournisseurlist").getView().refresh();
+                            Ext.getCmp("gridcommandefournisseurdetails").getStore().removeAll();
+                            Ext.getCmp("window_commandefou_add").close();
+
+                        },                            
+                        failure: function(){
+                            alert("Echec ajout");
+                            Ext.getCmp("window_commandefou_add").close();
+                        }
                     });
 
-                    Ext.getCmp("commandefournisseurlist").getStore().reload();
-                    Ext.getCmp("commandefournisseurlist").getView().refresh();
-                    Ext.getCmp("gridcommandefournisseurdetails").getStore().removeAll();
-                    Ext.getCmp("window_commandefou_add").close();
 
                 }
             },

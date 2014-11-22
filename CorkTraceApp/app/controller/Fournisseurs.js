@@ -13,12 +13,6 @@ Ext.define('CT.controller.Fournisseurs', {
 	   
     init: function() {
         this.control({
-		    'fournisseurlist': {
-		    	itemdblclick: this.editFournisseur
-		    },
-		    'fournisseurlist button[action=delete]': {
-		    	click: this.deleteFournisseur
-		    },
 	        'fournisseuredit button[action=save]': {
 	        	click: this.updateFournisseur
 	        },
@@ -26,19 +20,6 @@ Ext.define('CT.controller.Fournisseurs', {
 	        	click: this.createFournisseur
 	        }
         });
-    },
-	
-	deleteFournisseur: function(button) {
-		
-		var row = Ext.getCmp('fournisseurlist').getSelectionModel().getSelection()[0];
-		this.getFournisseursStore().remove(row);
-		this.getFournisseursStore().sync();
-    },
-
-    editFournisseur: function(grid, record) {
-		
-        var view = Ext.widget('fournisseuredit');
-        view.down('form').loadRecord(record);
     },
 	
     updateFournisseur: function(button) {

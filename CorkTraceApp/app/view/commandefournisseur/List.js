@@ -13,7 +13,15 @@ Ext.define('CT.view.commandefournisseur.List' ,{
             var view = Ext.widget('commandefournisseuradd');
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+
+                    var row = Ext.getCmp('commandefournisseurlist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('commandefournisseurlist').getStore().remove(row);
+                    Ext.getCmp('commandefournisseurlist').getStore().sync();
+                }
+            }
         },
         {
             xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheCmdFourni.php",

@@ -12,8 +12,27 @@ Ext.define('CT.view.commercial.List' ,{
                    var view = Ext.widget('commercialadd');
         } },
         {
-            xtype: 'button', text: 'Supprimer', action: 'delete'
-        },   
+            xtype: 'button', text: 'Supprimer', action: 'delete',
+            listeners : {
+                'click' : function(){
+  
+                    var row = Ext.getCmp('commerciallist').getSelectionModel().getSelection()[0];
+                    Ext.getCmp('commerciallist').getStore().remove(row);
+                    Ext.getCmp('commerciallist').getStore().sync();
+                }
+            }
+        },
+        {
+            xtype: 'button', text: 'Modifier',
+            listeners : {
+                'click' : function(){
+
+                        var row = Ext.getCmp('commerciallist').getSelectionModel().getSelection()[0];
+                        var view = Ext.widget('commercialedit');
+                        view.down('form').loadRecord(row);
+                }
+            }
+        },
         '->'
     ],
 

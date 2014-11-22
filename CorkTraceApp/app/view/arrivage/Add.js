@@ -98,13 +98,18 @@ Ext.define('CT.view.arrivage.Add', {
                         "data" : JSON.stringify(data)
                         },
                         scope:this,
-                        success: true,                                    
-                        failure: function(){console.log('failure');}
-                    });
+                        success: function(response, opts) {
 
-                    Ext.getCmp("arrivagelist").getStore().reload();
-                    Ext.getCmp("arrivagelist").getView().refresh();
-                    Ext.getCmp("window_arrivage_add").close();
+                            Ext.getCmp("arrivagelist").getStore().reload();
+                            Ext.getCmp("arrivagelist").getView().refresh();
+                            Ext.getCmp("window_arrivage_add").close();
+                        },                                   
+                        failure: function(){
+
+                            alert("echec ajout");
+                            Ext.getCmp("window_arrivage_add").close();
+                        }
+                    });
 
                 }
             },

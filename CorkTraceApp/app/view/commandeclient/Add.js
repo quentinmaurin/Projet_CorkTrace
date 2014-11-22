@@ -184,14 +184,21 @@ Ext.define('CT.view.commandeclient.Add', {
                         "data" : JSON.stringify(data)
                         },
                         scope:this,
-                        success: true,                                    
-                        failure: function(){console.log('failure');}
+                        success: function(response, opts) {
+
+                            Ext.getCmp("commandeclientlist").getStore().reload();
+                            Ext.getCmp("commandeclientlist").getView().refresh();
+                            Ext.getCmp("gridcommandeclientdetails").getStore().removeAll();
+                            Ext.getCmp("window_commandecli_add").close();
+
+                        },                                    
+                        failure: function(){
+                            alert("echec ajout");
+                            Ext.getCmp("window_commandecli_add").close();
+                        }
                     });
 
-                    Ext.getCmp("commandeclientlist").getStore().reload();
-                    Ext.getCmp("commandeclientlist").getView().refresh();
-                    Ext.getCmp("gridcommandeclientdetails").getStore().removeAll();
-                    Ext.getCmp("window_commandecli_add").close();
+                 
 
                 }
             },

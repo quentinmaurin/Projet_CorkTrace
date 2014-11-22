@@ -16,12 +16,6 @@ Ext.define('CT.controller.Commercials', {
             'viewport > panel': {
                 render: this.onPanelRendered
             },
-		    'commerciallist': {
-		    	itemdblclick: this.editCommercial
-		    },
-		    'commerciallist button[action=delete]': {
-		    	click: this.deleteCommercial
-		    },
 	        'commercialedit button[action=save]': {
 	        	click: this.updateCommercial
 	        },
@@ -32,19 +26,6 @@ Ext.define('CT.controller.Commercials', {
     },
 
     onPanelRendered: function() {
-    },
-	
-	deleteCommercial: function(button) {
-		
-		var row = Ext.getCmp('commerciallist').getSelectionModel().getSelection()[0];
-		this.getCommercialsStore().remove(row);
-		this.getCommercialsStore().sync();
-    },
-
-    editCommercial: function(grid, record) {
-		
-        var view = Ext.widget('commercialedit');
-        view.down('form').loadRecord(record);
     },
 	
     updateCommercial: function(button) {
