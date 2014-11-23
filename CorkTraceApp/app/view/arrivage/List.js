@@ -78,7 +78,13 @@ Ext.define('CT.view.arrivage.List' ,{
                 }
             }
         },{
-            xtype: 'button', text: 'Controler arrivage', action: 'controleArrivage'
+            xtype: 'button', text: 'Controler arrivage', action: 'controleArrivage',
+            listeners : {
+            'click' : function(){
+                    
+                    var view = Ext.widget('arrivagecontrole');
+                }
+            }
         },
         '->'
     ],
