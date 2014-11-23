@@ -76,11 +76,13 @@ Ext.define('CT.controller.Menu', {
 
         }else if( name == "Stats Fournisseur" ){
 
+            pan = {xtype: "statfournisseurlist"};
+            grid_id= "gridstatfournisseurlist";
+
         }else if( name == "Stats Client" ){
 
-        }else if( name == "Fournisseur/Produit" ){
-
-        }else if( name == "Client/Produit" ){
+            pan = {xtype: "statclientlist"};
+            grid_id= "gridstatclientlist";
 
         }else if( name == "Edition etiquette" ){
 

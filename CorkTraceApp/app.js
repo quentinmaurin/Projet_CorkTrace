@@ -15,7 +15,9 @@ Ext.application({
            'CommandeClients',
            'TracabiliteAscendantes',
            'TracabiliteDescendantes',
-           'Livraisons'
+           'Livraisons',
+           'StatFournisseurs',
+           'StatClients'
     ],
 
     launch: function() {
