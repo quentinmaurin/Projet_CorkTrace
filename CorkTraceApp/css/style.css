@@ -107,6 +107,11 @@ body{
 	
 }
 
+.marquage{
+	margin-left:20px;
+    font-size: 12px;
+}
+
 .colorEnteteFact{
 background-color:#734B21;
 text-align:center !important;

@@ -148,7 +148,7 @@
 								echo "
 									<tr>
 										<td class='alignCenter'>".$detailCommande[$i]['ccd_id']."</td>
-										<td>".$detailCommande[$i]['pro_nom']."</td>
+										<td>".$detailCommande[$i]['pro_nom']." <i class='marquage'>(marquage : ".$detailCommande[$i]['ccd_marquage'].")</i></td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_quantite']."</td>
 										<td class='alignCenter'><img src='barcode.php?id=". $detailCommande[$i]['ccd_id']."&taille=2&font=0'></td>
 

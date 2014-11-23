@@ -14,7 +14,7 @@
 				<a class="brand" href="#">Services</a>
 				<ul class="nav">
 					<li><a href="conformiteArrivage.php?id=1" target="blank">Conformité Arrivage</a></li>
-					<li><a href="conformiteCommande.php?id=1" target="blank">Conformité Commande</a></li>
+					<li><a href="conformiteLivraison.php?id=1" target="blank">Conformité Livraison</a></li>
 					<li><a href="factureCmdClient.php?id=1" target="blank">Facture Client</a></li>
 					<li><a href="editionCodeBarre.php?id=1" target="blank">Edition Etiquette</a></li>
 					<li><a href="ficheCmdFourni.php?id=1" target="blank">Fiche Cmd Fourni</a></li>
