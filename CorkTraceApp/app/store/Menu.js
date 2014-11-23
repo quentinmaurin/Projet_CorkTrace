@@ -20,9 +20,7 @@ Ext.define('CT.store.Menu', {
             ] },
             { text: "Statistiques", expanded: true, children: [
                     { text: "Stats Fournisseur", leaf: true },
-                    { text: "Fournisseur/Produit", leaf: true},
-                    { text: "Stats Client", leaf: true},
-                    { text: "Client/Produit", leaf: true}
+                    { text: "Stats Client", leaf: true}
             ] },
             { text: "Edition etiquette", leaf: true }
         ]
