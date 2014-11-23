@@ -391,7 +391,7 @@
 
 		</div> 
 		
-		<form method="POST" enctype="multipart/form-data" action="editPdf.php" id="myForm">
+		<form method="POST" enctype="multipart/form-data" action="editPdf.php?mod=&mail=" id="myForm">
 			<input type="hidden" name="img_val" id="img_val" value="" />
 		</form>
 

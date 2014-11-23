@@ -22,7 +22,7 @@
 	$adress = new Adress();
 	
 	$id_commande = $_GET['id'];
-	$nomPdf = "Facturation";
+	$nomPdf = "Confirmation";
 	
 
 	// Récupération informations table CommandeClient
@@ -54,10 +54,10 @@
 	// Récupération Nom Client 
 	$condGetRows = array("CLI_ID" => $idClient);
 	$res = $client->getRows($condGetRows); 
-		$nomClient  = $res[0]['cli_nom'];
-		$telClient  = $res[0]['cli_tel'];
+		$nomClient = $res[0]['cli_nom'];
 		$mailClient = $res[0]['cli_mail'];
-		$faxClient  = $res[0]['cli_fax'];
+		$telClient = $res[0]['cli_tel'];
+		$faxClient = $res[0]['cli_fax'];
 		$adrFactClient = $res[0]['cli_adr_fact'];
 		
 	// Récupération Nom Commercial 
@@ -80,7 +80,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
-		<title>Facturation</title>
+		<title>Confirmation de commande</title>
 		<link href="../css/bootstrap.css" rel="stylesheet"/>
 		<link href="../css/style.css" rel="stylesheet"/>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -88,15 +88,21 @@
 		<script type="text/javascript" src="html2canvas/build/jquery.plugin.html2canvas.js"></script>
 	</head>
 
-	<body>
+	<body onload="capture();">
 		<div class="navbar no-print">
-			<div class="navbar-inner">
-				<a class="brand" href="#">Facturation</a>
-				<button class="btn" onclick="capture();">Edition PDF et envoi Mail</button>
+			<!--<div class="navbar-inner">
+				<a class="brand" href="#">Confirmation de commande Client</a>
+				<button class="btn" onclick="capture();">Edition PDF</button>
 				<ul class="nav pull-right">
 					<li><a href="index.php">Retour</a></li>
 				</ul>
-			</div>
+			</div>-->
+		</div>
+		<div class="envoi" style="">
+			<div class="load" style="width:100px;height:100px;margin: 0 auto;"> 
+				&nbsp;
+			</div> 
+			Envoi de la confirmation au client ...
 		</div>
 		<div class="container">
 			    
@@ -105,7 +111,7 @@
 					<div class="span3"><img src="../img/logo.png"/></div>
 					<div class="span6" style="text-align:center;padding-top:40px;">
 						
-						<img alt="" src="barcode.php?id=<?php echo $id_commande;?>&taille=3&font=14">
+						<!--<img alt="" src="barcode.php?id=<?php //echo $id_commande;?>&taille=3&font=14">-->
 						
 					</div>
 					<div class="span3">
@@ -117,11 +123,17 @@
 				</div>
 				<div class="row" style="margin-top:100px;">
 					<div class="span12" style="text-align:center;">
-						<h2>Facture Client n°<?php echo $id_commande;?></h2>
+						<h2>Confirmation de votre commande N° <?php echo $id_commande;?></h2>
 					</div>
 				</div>
 				<br><br><br>
-				
+					
+						<p>Bonjour,</p>
+						<p>Vous avez passé une commande chez CorkTrace et nous vous en remercions. Votre commande a bien été enregistrée.</p>
+						<p>Retrouvez ci-dessous le récapitulatif de votre 
+							commande <b>N° <?php echo $id_commande;?></b> que vous avez passée le <b><?php echo date("d/m/Y", strtotime($dateCmd))?></b>.
+						</p>
+				<br><br>
 				<div class="row-fluid">
 					<div class="span6">
 						<table class="table table-bordered tableSmall">
@@ -131,15 +143,15 @@
 							<tbody>
 								<tr>
 									<th>
-										Numéro de client  <br>
 										N° de commande    <br>
+										Numéro de client  <br>
 										Date de commande  <br>
 										Mode de paiement  <br>
 										Date de livraison <br>
 									</th>
 									<td>
-										<?php echo $idClient;?>     <br>
 										<?php echo $id_commande;?>  <br>
+										<?php echo $idClient;?>     <br>
 										<?php echo date("d/m/Y", strtotime($dateCmd))?>      <br>
 										A réception de facture (sous <?php echo $nbJours;?> jours)<br>
 										<?php echo date("d/m/Y", strtotime($dateLivr)); ?> (estimation)  <br>
@@ -259,6 +271,7 @@
 						</tr>
 					</tbody>
 				</table>
+				
 				<!-- ====================================================================================================== -->
 		
 				<div class="piedpage">
