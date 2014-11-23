@@ -158,14 +158,14 @@
 				
 				<!-- ====================================================================================================== -->
 		
-				<div class="toujoursenbas">
+				<div class="piedpage">
 					Entreprise CorkTrace – Capital : 1 000 000 000 € - Avenue Paul Pascot – 66004 PERPIGNAN <br>
-					Tél : 0404040404 / E-mail : contact@burmy.com
+					Tél : 0404040404 / E-mail : contact@corktrace.fr
 				</div>
 			
 		</div>
 		
-		<form method="POST" enctype="multipart/form-data" action="editPdf.php" id="myForm">
+		<form method="POST" enctype="multipart/form-data" action="editPdf.php?mod=&mail=" id="myForm">
 			<input type="hidden" name="img_val" id="img_val" value="" />
 		</form>
 
