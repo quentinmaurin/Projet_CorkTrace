@@ -190,15 +190,13 @@ Ext.define('CT.view.commandeclient.Add', {
                             Ext.getCmp("commandeclientlist").getView().refresh();
                             Ext.getCmp("gridcommandeclientdetails").getStore().removeAll();
                             Ext.getCmp("window_commandecli_add").close();
-
+                          
                         },                                    
                         failure: function(){
                             alert("echec ajout");
                             Ext.getCmp("window_commandecli_add").close();
                         }
                     });
-
-                 
 
                 }
             },

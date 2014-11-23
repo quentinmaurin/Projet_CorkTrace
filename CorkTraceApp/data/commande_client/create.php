@@ -36,5 +36,5 @@
 	}
 
 	header('Content-Type: application/json');
-	echo '{"success": true}';
+	echo '{"success": true, "ccl_id" : '.$com_id.' }';
 ?>

@@ -24,7 +24,7 @@ Ext.define('CT.view.commandefournisseur.List' ,{
             }
         },
         {
-            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheCmdFourni.php",
+            xtype: 'button', text: 'Commande fournisseur PDF', action: 'visualiserPDF', href:"services/ficheCmdFourni.php",
             listeners : {
                 'click' : function(){
                     console.log("test");
