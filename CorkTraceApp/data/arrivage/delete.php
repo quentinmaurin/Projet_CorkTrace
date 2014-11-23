@@ -4,6 +4,7 @@
 	require_once("../orm/ArrivageDetail.php");
 	require_once("../orm/Conformite.php");
 	require_once("../orm/CommandeFournisseur.php");
+	require_once("../orm/Mesure.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -19,17 +20,19 @@
 	$ArrivageDetail = new ArrivageDetail();
 	$Conformite = new Conformite();
 	$CommandeFournisseur = new CommandeFournisseur();
+	$Mesure = new Mesure();
 
 	/*Supprime les conformités liées aux détails de l'arrivage à supprimer*/
 	$res = $Arrivage->getAllConformite($ari_id);
 	foreach($res as $value){
 		$cond = array('CFM_ID' => $value['cfm_id']);
-		$id = $Conformite->deleteRow($cond);
+		$Conformite->deleteRow($cond);
+		$Mesure->deleteRow($cond);
 	}
 
 	$cond = array( "ARI_ID" => $ari_id);
 
-	///Mettre a jour la commande fournisseur (lien commande/arrivage)
+	//Mettre a jour la commande fournisseur (lien commande/arrivage)
 	$newValue = array( "ARI_ID" => '-1');	
 	$CommandeFournisseur->updateRow($newValue, $cond);
 	
