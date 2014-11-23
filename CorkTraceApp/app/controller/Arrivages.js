@@ -7,7 +7,8 @@ Ext.define('CT.controller.Arrivages', {
 	   
     views: [
     	'arrivage.List',
-        'arrivage.Add'
+        'arrivage.Add',
+        'arrivage.Controle'
     ],
 	   
     init: function() {
