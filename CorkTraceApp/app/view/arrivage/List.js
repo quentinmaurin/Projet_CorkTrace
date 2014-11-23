@@ -65,7 +65,7 @@ Ext.define('CT.view.arrivage.List' ,{
             }
         },
         {
-            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheArrivage.php",
+            xtype: 'button', text: 'Bon de réception PDF', action: 'visualiserPDF', href:"services/ficheArrivage.php",
             listeners : {
                 'click' : function(){
                     console.log("test");

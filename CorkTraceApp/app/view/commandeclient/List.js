@@ -24,7 +24,7 @@ Ext.define('CT.view.commandeclient.List' ,{
             }
         },
         {
-            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheCmdClient.php",
+            xtype: 'button', text: 'Commande client PDF', action: 'visualiserPDF', href:"services/ficheCmdClient.php",
             listeners : {
                 'click' : function(){
                     console.log("test");
@@ -36,7 +36,21 @@ Ext.define('CT.view.commandeclient.List' ,{
                     console.log(this.href);
                 }
             }
-        }, 
+        },
+        {
+            xtype: 'button', text: 'Envoi confirmation par mail', action: 'envoieMail', href:"services/confirmCmdClient.php",
+            listeners : {
+                'click' : function(){
+                    console.log("test");
+                    var row = Ext.getCmp('commandeclientlist').getSelectionModel().getSelection()[0];
+                    var ccl_id = row.get("ccl_id");
+                    console.log(ccl_id);
+                    this.href = "services/confirmCmdClient.php?id="+ccl_id;
+                    this.el.dom.href = this.getHref();
+                    console.log(this.href);
+                }
+            }
+        },
         '->'
     ],
 

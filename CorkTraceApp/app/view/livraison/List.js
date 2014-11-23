@@ -64,18 +64,28 @@ Ext.define('CT.view.livraison.List' ,{
             }
         },
         {
-            xtype: 'button', text: 'Visualiser PDF', action: 'visualiserPDF', href:"services/ficheCmdFourni.php",
+            xtype: 'button', text: 'Bon de livraison PDF', action: 'visualiserPDF', href:"services/ficheLivraison.php",
             listeners : {
                 'click' : function(){
-                    /*
-                    console.log("test");
-                    var row = Ext.getCmp('commandefournisseurlist').getSelectionModel().getSelection()[0];
-                    var cfo_id = row.get("cfo_id");
-                    console.log(cfo_id);
-                    this.href = "services/ficheCmdFourni.php?id="+cfo_id;
+
+                    var row = Ext.getCmp('livraisonlist').getSelectionModel().getSelection()[0];
+                    var liv_id = row.get("liv_id");
+                    this.href = "services/ficheLivraison.php?id="+liv_id;
                     this.el.dom.href = this.getHref();
                     console.log(this.href);
-                    */
+                }
+            }
+        },
+        {
+            xtype: 'button', text: 'Facture PDF', action: 'visualiserPDF', href:"services/factureCmdClient.php",
+            listeners : {
+                'click' : function(){
+
+                    var row = Ext.getCmp('livraisonlist').getSelectionModel().getSelection()[0];
+                    var ccl_id = row.get("ccl_id");
+                    this.href = "services/factureCmdClient.php?id="+ccl_id;
+                    this.el.dom.href = this.getHref();
+                    console.log(this.href);
                 }
             }
         },
