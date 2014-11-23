@@ -4,6 +4,7 @@
 	require_once("../orm/ArrivageDetail.php");
 	require_once("../orm/CommandeFournisseur.php");
 	require_once("../orm/Conformite.php");
+	require_once("../orm/Mesure.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -21,6 +22,7 @@
 	$ArrivageDetail = new ArrivageDetail();
 	$CommandeFournisseur = new CommandeFournisseur();
 	$Conformite = new Conformite();
+	$Mesure = new Mesure();
 
 	$date = date('Y-m-d');
 
@@ -32,6 +34,9 @@
 
 	foreach ($details as $detail) {
 		$cfm_id = $Conformite->insertRow("'NULL', '0', '0', 'En attente', 'En attente', '0', '0', '0'");
+		for($i=0; $i<16; $i++){
+			$Mesure->insertRow(" 'NULL', '0', '0', '0', '".$cfm_id."' ");
+		}
 		$ArrivageDetail->insertRow("'NULL', ".$recep_id.", ".$detail->{'pro_id'}.", '".$cfm_id."', ".$detail->{'ard_quantite'});
 	}
 

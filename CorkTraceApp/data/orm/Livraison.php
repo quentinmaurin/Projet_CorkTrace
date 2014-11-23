@@ -16,6 +16,16 @@ final class Livraison extends Table{
                 "LIV_RESPONSABLE" => "LIV_RESPONSABLE"
         );
 	}
+    public function getAllConformite($liv_id){
+
+        $query = "SELECT t_livrdetail_lid.cfm_id
+        FROM t_livrdetail_lid
+        INNER JOIN t_livraison_liv ON t_livrdetail_lid.liv_id=t_livraison_liv.liv_id
+        WHERE t_livraison_liv.liv_id=".$liv_id;
+        $allRows = $this->db->getResponse($query);
+        
+        return $allRows;
+    }
 	
 }
 
