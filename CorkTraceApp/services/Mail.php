@@ -3,7 +3,7 @@
 	// tuto : http://www.dewep.net/Blog/Article-15/Envoyer-un-E-Mail-avec-PHPMailer
 	
 	require_once('phpmailer/class.phpmailer.php');
-	require_once('phpmailer/class.smtp.php');
+	require_once('phpmailer/class.smtp.php'); 
 	
 	/*$adrMail = $_GET['mail'];
 	$pdf    = $_GET['pdf'];
@@ -30,7 +30,7 @@
 		// Encodage
 		$mail->CharSet = "utf-8";
 
-		// ExpÃ©diteur
+		// Expéditeur
 		$mail->SetFrom('info@corktrace.fr', 'CorkTrace');
 
 		// Objet
@@ -62,7 +62,7 @@
 				<br><br>";	
 		}
 		
-		$mail->Body .= "Merci de votre intÃ©rÃªt pour CorkTrace.<br>
+		$mail->Body .= "Merci de votre intérêt pour CorkTrace.<br>
 						Cordialement,<br><br>
 						<table>
 							<tr>
@@ -70,7 +70,7 @@
 									<img src='cid:mon_logo' alt='Logo'/><br><br>
 								</td>
 								<td>
-									<b>GÃ©rard Mensoif</b><br>
+									<b>Gérard Mensoif</b><br>
 									Service client CorkTrace<br>
 									Tel : 04 68 65 45 43<br>
 									Mail : gerard.mensoif@corktrace.fr<br>

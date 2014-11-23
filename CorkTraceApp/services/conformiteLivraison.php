@@ -28,23 +28,23 @@
 	$adress = new Adress();
 	
 
-	$id_livraison = $_GET['id'];
+	$idLivraisonDetail = $_GET['id'];
+
 	
+	// Récupération informations table CommandeClientDetail
+	$condGetRows = array("LID_ID" => $idLivraisonDetail);
+	$res = $livraisonDetail->getRows($condGetRows); 
+		$idLivraison      = $res[0]['liv_id'];
+		$idArrivageDetail = $res[0]['ard_id'];
+		$quantite         = $res[0]['lid_quantite'];
+		$idConformite     = $res[0]['cfm_id'];
+		
 	// Récupération informations table CommandeClient
-	$condGetRows = array("LIV_ID" => $id_livraison);
+	$condGetRows = array("LIV_ID" => $idLivraison);
 	$res = $livraison->getRows($condGetRows); 
 		$idCommande   = $res[0]['ccl_id'];
 		$dateLivr     = $res[0]['liv_dateLiv'];
 		$responsable  = $res[0]['liv_responsable'];
-
-
-	// Récupération informations table CommandeClientDetail
-	$condGetRows = array("LIV_ID" => $id_livraison);
-	$res = $livraisonDetail->getRows($condGetRows); 
-		$idLivDetail      = $res[0]['lid_id'];
-		$idArrivageDetail = $res[0]['ard_id'];
-		$quantite         = $res[0]['lid_quantite'];
-		$idConformite     = $res[0]['cfm_id'];
 	
 	// Récupération informations table CommandeClient
 	$condGetRows = array("CCL_ID" => $idCommande);
@@ -147,7 +147,7 @@
 					<table class="table table-bordered tableSmall">
 						<tr>
 							<th>N° de commande</th>
-							<td><?php echo "CMD$id_livraison";?></td>
+							<td><?php echo "CMD$idLivraison";?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -180,7 +180,7 @@
 					</table>
 				</div>
 				<div class="span6" style="text-align:center;">
-					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "CMD$id_livraison";?>&taille=3&font=14">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "LID$idLivraisonDetail";?>&taille=3&font=14">
 				</div>
 			</div>
 			

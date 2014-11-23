@@ -16,22 +16,22 @@
 	$fournisseur = new Fournisseur();
 	$produit = new Produit();
 	
-	$id_arrivage = $_GET['id'];
+	$idArrivageDetail = $_GET['id'];
 
+
+	// Récupération informations table ArrivageDetail
+	$condGetRows = array("ARD_ID" => $idArrivageDetail);
+	$res = $arrivageDetail->getRows($condGetRows); 
+		$idArrivage    = $res[0]['ari_id'];
+		$idProduit     = $res[0]['pro_id'];
+		$idConformite  = $res[0]['cfm_id'];
+		$quantite      = $res[0]['ard_quantite'];
+		
 	// Récupération informations table Arrivage
-	$condGetRows = array("ARI_ID" => $id_arrivage);
+	$condGetRows = array("ARI_ID" => $idArrivage);
 	$res = $arrivage->getRows($condGetRows); 
-		//$numArrivage =  $res[0]['ari_num_arrivage'];
 		$responsable =  $res[0]['ari_responsable'];
 		$dateRecept  =  $res[0]['ari_date_recept'];
-	
-	// Récupération informations table ArrivageDetail
-	$condGetRows = array("ARI_ID" => $id_arrivage);
-	$res = $arrivageDetail->getRows($condGetRows); 
-		$idArrivageDetail = $res[0]['ard_id'];
-		$idProduit        = $res[0]['pro_id'];
-		$idConformite     = $res[0]['cfm_id'];
-		$quantite         = $res[0]['ard_quantite'];
 		
 	// Récupération informations table Conformité
 	$condGetRows = array("CFM_ID" => $idConformite);
@@ -56,7 +56,7 @@
 		$tailleProduit = $res[0]['pro_taille'];
 	
 	// Récupération id fournisseur 
-	$condGetRows = array("ARI_ID" => $id_arrivage);
+	$condGetRows = array("ARI_ID" => $idArrivage);
 	$res = $commandeFournisseur->getRows($condGetRows); 
 	$idFournisseur = $res[0]['fou_id'];
 	
@@ -106,7 +106,7 @@
 					<table class="table table-bordered tableSmall">
 						<tr>
 							<th>N° d’arrivage</th>
-							<td><?php echo "ARI$id_arrivage";?></td>
+							<td><?php echo "ARI$idArrivage";?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -135,7 +135,7 @@
 					</table>
 				</div>
 				<div class="span6" style="text-align:center;">
-					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "ARI$id_arrivage";?>&taille=3&font=14">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "ARD$idArrivageDetail";?>&taille=3&font=14">
 				</div>
 			</div>
 			

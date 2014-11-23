@@ -22,7 +22,7 @@ final class CommandeClientDetail extends Table{
 
         $query = "SELECT t_cmdclidetail_ccd.ccd_id, t_cmdclidetail_ccd.pro_id, t_produit_pro.pro_nom,
         t_produit_pro.pro_taille, t_produit_pro.pro_qualite,
-        t_cmdclidetail_ccd.ccd_quantite, t_cmdclidetail_ccd.ccd_prix
+        t_cmdclidetail_ccd.ccd_quantite, t_cmdclidetail_ccd.ccd_prix, t_cmdclidetail_ccd.ccd_marquage
 				  FROM t_cmdclidetail_ccd 
 					INNER JOIN t_produit_pro 
 					ON t_cmdclidetail_ccd.pro_id = t_produit_pro.pro_id 

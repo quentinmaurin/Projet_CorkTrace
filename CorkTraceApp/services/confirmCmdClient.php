@@ -238,7 +238,7 @@
 						
 								echo "
 									<tr>
-										<td>".$detailCommande[$i]['pro_nom']."</td>
+										<td>".$detailCommande[$i]['pro_nom']." <i class='marquage'>(marquage : ".$detailCommande[$i]['ccd_marquage'].")</i></td>
 										<td class='alignRight'>".$detailCommande[$i]['pro_id']."</td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_prix']." €</td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_quantite']."</td>
