@@ -83,6 +83,13 @@ Ext.define('CT.view.arrivage.List' ,{
             'click' : function(){
                     
                     var view = Ext.widget('arrivagecontrole');
+
+                    var row = Ext.getCmp('arrivagelist').getSelectionModel().getSelection()[0];
+                    var ari_id = row.get("ari_id");
+                    Ext.getCmp('gridarrivagecontroledetails').getStore().getProxy().extraParams = {
+                        ari_id: ari_id
+                    };
+                    Ext.getCmp('gridarrivagecontroledetails').getStore().load();
                 }
             }
         },

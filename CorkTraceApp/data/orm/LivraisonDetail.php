@@ -17,6 +17,18 @@ final class LivraisonDetail extends Table{
                 "CFM_ID"       => "CFM_ID"
         );
 	}
+
+        public function getAllByLivraison($liv_id){
+
+                $query = "SELECT *
+                FROM t_livrdetail_lid 
+                INNER JOIN t_conformite_cfm ON t_livrdetail_lid.cfm_id=t_conformite_cfm.cfm_id
+                WHERE t_livrdetail_lid.liv_id = ".$liv_id;
+
+                $allRows = $this->db->getResponse($query);
+
+                return $allRows;
+        }
 	
 }
 

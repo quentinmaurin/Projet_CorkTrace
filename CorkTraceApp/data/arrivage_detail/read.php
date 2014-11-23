@@ -2,9 +2,18 @@
 
 	require_once("../orm/ArrivageDetail.php");
 
+	$ari_id	= isset ($_GET["ari_id"]) ? $_GET["ari_id"] : "undefined";
 	$ArrivageDetail = new ArrivageDetail();
 
-	$res = $ArrivageDetail->getAll();
+	if($ari_id == "undefined"){
+
+		$res = $ArrivageDetail->getAll();
+
+	}else{
+
+		$res = $ArrivageDetail->getAllByArrivage($ari_id);
+	}
+
 	
 	$i= 0;
 	$o["arrivages_details"] = "";

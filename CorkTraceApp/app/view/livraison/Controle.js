@@ -1,13 +1,13 @@
-Ext.define('CT.view.arrivage.Controle', {
+Ext.define('CT.view.livraison.Controle', {
     extend: 'Ext.window.Window',
-    alias: 'widget.arrivagecontrole',
+    alias: 'widget.livraisoncontrole',
 
-    title: 'Controler Arrivage',
+    title: 'Controler livraison',
     layout: 'border',
     autoShow: true,
     width:"100%",
     height:"100%",
-    id:"window_arrivage_controle",
+    id:"window_livraison_controle",
     closable:true,
 
     initComponent: function() {
@@ -20,27 +20,27 @@ Ext.define('CT.view.arrivage.Controle', {
                 xtype:"grid",
                 region:"center",
                 title:"Details",
-                store:"ArrivageDetails",
-                id : "gridarrivagecontroledetails",
+                store:"LivraisonDetails",
+                id : "gridlivraisoncontroledetails",
                 columns : [
-                    {header: 'Cfd Id',  dataIndex: 'ard_id',  flex: 1},
+                    {header: 'Lid Id',  dataIndex: 'lid_id',  flex: 1},
                     {header: 'Pro Id', dataIndex: 'pro_id', flex: 1},
                     {header: 'Nom', dataIndex: 'pro_nom', flex: 1},
                     {header: 'Taille', dataIndex: 'pro_taille', flex: 1},
                     {header: 'Qualite', dataIndex: 'pro_qualite', flex: 1},
-                    {header: 'Ari Qte', dataIndex: 'ard_quantite', flex: 1},
+                    {header: 'Lid Qte', dataIndex: 'lid_quantite', flex: 1},
                     {header: 'Cfm Id', dataIndex: 'cfm_id', flex: 1},
                     {header: 'Gout', dataIndex: 'cfm_gout', flex: 1}
                 ],
                 listeners : {
                     'itemclick': function( grid, record, item, index, e, eOpts ){
 
-                        Ext.getCmp('gridarrivagecontrolemesures').getStore().getProxy().extraParams = {
+                        Ext.getCmp('gridlivraisoncontrolemesures').getStore().getProxy().extraParams = {
                             cfm_id: record.get("cfm_id")
                         };
-                        Ext.getCmp('gridarrivagecontrolemesures').getStore().load();
+                        Ext.getCmp('gridlivraisoncontrolemesures').getStore().load();
 
-                        Ext.getCmp('form_controle_arrivage_details').getForm().loadRecord(record);
+                        Ext.getCmp('form_controle_livraison_details').getForm().loadRecord(record);
                     }
                 }
             },{
@@ -52,7 +52,7 @@ Ext.define('CT.view.arrivage.Controle', {
                     text:"Valider la confirmite et les mesures de ce lot",
                     handler : function(){
 
-                        var store = Ext.getCmp("gridarrivagecontrolemesures").getStore();
+                        var store = Ext.getCmp("gridlivraisoncontrolemesures").getStore();
                         var details = new Array();
                         store.each(function(record,idx){
 
@@ -65,9 +65,9 @@ Ext.define('CT.view.arrivage.Controle', {
                             });
                         });
 
-                        var values = Ext.getCmp("form_controle_arrivage_details").getForm().getValues();
-                        var cfm_id = Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_id").getValue();
-                        var cfm_decision = Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_decision").getValue();
+                        var values = Ext.getCmp("form_controle_livraison_details").getForm().getValues();
+                        var cfm_id = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_id").getValue();
+                        var cfm_decision = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_decision").getValue();
 
                         var data = new Object();
                         data.cfm_id = cfm_id;
@@ -91,10 +91,10 @@ Ext.define('CT.view.arrivage.Controle', {
                             scope:this,
                             success: function(response, opts) {
                               
-                                var values = Ext.getCmp("form_controle_arrivage_details").getForm().getValues();
-                                var cfm_id = Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_id").getValue();
-                                var cfm_decision = Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_decision").getValue();
-                                var row = Ext.getCmp('gridarrivagecontroledetails').getSelectionModel().getSelection()[0];
+                                var values = Ext.getCmp("form_controle_livraison_details").getForm().getValues();
+                                var cfm_id = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_id").getValue();
+                                var cfm_decision = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_decision").getValue();
+                                var row = Ext.getCmp('gridlivraisoncontroledetails').getSelectionModel().getSelection()[0];
                                 row.set(values);
                                 row.set("cfm_decision", cfm_decision);
 
@@ -108,20 +108,20 @@ Ext.define('CT.view.arrivage.Controle', {
                 },{
                     text:"Generer automatiquement pour ce lot"
                 },{
-                    text:"PDF Conformite du lot", href:"services/conformiteArrivage.php",
+                    text:"PDF Conformite du lot", href:"services/conformiteLivraison.php",
                     listeners : {
                         'click' : function(){
 
-                            var row = Ext.getCmp('gridarrivagecontroledetails').getSelectionModel().getSelection()[0];
-                            var ard_id = row.get("ard_id");
-                            this.href = "services/conformiteArrivage.php?id="+ard_id;
+                            var row = Ext.getCmp('gridlivraisoncontroledetails').getSelectionModel().getSelection()[0];
+                            var lid_id = row.get("lid_id");
+                            this.href = "services/conformiteLivraison.php?id="+lid_id;
                             this.el.dom.href = this.getHref();
                         }
                     }
                 },'->'],
                 items:[{
                     xtype:"form",
-                    id : "form_controle_arrivage_details",
+                    id : "form_controle_livraison_details",
                     region:"north",
                     height:"20%",
                     title:"Controle",
@@ -184,7 +184,7 @@ Ext.define('CT.view.arrivage.Controle', {
                     region:"center",
                     title:"Les 16 mesures par lot",
                     store:"Mesures",
-                    id : "gridarrivagecontrolemesures",
+                    id : "gridlivraisoncontrolemesures",
                     plugins: [ Ext.create('Ext.grid.plugin.CellEditing', {
                         clicksToEdit: 1
                     })],

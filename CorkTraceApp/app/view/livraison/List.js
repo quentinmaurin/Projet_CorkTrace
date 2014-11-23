@@ -88,6 +88,21 @@ Ext.define('CT.view.livraison.List' ,{
                     console.log(this.href);
                 }
             }
+        },{
+            xtype: 'button', text: 'Controler livraison', action: 'controleLivraison',
+            listeners : {
+            'click' : function(){
+                    
+                    var view = Ext.widget('livraisoncontrole');
+
+                    var row = Ext.getCmp('livraisonlist').getSelectionModel().getSelection()[0];
+                    var liv_id = row.get("liv_id");
+                    Ext.getCmp('gridlivraisoncontroledetails').getStore().getProxy().extraParams = {
+                        liv_id: liv_id
+                    };
+                    Ext.getCmp('gridlivraisoncontroledetails').getStore().load();
+                }
+            }
         },
         '->'
     ],
