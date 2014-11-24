@@ -79,7 +79,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8"/>
-		<title>Fiche Commande Client</title>
+		<title>Bon de livraison</title>
 		<link href="../css/bootstrap.css" rel="stylesheet"/>
 		<link href="../css/style.css" rel="stylesheet"/>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -104,12 +104,12 @@
 					<div class="span4">
 					</div>
 					<div class="span4" style="text-align:center;padding-top:40px;">
-						<img alt="" src="barcode.php?id=LID<?php echo $idLivraison;?>&taille=3&font=14">
+						<img alt="" src="barcode.php?id=<?php echo $idLivraison;?>&taille=3&font=14">
 					</div>
 				</div>
 				
 				<div style="margin-top:100px; text-align:center;">
-						<h2>Bon de livraison n° LID<?php echo $idLivraison;?></h2>
+						<h2>Bon de livraison n° <?php echo $idLivraison;?></h2>
 				</div>
 				
 				<br><br><br>
@@ -173,6 +173,8 @@
 						<tr class="colorEnteteFact">
 							<th class="alignCenter" style="width: 10%;">N° de lot</th>
 							<th class="alignCenter">Désignation</th>
+							<th class="alignCenter">Marquage</th>
+							<th class="alignCenter">Qualité</th>
 							<th class="alignCenter" style="width: 10%;">Quantité</th>
 							<th class="alignCenter" style="width: 20%;">Code barre</th>
 
@@ -192,12 +194,15 @@
 								$condGetRows = array("PRO_ID" => $idProduit);
 								$res = $produit->getRows($condGetRows); 
 									$nomProduit = $res[0]['pro_nom'];
+									$qualiteProduit = $res[0]['pro_qualite'];
 								
 								
 								echo "
 									<tr>
 										<td class='alignCenter'>".$detailLivraison[$i]['lid_id']."</td>
 										<td>".$nomProduit."</td>
+										<td><i class='marquage'>".$detailLivraison[$i]['lid_marquage']."</i></td>
+										<td><i class='marquage'>".$qualiteProduit."</i></td>
 										<td class='alignRight'>".$detailLivraison[$i]['lid_quantite']."</td>
 										<td class='alignCenter'><img src='barcode.php?id=". $detailLivraison[$i]['lid_id']."&taille=2&font=0'></td>
 

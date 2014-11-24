@@ -144,7 +144,7 @@
 					<table class="table table-bordered tableSmall">
 						<tr>
 							<th>N° de commande</th>
-							<td><?php echo "CMD$idLivraison";?></td>
+							<td><?php echo "$idLivraison";?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -177,7 +177,7 @@
 					</table>
 				</div>
 				<div class="span6" style="text-align:center;">
-					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "LID$idLivraisonDetail";?>&taille=3&font=14">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "$idLivraisonDetail";?>&taille=3&font=14">
 				</div>
 			</div>
 			
