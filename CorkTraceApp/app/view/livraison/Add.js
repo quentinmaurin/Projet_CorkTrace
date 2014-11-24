@@ -114,6 +114,7 @@ Ext.define('CT.view.livraison.Add', {
 
                             Ext.getCmp("livraisonlist").getStore().reload();
                             Ext.getCmp("livraisonlist").getView().refresh();
+                            Ext.getCmp("gridlivraisondetails").getStore().removeAll();
                             Ext.getCmp("window_livraison_add").close();
                         },                                   
                         failure: function(){
@@ -146,7 +147,11 @@ Ext.define('CT.view.livraison.Add', {
             {
                 text: 'Annuler',
                 scope: this,
-                handler: this.close
+                handler: function(){
+
+                    Ext.getCmp("gridlivraisondetails").getStore().removeAll();
+                    Ext.getCmp("window_livraison_add").close();
+                }
             }
         ];
 
