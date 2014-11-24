@@ -52,8 +52,8 @@
 	$goutAcceptation = "oui";
 	$toleranceTcaInt = 2;
 	$toleranceTcaFou = 2;
-	$hmMax = 4;
-	$hmMin = 8;
+	$hmMax = 8;
+	$hmMin = 4;
 	$toleranceDiamCompr = 90;
 
 	$echantillonLg = array();

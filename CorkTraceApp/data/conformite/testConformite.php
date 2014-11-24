@@ -59,7 +59,7 @@
 		$tabConfo['Gout']=($gout==$goutAcceptation)?1:0;
 		$tabConfo['TCAFournisseur']=($tcaFou<$toleranceTcaFou)?1:0;
 		$tabConfo['TCAInterne']=($tcaInt<$toleranceTcaInt)?1:0;
-		$tabConfo['Capilarite']=($capilarite==1)?1:0;
+		$tabConfo['Capilarite']=($capilarite==1)?0:1;
 		$tabConfo['Humidite']=($humidite<$hmMax && $humidite>$hmMin)?1:0;
 		$tabConfo['DiametreCompression']=($diamCompr>$toleranceDiamCompr)?1:0;
 						   
@@ -85,13 +85,14 @@
 								   $capilarite,
 								   $humidite,$hmMax,$hmMin,
 								   $diamCompr,$toleranceDiamCompr);
+		//print_r($tabSourcesNonConformite);
 
 		$conforme=1;					   
 		foreach($tabSourcesNonConformite as $value){
-			if(!$value){
+			if($value == 0){
 				$conforme=0;
 			}
 		}
-		return conforme;
+		return $conforme;
 	}
 ?>
