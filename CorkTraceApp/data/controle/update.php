@@ -2,6 +2,7 @@
 
 	require_once("../orm/Conformite.php");
 	require_once("../orm/Mesure.php");
+	require_once("../conformite/testConformite.php");
 
 	$data = json_decode($_POST['data']);
 
@@ -40,6 +41,50 @@
 		die("Valeurs manquantes");
 	}
 
+	$lgMax = 10;
+	$lgMin = 8;
+	$nbToleranceLg = 2;
+	$dmMax = 50;
+	$dmMin = 49;
+	$nbToleranceDm = 2;
+	$ovMax = 0.7;
+	$nbToleranceOv = 5;
+	$goutAcceptation = "CORRECT";
+	$toleranceTcaInt = 1;
+	$toleranceTcaFou = 1;
+	$hmMax = 4;
+	$hmMin = 8;
+	$toleranceDiamCompr = 94;
+
+	$echantillonLg = array();
+	$echantillonDm = array();
+	$echantillonOv = array();
+
+	foreach ($details as $detail) {
+
+		array_push($echantillonLg, $detail->{'mes_longueur'});
+		array_push($echantillonDm, $detail->{'mes_diam'});
+		array_push($echantillonOv, $detail->{'mes_oval'});
+	}
+
+	$is_conforme = isEchantillonConforme(
+	   $echantillonLg,$lgMax,$lgMin,$nbToleranceLg,
+	   $echantillonDm,$dmMax,$dmMin,$nbToleranceDm,
+	   $echantillonOv,$ovMax,$nbToleranceOv,
+	   $cfm_gout,$goutAcceptation,
+	   $cfm_tca_fourni, $toleranceTcaFou,
+	   $cfm_tca_inter, $toleranceTcaInt,
+	   $cfm_capilarite,
+	   $cfm_humidite,$hmMax,$hmMin,
+	   $cfm_diamcompr, $toleranceDiamCompr
+	);
+
+	if( $is_conforme == 1 ){
+		$cfm_decision = "Conforme";
+	}else{
+		$cfm_decision = "Non conforme";
+	}
+
 	$Conformite = new Conformite();
 	$cond = array('CFM_ID' => $cfm_id);
 	$newValue = array(
@@ -66,5 +111,5 @@
 		$Mesure->updateRow($newValue, $cond);
 	}
 
-	echo '{ "success": true}';
+	echo '{ "success": true, "cfm_decision" : "'.$cfm_decision.'" }';
 ?>

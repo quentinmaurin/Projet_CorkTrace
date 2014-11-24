@@ -91,8 +91,11 @@ Ext.define('CT.view.livraison.Controle', {
                             scope:this,
                             success: function(response, opts) {
                               
+                                var responseParse = JSON.parse(response.responseText);
+
                                 var values = Ext.getCmp("form_controle_livraison_details").getForm().getValues();
                                 var cfm_id = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_id").getValue();
+                                Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_decision").setValue(responseParse.cfm_decision);
                                 var cfm_decision = Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_decision").getValue();
                                 var row = Ext.getCmp('gridlivraisoncontroledetails').getSelectionModel().getSelection()[0];
                                 row.set(values);
