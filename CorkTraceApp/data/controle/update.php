@@ -41,20 +41,20 @@
 		die("Valeurs manquantes");
 	}
 
-	$lgMax = 10;
-	$lgMin = 8;
+	$lgMax = 38.5;
+	$lgMin = 37.5;
 	$nbToleranceLg = 2;
-	$dmMax = 50;
-	$dmMin = 49;
+	$dmMax = 24.5;
+	$dmMin = 23.5;
 	$nbToleranceDm = 2;
 	$ovMax = 0.7;
 	$nbToleranceOv = 5;
-	$goutAcceptation = "CORRECT";
-	$toleranceTcaInt = 1;
-	$toleranceTcaFou = 1;
+	$goutAcceptation = "oui";
+	$toleranceTcaInt = 2;
+	$toleranceTcaFou = 2;
 	$hmMax = 4;
 	$hmMin = 8;
-	$toleranceDiamCompr = 94;
+	$toleranceDiamCompr = 90;
 
 	$echantillonLg = array();
 	$echantillonDm = array();

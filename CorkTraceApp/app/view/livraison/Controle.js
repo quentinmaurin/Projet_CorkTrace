@@ -49,7 +49,7 @@ Ext.define('CT.view.livraison.Controle', {
                 width: "70%",
                 layout : "border",
                 bbar: ['->',{
-                    text:"Valider la confirmite et les mesures de ce lot",
+                    text:"Verifier conformite et sauvegarder ce lot",
                     handler : function(){
 
                         var store = Ext.getCmp("gridlivraisoncontrolemesures").getStore();
@@ -109,7 +109,50 @@ Ext.define('CT.view.livraison.Controle', {
 
                     }
                 },{
-                    text:"Generer automatiquement pour ce lot"
+                    text:"Generer automatiquement pour ce lot",
+                    listeners : {
+                        'click' : function(){
+
+                            var data = {
+                                "hauteur" : 38
+                            };
+
+                            Ext.Ajax.request({
+                                url: 'data/generation_valeur/genere_livraison.php',
+                                method: 'POST',          
+                                waitTitle: 'Connecting',
+                                waitMsg: 'Sending data...',                                     
+                                params: {
+                                    "hauteur" : JSON.stringify(data)
+                                },
+                                scope:this,
+                                success: function(response, opts) {
+                                  
+                                    var responseParse = JSON.parse(response.responseText);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_gout").setValue(responseParse.data.cfm_gout);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_tca_fourni").setValue(responseParse.data.cfm_tca_fourni);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_tca_inter").setValue(responseParse.data.cfm_tca_inter);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_diamcompr").setValue(responseParse.data.cfm_diamcompr);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_humidite").setValue(responseParse.data.cfm_humidite);
+                                    Ext.getCmp("form_controle_livraison_details").getForm().findField("cfm_capilarite").setValue(responseParse.data.cfm_capilarite);
+
+                                    var store = Ext.getCmp("gridlivraisoncontrolemesures").getStore();
+                                    var i =0;
+                                    for(i=0; i < responseParse.details.length;i++){
+                                    
+                                        var row = store.getAt(i);
+                                        row.set("mes_longueur", responseParse.details[i]["mes_longueur"]);
+                                        row.set("mes_diam", responseParse.details[i]["mes_diam"]);
+                                        row.set("mes_oval", responseParse.details[i]["mes_oval"]);
+                                    }
+
+                                },                                    
+                                failure: function(){
+                                    alert("echec ajout");
+                                }
+                            });
+                        }
+                    }
                 },{
                     text:"PDF Conformite du lot", href:"services/conformiteLivraison.php",
                     listeners : {
