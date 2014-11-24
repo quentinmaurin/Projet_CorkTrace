@@ -102,6 +102,7 @@ Ext.define('CT.view.arrivage.Add', {
 
                             Ext.getCmp("arrivagelist").getStore().reload();
                             Ext.getCmp("arrivagelist").getView().refresh();
+                            Ext.getCmp("gridarrivagedetails").getStore().removeAll();
                             Ext.getCmp("window_arrivage_add").close();
                         },                                   
                         failure: function(){
@@ -116,7 +117,11 @@ Ext.define('CT.view.arrivage.Add', {
             {
                 text: 'Annuler',
                 scope: this,
-                handler: this.close
+                handler: function(){
+
+                    Ext.getCmp("gridarrivagedetails").getStore().removeAll();
+                    Ext.getCmp("window_arrivage_add").close();
+                }
             }
         ];
 
