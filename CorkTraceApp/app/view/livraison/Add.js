@@ -124,6 +124,24 @@ Ext.define('CT.view.livraison.Add', {
                     });
 
                 }
+            },{
+                text: 'Dupliquer la ligne',
+                handler: function(){
+                    var row = Ext.getCmp('gridlivraisondetails').getSelectionModel().getSelection()[0];
+                    var duplicateRow = Ext.create('CT.model.CommandeClientDetail', {
+                        ccd_id: row.get('ccd_id'),
+                        pro_id: row.get('pro_id'),
+                        pro_nom: row.get('pro_nom'),
+                        pro_taille: row.get('pro_taille'),
+                        pro_qualite: row.get('pro_qualite'),
+                        ccd_marquage: row.get('ccd_marquage'),
+                        ccd_prix: row.get('ccd_prix'),
+                        ccd_quantite: row.get('ccd_quantite'),
+                    });
+
+                    console.log(duplicateRow);
+                    Ext.getCmp('gridlivraisondetails').getStore().add(duplicateRow);
+                }
             },
             {
                 text: 'Annuler',
