@@ -251,7 +251,7 @@
 										<td>".$nomProduit."</td>
 										<td><i class='marquage'>".$detailLivraison[$i]['lid_marquage']."</i></td>
 										<td><i class='marquage'>".$qualiteProduit."</i></td>
-										<td class='alignRight'>".$idProduit."</td>
+										<td class='alignRight'>".$detailLivraison[$i]['ard_id']."</td>
 										<td class='alignRight'>".$detailLivraison[$i]['lid_prix']." €</td>
 										<td class='alignRight'>".$detailLivraison[$i]['lid_quantite']."</td>
 										<td class='alignRight'>".$montantHT." €</td>

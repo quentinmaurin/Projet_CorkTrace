@@ -52,6 +52,7 @@
 							<li><a href="conformiteArrivage.php?id=1"  target="blank">Conformité Arrivage</a></li>
 							<li><a href="conformiteLivraison.php?id=1" target="blank">Conformité Livraison</a></li>
 							<li><a href="editionCodeBarre.php?id=1"    target="blank">Edition Etiquette</a></li>
+							<li><a href="etiquetteCommande.php?id=1"    target="blank">Etiquette Cmd</a></li>
 						</ul>
 					</div>
 				</div>
