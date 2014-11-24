@@ -19,7 +19,7 @@
 	}
 
 	$Mesure= new Mesure();
-	$id = $Mesure->insertRow('"NULL", "'.$mes_longueur.'","'.$mes_diam.'", "'.$mes_oval.'", "'.$cfm_id.'"');
+	$id = $Mesure->insertRow(' "NULL", "'.$mes_longueur.'","'.$mes_diam.'", "'.$mes_oval.'", "'.$cfm_id.'" ');
 
 	//echo $id;
 

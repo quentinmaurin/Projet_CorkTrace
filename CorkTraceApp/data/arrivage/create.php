@@ -26,18 +26,18 @@
 
 	$date = date('Y-m-d');
 
-	$recep_id = $Arrivage->insertRow("'NULL', '0', '".$date."', '".$ari_responsable."'");
+	$recep_id = $Arrivage->insertRow('"NULL", "0", "'.$date.'", "'.$ari_responsable.'"');
 
 	$newValue = array( "ARI_ID" => $recep_id);
 	$cond = array( "CFO_ID" => $cfo_id);
 	$CommandeFournisseur->updateRow($newValue, $cond);
 
 	foreach ($details as $detail) {
-		$cfm_id = $Conformite->insertRow("'NULL', '0', '0', 'En attente', 'En attente', '0', '0', '0'");
+		$cfm_id = $Conformite->insertRow('"NULL", "0", "0", "En attente", "En attente", "0", "0", "0"');
 		for($i=0; $i<16; $i++){
-			$Mesure->insertRow(" 'NULL', '0', '0', '0', '0', '".$cfm_id."' ");
+			$Mesure->insertRow('"NULL", "0", "0", "0", "0", "'.$cfm_id.'"');
 		}
-		$ArrivageDetail->insertRow("'NULL', ".$recep_id.", ".$detail->{'pro_id'}.", '".$cfm_id."', ".$detail->{'ard_quantite'});
+		$ArrivageDetail->insertRow('"NULL", "'.$recep_id.'", "'.$detail->{'pro_id'}.'", "'.$cfm_id.'", "'.$detail->{'ard_quantite'}.'"');
 	}
 
 	header('Content-Type: application/json');

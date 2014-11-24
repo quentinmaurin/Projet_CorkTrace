@@ -24,9 +24,7 @@
 	}
 
 	$Fournisseur = new Fournisseur();
-	$id = $Fournisseur->insertRow('"NULL", "'.$fou_nom.'","'.$fou_adresse.'", "'.$fou_mail.'", "'.$fou_tel.'", "'.$fou_fax.'", "'.$tyf_id.'"');
-
-	//echo $id;
+	$id = $Fournisseur->insertRow(' "NULL", "'.$fou_nom.'","'.$fou_adresse.'", "'.$fou_mail.'", "'.$fou_tel.'", "'.$fou_fax.'", "'.$tyf_id.'" ');
 
 	header('Content-Type: application/json');
 	echo '{"success": true, "data" : { "fou_id" : '.$id.'}}';

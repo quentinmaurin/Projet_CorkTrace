@@ -16,17 +16,6 @@
 	$cfm_diamcompr 	= isset ($data->{'cfm_diamcompr'}) ? $data->{'cfm_diamcompr'} : "undefined";
 	$cfm_decision 	= isset ($data->{'cfm_decision'}) ? $data->{'cfm_decision'} : "undefined";
 	$details 		= isset ($data->{'details'}) ? $data->{'details'} : "undefined";
-	
-	/*
-	echo $cfm_id."<br>";
-	echo "fourni : ".$cfm_tca_fourni."<br>";
-	echo "inter : ".$cfm_tca_inter."<br>";
-	echo "gout : ".$cfm_gout."<br>";
-	echo "capilarite : ".$cfm_capilarite."<br>";
-	echo "humidite : ".$cfm_humidite."<br>";
-	echo "diam compr : ".$cfm_diamcompr."<br>";
-	echo "deicsion : ".$cfm_decision."<br>";
-	*/
 
 	if( $cfm_id == "undefined" ||
 		$cfm_tca_fourni == "undefined" ||
