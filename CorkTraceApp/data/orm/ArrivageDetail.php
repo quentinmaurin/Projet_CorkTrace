@@ -23,6 +23,7 @@ final class ArrivageDetail extends Table{
                 $query = "SELECT *
                 FROM t_arrivagedetail_ard 
                 INNER JOIN t_conformite_cfm ON t_arrivagedetail_ard.cfm_id=t_conformite_cfm.cfm_id
+                INNER JOIN t_produit_pro ON t_arrivagedetail_ard.pro_id=t_produit_pro.pro_id
                 WHERE t_arrivagedetail_ard.ari_id = ".$ari_id;
 
                 $allRows = $this->db->getResponse($query);
