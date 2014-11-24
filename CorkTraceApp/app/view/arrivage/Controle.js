@@ -52,6 +52,8 @@ Ext.define('CT.view.arrivage.Controle', {
                     text:"Verifier conformite et sauvegarder ce lot",
                     handler : function(){
 
+
+                        var row = Ext.getCmp('gridarrivagecontroledetails').getSelectionModel().getSelection()[0];
                         var store = Ext.getCmp("gridarrivagecontrolemesures").getStore();
                         var details = new Array();
                         store.each(function(record,idx){
@@ -78,6 +80,7 @@ Ext.define('CT.view.arrivage.Controle', {
                         data.cfm_humidite = values.cfm_humidite;
                         data.cfm_diamcompr = values.cfm_diamcompr;
                         data.cfm_decision = cfm_decision;
+                        data.hauteur = row.get("pro_taille");
                         data.details = details;
 
                         Ext.Ajax.request({
@@ -113,8 +116,9 @@ Ext.define('CT.view.arrivage.Controle', {
                     listeners : {
                         'click' : function(){
 
+                            var row = Ext.getCmp('gridarrivagecontroledetails').getSelectionModel().getSelection()[0];
                             var data = {
-                                "hauteur" : 38
+                                "hauteur" : row.get("pro_taille")
                             };
 
                             Ext.Ajax.request({
@@ -123,7 +127,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                 waitTitle: 'Connecting',
                                 waitMsg: 'Sending data...',                                     
                                 params: {
-                                    "hauteur" : JSON.stringify(data)
+                                    "data" : JSON.stringify(data)
                                 },
                                 scope:this,
                                 success: function(response, opts) {

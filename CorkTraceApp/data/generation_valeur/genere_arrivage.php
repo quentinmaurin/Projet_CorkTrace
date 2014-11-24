@@ -2,7 +2,15 @@
 
 	require_once('valeurs_auto.php');
 	
-	$tab_arrivage = valeurs_arrivage(38);
+	$data = json_decode($_POST['data']);
+	$hauteur = isset ($data->{'hauteur'}) ? $data->{'hauteur'} : "undefined";
+
+	if( $hauteur == "undefined" ){
+
+		die("Valeurs manquantes");
+	}
+
+	$tab_arrivage = valeurs_arrivage($hauteur);
 
 	$tab_return["data"]["cfm_tca_fourni"] = $tab_arrivage[3];
 	$tab_return["data"]["cfm_tca_inter"] = $tab_arrivage[4];

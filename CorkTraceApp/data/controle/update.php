@@ -15,6 +15,7 @@
 	$cfm_humidite 	= isset ($data->{'cfm_humidite'}) ? $data->{'cfm_humidite'} : "undefined";
 	$cfm_diamcompr 	= isset ($data->{'cfm_diamcompr'}) ? $data->{'cfm_diamcompr'} : "undefined";
 	$cfm_decision 	= isset ($data->{'cfm_decision'}) ? $data->{'cfm_decision'} : "undefined";
+	$hauteur 		= isset ($data->{'hauteur'}) ? $data->{'hauteur'} : "undefined";
 	$details 		= isset ($data->{'details'}) ? $data->{'details'} : "undefined";
 
 	if( $cfm_id == "undefined" ||
@@ -24,14 +25,15 @@
 		$cfm_capilarite == "undefined" ||		
 		$cfm_humidite == "undefined" ||		
 		$cfm_diamcompr == "undefined" ||
-		$cfm_decision == "undefined"
+		$cfm_decision == "undefined" ||
+		$hauteur == "undefined"
 	)
 	{
 		die("Valeurs manquantes");
 	}
 
-	$lgMax = 38.5;
-	$lgMin = 37.5;
+	$lgMax = $hauteur+0.5;
+	$lgMin = $hauteur-0.5;
 	$nbToleranceLg = 2;
 	$dmMax = 24.5;
 	$dmMin = 23.5;

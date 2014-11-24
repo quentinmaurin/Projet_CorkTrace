@@ -1,8 +1,16 @@
 <?php
 
-require_once('valeurs_auto.php');
-	
-	$tab_livraison = valeurs_commande(38);
+	require_once('valeurs_auto.php');
+
+	$data = json_decode($_POST['data']);
+	$hauteur = isset ($data->{'hauteur'}) ? $data->{'hauteur'} : "undefined";
+
+	if( $hauteur == "undefined" ){
+
+		die("Valeurs manquantes");
+	}
+
+	$tab_livraison = valeurs_commande($hauteur);
 
 	$tab_return["data"]["cfm_tca_fourni"] = $tab_livraison[3];
 	$tab_return["data"]["cfm_capilarite"] = $tab_livraison[4];
