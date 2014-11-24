@@ -227,7 +227,7 @@
 							
 								$nb_ligne--;
 								$montantHT = 0;
-								$montantHT = $detailCommande[$i]['ccd_prix'] * $detailCommande[$i]['ccd_quantite'];
+								$montantHT = ($detailCommande[$i]['ccd_prix'] * $detailCommande[$i]['ccd_quantite'])/1000;
 								$tva = $montantHT * $taux_tva/100;
 								$montantTtc = $montantHT + $tva;
 								
