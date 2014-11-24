@@ -82,8 +82,8 @@ Ext.define('CT.view.livraison.List' ,{
                 'click' : function(){
 
                     var row = Ext.getCmp('livraisonlist').getSelectionModel().getSelection()[0];
-                    var ccl_id = row.get("ccl_id");
-                    this.href = "services/factureCmdClient.php?id="+ccl_id;
+                    var liv_id = row.get("liv_id");
+                    this.href = "services/factureCmdClient.php?id="+liv_id;
                     this.el.dom.href = this.getHref();
                     console.log(this.href);
                 }
