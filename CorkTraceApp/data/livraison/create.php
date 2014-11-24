@@ -33,7 +33,7 @@
 		for($i=0; $i<8; $i++){
 			$Mesure->insertRow(" 'NULL', '0', '0', '0', '".$cfm_id."' ");
 		}
-		$LivraisonDetail->insertRow(" 'NULL', '".$recep_id."', '".$detail->{'ard_id'}."', '".$detail->{'lid_quantite'}."', '".$cfm_id."' ");
+		$LivraisonDetail->insertRow(" 'NULL', '".$recep_id."', '".$detail->{'ard_id'}."', '".$detail->{'lid_quantite'}."', '".$cfm_id."', '".$detail->{'ccd_prix'}."', '".$detail->{'ccd_marquage'}."' ");
 	}
 
 	header('Content-Type: application/json');
