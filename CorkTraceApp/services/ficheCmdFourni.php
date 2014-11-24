@@ -68,12 +68,12 @@
 					<div class="span4">
 					</div>
 					<div class="span4" style="text-align:center;padding-top:40px;">
-						<img alt="" src="barcode.php?id=CFO<?php echo $idCommande;?>&taille=3&font=14">
+						<img alt="" src="barcode.php?id=<?php echo $idCommande;?>&taille=3&font=14">
 					</div>
 				</div>
 				
 				<div style="margin-top:100px; text-align:center;">
-						<h2>Commande fournisseur n° CFO<?php echo $idCommande;?></h2>
+						<h2>Commande fournisseur n° <?php echo $idCommande;?></h2>
 				</div>
 				
 				<br><br><br>
@@ -118,6 +118,8 @@
 						<tr class="colorEnteteFact">
 							<th class="alignCenter" style="width: 10%;">N° de lot</th>
 							<th class="alignCenter">Désignation</th>
+							<th class="alignCenter">Qualité</th>
+							<th class="alignCenter" style="width: 10%;">Prix</th>
 							<th class="alignCenter" style="width: 10%;">Quantité</th>
 							<th class="alignCenter" style="width: 20%;">Code barre</th>
 
@@ -134,12 +136,15 @@
 								$condGetRows = array("PRO_ID" => $detailCommande[$i]['pro_id']);
 								$res = $produit->getRows($condGetRows); 
 									$nomProduit = $res[0]['pro_nom'];
+									$qualiteProduit = $res[0]['pro_qualite'];
 								
 		
 								echo "
 									<tr>
 										<td class='alignCenter'>".$detailCommande[$i]['cfd_id']."</td>
 										<td>".$res[0]['pro_nom']."</td>
+										<td><i class='marquage'>".$res[0]['pro_qualite']."</i></td>
+										<td class='alignRight'>".$detailCommande[$i]['cfd_prix']." €</td>
 										<td class='alignRight'>".$detailCommande[$i]['cfd_quantite']."</td>
 										<td class='alignCenter'><img src='barcode.php?id=". $detailCommande[$i]['cfd_id']."&taille=2&font=0'></td>
 

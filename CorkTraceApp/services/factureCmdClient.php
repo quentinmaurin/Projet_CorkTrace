@@ -204,6 +204,8 @@
 					<thead>
 						<tr class="colorEnteteFact">
 							<th class="alignCenter">Désignation</th>
+							<th class="alignCenter">Marquage</th>
+							<th class="alignCenter">Qualité</th>
 							<th class="alignCenter">Référence</th>
 							<th class="alignCenter">PU (HT)</th>
 							<th class="alignCenter">Quantité</th>
@@ -229,6 +231,7 @@
 								$condGetRows = array("PRO_ID" => $idProduit);
 								$res = $produit->getRows($condGetRows); 
 									$nomProduit = $res[0]['pro_nom'];
+									$qualiteProduit = $res[0]['pro_qualite'];
 							
 								$nb_ligne--;
 								$montantHT = 0;
@@ -245,7 +248,9 @@
 						
 								echo "
 									<tr>
-										<td>".$nomProduit." <i class='marquage'>(marquage : ".$detailLivraison[$i]['lid_marquage'].")</i></td>
+										<td>".$nomProduit."</td>
+										<td><i class='marquage'>".$detailLivraison[$i]['lid_marquage']."</i></td>
+										<td><i class='marquage'>".$qualiteProduit."</i></td>
 										<td class='alignRight'>".$idProduit."</td>
 										<td class='alignRight'>".$detailLivraison[$i]['lid_prix']." €</td>
 										<td class='alignRight'>".$detailLivraison[$i]['lid_quantite']."</td>
@@ -255,7 +260,7 @@
 							
 							// permet d'avoir toujours 10 lignes dans le tableau (ligne total comprise)
 							for($i=0; $i<$nb_ligne-1 ; $i++){
-								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
+								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
 							}
 							
 						?>

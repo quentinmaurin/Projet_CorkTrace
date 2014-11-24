@@ -205,6 +205,8 @@
 					<thead>
 						<tr class="colorEnteteFact">
 							<th class="alignCenter">Désignation</th>
+							<th class="alignCenter">Marquage</th>
+							<th class="alignCenter">Qualité</th>
 							<th class="alignCenter">Référence</th>
 							<th class="alignCenter">PU (HT)</th>
 							<th class="alignCenter">Quantité</th>
@@ -238,7 +240,9 @@
 						
 								echo "
 									<tr>
-										<td>".$detailCommande[$i]['pro_nom']." <i class='marquage'>(marquage : ".$detailCommande[$i]['ccd_marquage'].")</i></td>
+										<td>".$detailCommande[$i]['pro_nom']."</td>
+										<td><i class='marquage'>".$detailCommande[$i]['ccd_marquage']."</i></td>
+										<td><i class='marquage'>".$detailCommande[$i]['pro_qualite']."</i></td>
 										<td class='alignRight'>".$detailCommande[$i]['pro_id']."</td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_prix']." €</td>
 										<td class='alignRight'>".$detailCommande[$i]['ccd_quantite']."</td>
@@ -248,7 +252,7 @@
 							
 							// permet d'avoir toujours 10 lignes dans le tableau (ligne total comprise)
 							for($i=0; $i<$nb_ligne-1 ; $i++){
-								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
+								echo "<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>";
 							}
 							
 						?>

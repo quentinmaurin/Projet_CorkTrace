@@ -103,7 +103,7 @@
 					<table class="table table-bordered tableSmall">
 						<tr>
 							<th>N° d’arrivage</th>
-							<td><?php echo "ARI$idArrivage";?></td>
+							<td><?php echo "$idArrivage";?></td>
 						</tr>
 						<tr>
 							<th>Produit </th>
@@ -132,7 +132,7 @@
 					</table>
 				</div>
 				<div class="span6" style="text-align:center;">
-					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "ARD$idArrivageDetail";?>&taille=3&font=14">
+					<img class="codebarreConformite" alt="" src="barcode.php?id=<?php echo "$idArrivageDetail";?>&taille=3&font=14">
 				</div>
 			</div>
 			
