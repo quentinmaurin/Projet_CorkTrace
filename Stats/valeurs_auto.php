@@ -42,7 +42,7 @@
 		{
 			for ($i=0; $i<$nb_val; $i++)
 			{
-				$array_valeurs[$i][0] = mt_rand($hauteur*100,$hauteur*100) / 100;
+				$array_valeurs[$i][0] = mt_rand($hauteur*100-50,$hauteur*100+50) / 100;
 				$array_valeurs[$i][1] = mt_rand(2350,2450) / 100;
 				$array_valeurs[$i][2] = mt_rand(0,70) / 100;
 			}
