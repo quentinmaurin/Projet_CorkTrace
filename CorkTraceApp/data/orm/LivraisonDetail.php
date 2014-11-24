@@ -14,7 +14,9 @@ final class LivraisonDetail extends Table{
                 "LIV_ID"       => "LIV_ID",
                 "ARD_ID"       => "ARD_ID",
                 "LID_QUANTITE" => "LID_QUANTITE",
-                "CFM_ID"       => "CFM_ID"
+                "CFM_ID"       => "CFM_ID",
+                "LID_PRIX"     => "LID_PRIX",
+                "LID_MARQUAGE" => "LID_MARQUAGE"
         );
 	}
 

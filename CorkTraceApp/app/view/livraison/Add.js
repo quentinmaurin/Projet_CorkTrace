@@ -28,6 +28,8 @@ Ext.define('CT.view.livraison.Add', {
                     {header: 'Nom', dataIndex: 'pro_nom', flex: 1},
                     {header: 'Taille', dataIndex: 'pro_taille', flex: 1},
                     {header: 'Qualite', dataIndex: 'pro_qualite', flex: 1},
+                    {header: 'Marquage', dataIndex: 'ccd_marquage', flex: 1},
+                    {header: 'Prix',  dataIndex: 'ccd_prix',  flex: 1},
                     {header: 'Cdd Qte',  dataIndex: 'ccd_quantite',  flex: 1},
                     {header: 'Ard Id', dataIndex: 'ard_id', flex: 1,
                     field: {
@@ -85,7 +87,9 @@ Ext.define('CT.view.livraison.Add', {
                         details.push({
                             "pro_id" : record.get("pro_id"),
                             "ard_id" : record.get("ard_id"),
-                            "lid_quantite" : record.get("lid_quantite")
+                            "lid_quantite" : record.get("lid_quantite"),
+                            "ccd_marquage" : record.get("ccd_marquage"),
+                            "ccd_prix" : record.get("ccd_prix")
                         });
                     });
 
