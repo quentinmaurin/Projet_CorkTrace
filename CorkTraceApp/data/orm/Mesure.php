@@ -13,6 +13,7 @@ final class Mesure extends Table{
                 "MES_ID"       => "MES_ID",
                 "MES_LONGUEUR" => "MES_LONGUEUR",
                 "MES_DIAM"     => "MES_DIAM",
+                "MES_DIAM2"     => "MES_DIAM2",
                 "MES_OVAL"     => "MES_OVAL",
                 "CFM_ID"       => "CFM_ID"
         );
