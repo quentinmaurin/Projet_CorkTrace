@@ -235,7 +235,7 @@
 							
 								$nb_ligne--;
 								$montantHT = 0;
-								$montantHT = $detailLivraison[$i]['lid_prix'] * $detailLivraison[$i]['lid_quantite'];
+								$montantHT = ($detailLivraison[$i]['lid_prix'] * $detailLivraison[$i]['lid_quantite'])/1000;
 								$tva = $montantHT * $taux_tva/100;
 								$montantTtc = $montantHT + $tva;
 								

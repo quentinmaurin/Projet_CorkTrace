@@ -124,6 +124,23 @@ color:white;
 
 }
 
+.btn-marron { 
+	background-color: hsl(24, 33%, 22%) !important; 
+	background-repeat: repeat-x; 
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a27252", endColorstr="#4a3425"); 
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#a27252), to(#4a3425)); 
+	background-image: -moz-linear-gradient(top, #a27252, #4a3425); 
+	background-image: -ms-linear-gradient(top, #a27252, #4a3425); 
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a27252), color-stop(100%, #4a3425)); 
+	background-image: -webkit-linear-gradient(top, #a27252, #4a3425); 
+	background-image: -o-linear-gradient(top, #a27252, #4a3425); 
+	background-image: linear-gradient(#a27252, #4a3425); 
+	border-color: #4a3425 #4a3425 hsl(24, 33%, 15.5%); 
+	color: #fff !important; 
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.42); 
+	-webkit-font-smoothing: antialiased; 
+}
+
 .tableSmall td, .tableSmall th{
 	line-height:20px;
 	padding: 2px;
