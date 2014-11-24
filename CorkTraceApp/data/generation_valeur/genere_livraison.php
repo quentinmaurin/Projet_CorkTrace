@@ -18,7 +18,7 @@ require_once('valeurs_auto.php');
 
 		$detail["mes_longueur"]= $value[0];
 		$detail["mes_diam"]  = $value[1];
-		$detail["mes_oval"]  = $value[2];
+		$detail["mes_diam2"]  = $value[2];
 
 		$tab_return["details"][$i] = $detail;
 		$i++;
