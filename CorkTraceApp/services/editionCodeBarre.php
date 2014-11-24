@@ -30,9 +30,6 @@
 			<div class="navbar-inner">
 				<a class="brand" href="#">Edition Etiquettes</a>
 				<button class="btn" onclick="capture();">Edition</button>
-				<ul class="nav pull-right">
-					<li><a href="index.php">Retour</a></li>
-				</ul>
 			</div>
 		</div>
 		

@@ -84,9 +84,6 @@
 			<div class="navbar-inner">
 				<a class="brand" href="#">Résultat de conformité</a>
 				<button class="btn" onclick="capture();">Edition PDF</button>
-				<ul class="nav pull-right">
-					<li><a href="index.php">Retour</a></li>
-				</ul>
 			</div>
 		</div>
 		<div class="container">
