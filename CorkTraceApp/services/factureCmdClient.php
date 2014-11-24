@@ -9,10 +9,15 @@
 	require_once("../data/orm/Produit.php");
 	require_once("../data/orm/AssignAdress.php");
 	require_once("../data/orm/Adress.php");
+	require_once("../data/orm/Livraison.php");
+	require_once("../data/orm/LivraisonDetail.php");
+	require_once("../data/orm/ArrivageDetail.php");
 	
 	
 	$commandeClient = new CommandeClient();
 	$commandeClientDetail = new CommandeClientDetail();
+	$livraison = new Livraison();
+	$livraisonDetail = new LivraisonDetail();
 	$delaiPaiement = new DelaiPaiement();
 	$produit = new Produit();
 	$client = new Client();
@@ -20,13 +25,26 @@
 	$assignCommercial = new AssignCommercial();
 	$assignAdress = new AssignAdress();
 	$adress = new Adress();
+	$arrivageDetail = new ArrivageDetail();
 	
-	$id_commande = $_GET['id'];
+	$idLivraison = $_GET['id'];
 	$nomPdf = "Facturation";
+	
+	// Récupération informations table Livraison
+	$condGetRows = array("LIV_ID" => $idLivraison);
+	$res = $livraison->getRows($condGetRows); 
+		$idCommande  = $res[0]['ccl_id'];
+		$dateLivr    = $res[0]['liv_dateLiv'];
+		$responsable = $res[0]['liv_responsable'];
+
+	// Récupération informations table LivraisonDetail
+	$condGetRows = array("LIV_ID" => $idLivraison);
+	$res = $livraisonDetail->getRows($condGetRows); 
+		$detailLivraison = $res;
 	
 
 	// Récupération informations table CommandeClient
-	$condGetRows = array("CCL_ID" => $id_commande);
+	$condGetRows = array("CCL_ID" => $idCommande);
 	$res = $commandeClient->getRows($condGetRows); 
 		$idClientComm = $res[0]['clc_id'];
 		$dateCmd      = $res[0]['ccl_dateCmd'];
@@ -34,10 +52,6 @@
 		$adrLivr      = $res[0]['cla_id'];
 		$idDelPaiemt  = $res[0]['dpy_id'];
 
-	// Récupération informations table CommandeClientDetail
-	$condGetRows = array("CCL_ID" => $id_commande);
-	$res = $commandeClientDetail->getListDetails($id_commande); 
-	$detailCommande = $res;
 		
 		
 	// Récupération delai jour paiement
@@ -93,9 +107,6 @@
 			<div class="navbar-inner">
 				<a class="brand" href="#">Facturation</a>
 				<button class="btn" onclick="capture();">Edition PDF et envoi Mail</button>
-				<ul class="nav pull-right">
-					<li><a href="index.php">Retour</a></li>
-				</ul>
 			</div>
 		</div>
 		<div class="container">
@@ -105,7 +116,7 @@
 					<div class="span3"><img src="../img/logo.png"/></div>
 					<div class="span6" style="text-align:center;padding-top:40px;">
 						
-						<img alt="" src="barcode.php?id=<?php echo $id_commande;?>&taille=3&font=14">
+						<img alt="" src="barcode.php?id=<?php echo $idCommande;?>&taille=3&font=14">
 						
 					</div>
 					<div class="span3">
@@ -117,7 +128,7 @@
 				</div>
 				<div class="row" style="margin-top:100px;">
 					<div class="span12" style="text-align:center;">
-						<h2>Facture Client n°<?php echo $id_commande;?></h2>
+						<h2>Facture Client n°<?php echo $idCommande;?></h2>
 					</div>
 				</div>
 				<br><br><br>
@@ -139,7 +150,7 @@
 									</th>
 									<td>
 										<?php echo $idClient;?>     <br>
-										<?php echo $id_commande;?>  <br>
+										<?php echo $idCommande;?>  <br>
 										<?php echo date("d/m/Y", strtotime($dateCmd))?>      <br>
 										A réception de facture (sous <?php echo $nbJours;?> jours)<br>
 										<?php echo date("d/m/Y", strtotime($dateLivr)); ?> (estimation)  <br>
@@ -209,16 +220,24 @@
 							$tva           = 0;
 							$nb_ligne      = 10;
 							$taux_tva      = 20;
-							for($i=0; $i<count($detailCommande) ; $i++){
+							for($i=0; $i<count($detailLivraison) ; $i++){
+							
+								// Récupération informations table ArrivageDetail
+								$condGetRows = array("ARD_ID" => $detailLivraison[$i]['ard_id']);
+								$res = $arrivageDetail->getRows($condGetRows); 
+									$idProduit = $res[0]['pro_id'];
+								$condGetRows = array("PRO_ID" => $idProduit);
+								$res = $produit->getRows($condGetRows); 
+									$nomProduit = $res[0]['pro_nom'];
 							
 								$nb_ligne--;
 								$montantHT = 0;
-								$montantHT = $detailCommande[$i]['ccd_prix'] * $detailCommande[$i]['ccd_quantite'];
+								$montantHT = $detailLivraison[$i]['lid_prix'] * $detailLivraison[$i]['lid_quantite'];
 								$tva = $montantHT * $taux_tva/100;
 								$montantTtc = $montantHT + $tva;
 								
-								$totalQuantite = $totalQuantite + $detailCommande[$i]['ccd_quantite'];
-								$totalPU       = $totalPU       + $detailCommande[$i]['ccd_prix'];
+								$totalQuantite = $totalQuantite + $detailLivraison[$i]['lid_quantite'];
+								$totalPU       = $totalPU       + $detailLivraison[$i]['lid_prix'];
 								$totalMontant  = $totalMontant  + $montantHT;
 								
 
@@ -226,10 +245,10 @@
 						
 								echo "
 									<tr>
-										<td>".$detailCommande[$i]['pro_nom']." <i class='marquage'>(marquage : ".$detailCommande[$i]['ccd_marquage'].")</i></td>
-										<td class='alignRight'>".$detailCommande[$i]['pro_id']."</td>
-										<td class='alignRight'>".$detailCommande[$i]['ccd_prix']." €</td>
-										<td class='alignRight'>".$detailCommande[$i]['ccd_quantite']."</td>
+										<td>".$nomProduit." <i class='marquage'>(marquage : ".$detailLivraison[$i]['lid_marquage'].")</i></td>
+										<td class='alignRight'>".$idProduit."</td>
+										<td class='alignRight'>".$detailLivraison[$i]['lid_prix']." €</td>
+										<td class='alignRight'>".$detailLivraison[$i]['lid_quantite']."</td>
 										<td class='alignRight'>".$montantHT." €</td>
 									</tr>";
 							}
