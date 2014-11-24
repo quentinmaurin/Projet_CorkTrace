@@ -12,14 +12,6 @@
 	$com_tel 		= isset ($data->{'com_tel'}) ? $data->{'com_tel'} : "undefined";
 	$com_fax 		= isset ($data->{'com_fax'}) ? $data->{'com_fax'} : "undefined";
 
-	/*echo "coucou".$com_nom." ".$com_prenom	;
-	echo '<br>';
-	echo $com_adresse;echo '<br>';
-	echo $com_mail 	;echo '<br>';
-	echo $com_tel 	;echo '<br>';
-	echo $com_fax 	;echo '<br>';*/
-	
-
 	if( $com_nom == "undefined" ||
 		$com_prenom == "undefined" ||
 		$com_adresse == "undefined" ||		
@@ -31,7 +23,7 @@
 	}
 
 	$Commercial = new Commercial();
-	$id = $Commercial->insertRow('"NULL", "'.$com_nom.'","'.$com_prenom.'", "'.$com_adresse.'", "'.$com_mail.'", "'.$com_tel.'", "'.$com_fax.'"');
+	$id = $Commercial->insertRow(' "NULL", "'.$com_nom.'","'.$com_prenom.'", "'.$com_adresse.'", "'.$com_mail.'", "'.$com_tel.'", "'.$com_fax.'" ');
 
 	//echo $id;
 
