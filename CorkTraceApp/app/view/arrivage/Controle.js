@@ -60,7 +60,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                 "mes_id" : record.get("mes_id"),
                                 "mes_longueur" : record.get("mes_longueur"),
                                 "mes_diam" : record.get("mes_diam"),
-                                "mes_oval" :  record.get("mes_oval"),
+                                "mes_diam2" : record.get("mes_diam2"),
                                 "cfm_id" :  record.get("cfm_id")
                             });
                         });
@@ -143,7 +143,8 @@ Ext.define('CT.view.arrivage.Controle', {
                                         var row = store.getAt(i);
                                         row.set("mes_longueur", responseParse.details[i]["mes_longueur"]);
                                         row.set("mes_diam", responseParse.details[i]["mes_diam"]);
-                                        row.set("mes_oval", responseParse.details[i]["mes_oval"]);
+                                        row.set("mes_diam2", responseParse.details[i]["mes_diam2"]);
+                                        //row.set("mes_oval", responseParse.details[i]["mes_oval"]);
                                     }
 
                                 },                                    
@@ -243,14 +244,14 @@ Ext.define('CT.view.arrivage.Controle', {
                             minValue: 0,
                             maxValue: 99999999
                         }},
-                        {header: 'Diam', dataIndex: 'mes_diam', flex: 1,
+                        {header: 'Diam1', dataIndex: 'mes_diam', flex: 1,
                         field: {
                             xtype: 'numberfield',
                             allowBlank: false,
                             minValue: 0,
                             maxValue: 99999999
                         }},
-                        {header: 'Oval', dataIndex: 'mes_oval', flex: 1,
+                        {header: 'Diam2', dataIndex: 'mes_diam2', flex: 1,
                         field: {
                             xtype: 'numberfield',
                             allowBlank: false,

@@ -64,7 +64,7 @@
 
 		array_push($echantillonLg, $detail->{'mes_longueur'});
 		array_push($echantillonDm, $detail->{'mes_diam'});
-		array_push($echantillonOv, $detail->{'mes_oval'});
+		array_push($echantillonOv, abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}) );
 	}
 
 	$is_conforme = isEchantillonConforme(
@@ -105,7 +105,8 @@
 		$newValue = array(
 			'MES_LONGUEUR'		=>	'"'.$detail->{'mes_longueur'}.'"',
 			'MES_DIAM'			=>	'"'.$detail->{'mes_diam'}.'"',
-			'MES_OVAL'	=>	'"'.$detail->{'mes_oval'}.'"'
+			'MES_DIAM2'			=>	'"'.$detail->{'mes_diam2'}.'"',
+			'MES_OVAL'	=>	'"'.abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}).'"'
 		);
 
 		$Mesure->updateRow($newValue, $cond);
