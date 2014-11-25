@@ -84,6 +84,11 @@ Ext.define('CT.controller.Menu', {
             pan = {xtype: "statclientlist"};
             grid_id= "gridstatclientlist";
 
+        }else if( name == "Stats Commercial" ){
+
+            pan = {xtype: "statcommerciallist"};
+            grid_id= "gridCommList";
+
         }else if( name == "Edition etiquette" ){
 
             Ext.create('Ext.window.Window', {
