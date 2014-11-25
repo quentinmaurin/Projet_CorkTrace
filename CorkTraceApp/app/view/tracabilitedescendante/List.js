@@ -6,29 +6,33 @@ Ext.define('CT.view.tracabilitedescendante.List' ,{
     layout: "border",
 
     items: [{
-        title : "Liste des lots",
+        title : "Liste des lots livrés",
         xtype : "grid",
         region : "center",
         id: 'gridtracabilitedescendantelot',
         store: 'LivraisonDetails',
         columns : [
-            {header: 'Lid Id',  dataIndex: 'lid_id',  flex: 1},
-            {header: 'Ard Id', dataIndex: 'ard_id', flex: 1},
-            {header: 'Lid Qte', dataIndex: 'lid_quantite', flex: 1}
+            {header: 'Client', dataIndex: 'cli_nom', flex: 1},
+            {header: 'Produit', dataIndex: 'pro_nom', flex: 1},
+            {header: 'Qualité', dataIndex: 'pro_qualite', flex: 1},
+            {header: 'Marquage', dataIndex: 'lid_marquage', flex: 1},
+            {header: 'Date de livraison', dataIndex: 'liv_dateLiv', flex: 1},
+            {header: 'Quantité de livraison', dataIndex: 'lid_quantite', flex: 1},
+            {header: 'Numéro de livraison', dataIndex: 'liv_id', flex: 1}
         ]
     },{
-        title : "Liste des fournisseurs",
+        title : "Fournisseur ayant livré le lot",
         xtype : "grid",
         region : "east",
-        width: "50%",
+        width: "40%",
         id: 'gridtracabilitedescendanteclient',
         store: 'TracabiliteDescendantes',
         columns : [
-            {header: 'Fou Id', dataIndex: 'fou_id', flex: 1},
-            {header: 'Fou Nom', dataIndex: 'fou_nom', flex: 1},
-            {header: 'Tel', dataIndex: 'fou_tel', flex: 1},
-            {header: 'Fou mail', dataIndex: 'fou_mail', flex: 1},
-            {header: 'Ard id', dataIndex: 'ard_id', flex: 1}
+            {header: 'Fournisseur', dataIndex: 'fou_nom', flex: 1},
+            {header: 'Téléphone', dataIndex: 'fou_tel', flex: 1},
+            {header: 'Date Commande', dataIndex: 'cfo_dateCmd', flex: 1},
+            {header: 'Date Livraison', dataIndex: 'cfo_dateRecept', flex: 1},
+            {header: 'Numéro commande fournisseur', dataIndex: 'cfm_id', flex: 1}
         ]
     }],
 

@@ -21,6 +21,22 @@ final class LivraisonDetail extends Table{
         );
 	}
 
+        public function getAll(){
+
+                $query = "SELECT *
+                FROM t_livrdetail_lid
+                INNER JOIN t_produit_pro ON t_produit_pro.pro_id=t_livrdetail_lid.pro_id
+                INNER JOIN t_livraison_liv ON t_livraison_liv.liv_id=t_livrdetail_lid.liv_id
+                INNER JOIN t_cmdclient_ccl ON t_cmdclient_ccl.ccl_id=t_livraison_liv.ccl_id
+                INNER JOIN t_clicom_clc ON t_clicom_clc.clc_id=t_cmdclient_ccl.clc_id
+                INNER JOIN t_client_cli ON t_client_cli.cli_id=t_clicom_clc.cli_id
+                ";
+
+                $allRows = $this->db->getResponse($query);
+
+                return $allRows;
+        }
+
         public function getAllByLivraison($liv_id){
 
                 $query = "SELECT *

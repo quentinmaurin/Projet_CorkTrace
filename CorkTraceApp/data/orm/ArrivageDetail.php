@@ -18,6 +18,20 @@ final class ArrivageDetail extends Table{
                 );
 	}
 
+        public function getAll(){
+
+                        $query = "SELECT *
+                        FROM t_arrivagedetail_ard 
+                        INNER JOIN t_produit_pro ON t_produit_pro.pro_id=t_arrivagedetail_ard.pro_id
+                        INNER JOIN t_cmdfourni_cfo ON t_cmdfourni_cfo.ari_id=t_arrivagedetail_ard.ari_id
+                        INNER JOIN t_fournisseur_fou ON t_fournisseur_fou.fou_id=t_cmdfourni_cfo.fou_id
+                        ";
+
+                        $allRows = $this->db->getResponse($query);
+
+                        return $allRows;
+        }
+        
         public function getAllByArrivage($ari_id){
 
                 $query = "SELECT *

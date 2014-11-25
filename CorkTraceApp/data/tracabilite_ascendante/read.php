@@ -6,7 +6,7 @@
 	$db = new Db();
 
 	$query  = "
-	SELECT t_client_cli.cli_id, t_client_cli.cli_nom
+	SELECT *
 	FROM t_arrivagedetail_ard
 	INNER JOIN  t_livrdetail_lid ON t_livrdetail_lid.ard_id = t_arrivagedetail_ard.ard_id
 	INNER JOIN t_livraison_liv ON t_livraison_liv.liv_id = t_livrdetail_lid.liv_id
