@@ -16,8 +16,8 @@ final class Mesure extends Table{
                 "MES_DIAM2"     => "MES_DIAM2",
                 "MES_OVAL"     => "MES_OVAL",
                 "MES_HUMIDITE" => "MES_HUMIDITE",
-                "CFM_ID"       => "CFM_ID",
-                "MES_COMPRESSION" => "MES_COMPRESSION"
+                "MES_COMPRESSION" => "MES_COMPRESSION",
+                "CFM_ID"       => "CFM_ID"
         );
 	}
 	
