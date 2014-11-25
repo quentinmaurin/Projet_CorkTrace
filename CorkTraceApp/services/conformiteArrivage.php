@@ -146,6 +146,7 @@
 					<th>Hauteur</th>
 					<th>Diamètre</th>
 					<th>Ovalisation</th>
+					<th>Humidité</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -154,9 +155,11 @@
 					$rebusHauteur = 0;
 					$rebusDiam    = 0;
 					$rebusOval    = 0;
+					$rebusHum    = 0;
 					$spanRougeH = 0;
 					$spanRougeD = 0;
 					$spanRougeO = 0;
+					$spanRougeHu = 0;
 						
 						for($i=0; $i<count($mesures) ; $i++){
 						
@@ -180,13 +183,22 @@
 								$rebusOval++;
 								$spanRougeO = 1;	
 							}
-				
+							
+							if($i < 10){
+								if($mesures[$i]['mes_humidite'] >= 4 && $mesures[$i]['mes_humidite'] <= 8 ){
+									$spanRougeHu = 0;
+								}else{
+									$rebusHum++;
+									$spanRougeHu = 1;	
+								}
+							}
 							echo "
 								<tr>
 									<td>".($i+1)."</td>
 									<td><span class='".(($spanRougeH==1)?'rouge':'')."'>".$mesures[$i]['mes_longueur']."</span></td>
 									<td><span class='".(($spanRougeD==1)?'rouge':'')."'>".$mesures[$i]['mes_diam']."</span></td>
 									<td><span class='".(($spanRougeO==1)?'rouge':'')."'>".$mesures[$i]['mes_oval']."</span></td>
+									<td><span class='".(($spanRougeHu==1)?'rouge':'')."'>".(($i >= 10)?'&nbsp;':$mesures[$i]['mes_humidite'].' %')." </span></td>
 								</tr>";
 						}
 
@@ -196,6 +208,7 @@
 								<td><span class='".(($rebusHauteur>2)?'rouge':'')."'>".$rebusHauteur."</span></td>
 								<td><span class='".(($rebusDiam>2)?'rouge':'')."'>".$rebusDiam."</span></td>
 								<td><span class='".(($rebusOval>2)?'rouge':'')."'>".$rebusOval."</span></td>
+								<td><span class='".(($rebusHum>0)?'rouge':'')."'>".$rebusHum."</span></td>
 							</tr>";
 					?>
 
@@ -231,6 +244,7 @@
 							<?php
 								if($rebusHauteur>2 || $rebusDiam>2 || $rebusOval>2){
 									echo $cocheRouge;
+									
 								}else{
 									echo $cocheVerte;
 								}
@@ -239,10 +253,10 @@
 					</tr>
 					<tr>
 						<td>Humidité</td>
-						<td><?php echo $humidite;?> %</td>
+						<td>Bouchon nn conforme : <?php echo "<span class='".(($rebusHum>0)?'rouge':'')."'>".$rebusHum."</span>" ?> </td>
 						<td class="celluleCenter">
 							<?php
-								if($humidite>=4 && $humidite<=8){
+								if($rebusHum < 1){
 									echo $cocheVerte;
 								}else{
 									echo $cocheRouge;

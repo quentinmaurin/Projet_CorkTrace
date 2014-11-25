@@ -14,7 +14,14 @@
     {
         display: none !important;
     }
+	
+	.rouge{
+		color:red !important;
+	}
+
 }
+
+
 
 .load
 {
@@ -81,9 +88,11 @@ body{
 }
 
 .codebar{
-	border: 2px solid #dddddd;
+border: 2px solid #dddddd;
     border-radius: 5px;
+    margin-top: 5px;
     padding: 10px 20px;
+    width: 50%;
 
 }
 .container{
@@ -116,7 +125,7 @@ body{
 background-color:#734B21;
 text-align:center !important;
 color:white;
--webkit-print-color-adjust: exact;
+
 }
 
 .echantillon td, .echantillon th{

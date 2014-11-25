@@ -3,10 +3,14 @@
 	require_once("../data/orm/Produit.php");
 	require_once("../data/orm/CommandeClient.php");
 	require_once("../data/orm/CommandeClientDetail.php");
+	require_once("../data/orm/AssignCommercial.php");
+	require_once("../data/orm/Client.php");
 
 	$produit = new Produit();
 	$commandeClient = new CommandeClient();
 	$commandeClientDetail = new CommandeClientDetail();
+	$assignCommercial = new AssignCommercial();
+	$client = new Client();
 
 	$idCommande = $_GET['id'];
 	
@@ -25,12 +29,19 @@
 	$detailCommande = $res;
 	
 	
-	// Récupération Nom produit
-	/*$condGetRows = array("PRO_ID" => $idProduit);
-	$res = $produit->getRows($condGetRows); 
-		$nomProduit     = $res[0]['pro_nom'];
-		$tailleProduit  = $res[0]['pro_taille'];
-		$qualitéProduit = $res[0]['pro_qualite'];*/
+	// Récupération id Assignement client/commercial 
+	$condGetRows = array("CLC_ID" => $idClientComm);
+	$res = $assignCommercial->getRows($condGetRows); 
+		$idClient     = $res[0]['cli_id'];
+		$idCommercial = $res[0]['com_id'];
+		
+	// Récupération Nom Client 
+	$condGetRows = array("CLI_ID" => $idClient);
+	$res = $client->getRows($condGetRows); 
+		$nomClient = $res[0]['cli_nom'];
+		$telClient = $res[0]['cli_tel'];
+		$faxClient = $res[0]['cli_fax'];
+		$adrFactClient = $res[0]['cli_adr_fact'];
 	
 ?>
 
@@ -49,43 +60,60 @@
 		<div class="navbar no-print">
 			<div class="navbar-inner">
 				<a class="brand" href="#">Edition Etiquettes</a>
-				<button class="btn" onclick="capture();">Edition</button>
+				<!--<button class="btn" onclick="capture();">Edition</button>-->
 			</div>
 		</div>
 		
 		
 		<div class="container">
-		
-				<!--<div class="row" style="margin-top:100px;">
-					<div class="span12" style="text-align:center;">
-						<div class="codebar">
-							<h4><?php //echo $nomProduit;?></h4>
-							<img class="" alt="" src="barcode.php?id=<?php //echo $idProduit;?>&taille=3&font=14">
-						</div>
-					</div>
-				</div>-->
 				
 				<?php
 					for($i=0; $i<count($detailCommande) ; $i++){
+						$nbEtiquette = 0;
 						$quantite = $detailCommande[$i]['ccd_quantite'];
 						$nbCarton = $quantite / 5000;
-						echo "Produit $i : $quantite  - $nbCarton <br>";
-					}	
-					for($i=0; $i<count($detailCommande) ; $i++){
-								
+						$entiere = intval($nbCarton);
+						$decimal = $nbCarton - $entiere;
+						$quantitecarton = 0;
 						
-						/*$detailCommande[$i]['ccd_marquage']
-						$detailCommande[$i]['pro_qualite']
-						$detailCommande[$i]['pro_id']
-						$detailCommande[$i]['pro_nom']
-
+						if($decimal == 0){
+							$nbEtiquette = $entiere;
+						}else{
+							$nbEtiquette = $entiere + 1;
+						}
+						
 						echo "
-						<div class='codebar'>
-							<h4><?php echo $nomProduit;?></h4>
-							<img src='barcode.php?id=<?php echo $idProduit;?>&taille=3&font=14'>
-						</div>
-						";*/
-					}
+						<div class='rouge' style='color:red; font-size:20px;margin-top:15px;border-top: 2px solid;padding-top: 13px;'>
+							".$detailCommande[$i]['pro_nom']." &nbsp;&nbsp;&nbsp;  Quantité: $quantite  &nbsp;&nbsp;&nbsp;   Nbre étiquettes : $nbEtiquette 
+						</div> 
+						<br>";
+			
+						for($j=0; $j < $nbEtiquette ; $j++){
+						if($quantite >= 5000) {
+							$quantitecarton = 5000;
+							$quantite = $quantite - 5000;
+						}else{
+							$quantitecarton = $quantite;
+						}
+							echo "
+							<div class='codebar'>
+								<div class='row-fluid'>
+									<div class='span4'>
+										<img src='barcode.php?id=".$idCommande."&taille=3&font=0'>
+									</div>
+									<div class='span8'>
+										<h4>Commande n°".$idCommande." </h4>
+										<b>".$detailCommande[$i]['pro_nom']."</b> <i class='marquage'>Quantité : $quantitecarton </i> <br>
+										Client : <b>$nomClient</b>
+									</div>
+								</div>
+							</div>
+							";
+						}
+						echo "<br><br><br>";
+						
+					}	
+			
 				?>
 
 		</div>
