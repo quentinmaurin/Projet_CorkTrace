@@ -6,8 +6,7 @@
 	$db = new Db();
 
 	$query  = "
-	SELECT t_fournisseur_fou.fou_id, t_fournisseur_fou.fou_nom, t_fournisseur_fou.fou_mail,
-	t_fournisseur_fou.fou_tel, t_arrivagedetail_ard.ard_id
+	SELECT *
 	FROM t_livrdetail_lid
 	INNER JOIN  t_arrivagedetail_ard ON t_arrivagedetail_ard.ard_id = t_livrdetail_lid.ard_id
 	INNER JOIN t_cmdfourni_cfo ON t_cmdfourni_cfo.ari_id = t_arrivagedetail_ard.ari_id
