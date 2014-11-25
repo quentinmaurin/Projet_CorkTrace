@@ -12,7 +12,6 @@
 	$cfm_tca_inter	= isset ($data->{'cfm_tca_inter'}) ? $data->{'cfm_tca_inter'} : "undefined";
 	$cfm_gout 		= isset ($data->{'cfm_gout'}) ? $data->{'cfm_gout'} : "undefined";
 	$cfm_capilarite = isset ($data->{'cfm_capilarite'}) ? $data->{'cfm_capilarite'} : "undefined";
-	$cfm_humidite 	= isset ($data->{'cfm_humidite'}) ? $data->{'cfm_humidite'} : "undefined";
 	$cfm_diamcompr 	= isset ($data->{'cfm_diamcompr'}) ? $data->{'cfm_diamcompr'} : "undefined";
 	$cfm_decision 	= isset ($data->{'cfm_decision'}) ? $data->{'cfm_decision'} : "undefined";
 	$hauteur 		= isset ($data->{'hauteur'}) ? $data->{'hauteur'} : "undefined";
@@ -22,8 +21,7 @@
 		$cfm_tca_fourni == "undefined" ||
 		$cfm_tca_inter == "undefined" ||
 		$cfm_gout == "undefined" ||	
-		$cfm_capilarite == "undefined" ||		
-		$cfm_humidite == "undefined" ||		
+		$cfm_capilarite == "undefined" ||	
 		$cfm_diamcompr == "undefined" ||
 		$cfm_decision == "undefined" ||
 		$hauteur == "undefined"
@@ -46,16 +44,19 @@
 	$hmMax = 8;
 	$hmMin = 4;
 	$toleranceDiamCompr = 90;
+	$nbToleranceHmMin = 10;
 
 	$echantillonLg = array();
 	$echantillonDm = array();
 	$echantillonOv = array();
+	$echantillonHm = array();
 
 	foreach ($details as $detail) {
 
 		array_push($echantillonLg, $detail->{'mes_longueur'});
 		array_push($echantillonDm, $detail->{'mes_diam'});
 		array_push($echantillonOv, abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}) );
+		array_push($echantillonHm, abs($detail->{'mes_humidite'} - $detail->{'mes_humidite'}) );
 	}
 
 	$is_conforme = isEchantillonConforme(
@@ -66,7 +67,7 @@
 	   $cfm_tca_fourni, $toleranceTcaFou,
 	   $cfm_tca_inter, $toleranceTcaInt,
 	   $cfm_capilarite,
-	   $cfm_humidite,$hmMax,$hmMin,
+	   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
 	   $cfm_diamcompr, $toleranceDiamCompr
 	);
 
@@ -83,7 +84,7 @@
 		'CFM_TCA_INTER'		=>	'"'.$cfm_tca_inter.'"',
 		'CFM_GOUT'			=>	'"'.$cfm_gout.'"',
 		'CFM_CAPILARITE'	=>	'"'.$cfm_capilarite.'"',
-		'CFM_HUMIDITE'		=>	'"'.$cfm_humidite.'"',
+		'CFM_HUMIDITE'		=>	"0",
 		'CFM_DIAMCOMPR'	=>	'"'.$cfm_diamcompr.'"',
 		'CFM_DECISION'		=>	'"'.$cfm_decision.'"'
 	);
@@ -97,7 +98,8 @@
 			'MES_LONGUEUR'		=>	'"'.$detail->{'mes_longueur'}.'"',
 			'MES_DIAM'			=>	'"'.$detail->{'mes_diam'}.'"',
 			'MES_DIAM2'			=>	'"'.$detail->{'mes_diam2'}.'"',
-			'MES_OVAL'	=>	'"'.abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}).'"'
+			'MES_OVAL'	=>	'"'.abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}).'"',
+			'MES_HUMIDITE'	=>	'"'.$detail->{'mes_humidite'}.'"'
 		);
 
 		$Mesure->updateRow($newValue, $cond);
