@@ -73,12 +73,12 @@ Ext.define('CT.view.arrivage.Controle', {
                         var cfm_decision = Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_decision").getValue();
 
                         var data = new Object();
+                        data.module = "arrivage";
                         data.cfm_id = cfm_id;
                         data.cfm_tca_fourni = values.cfm_tca_fourni;
                         data.cfm_tca_inter = values.cfm_tca_inter;
                         data.cfm_gout = values.cfm_gout;
                         data.cfm_capilarite = values.cfm_capilarite;
-                        //data.cfm_humidite = values.cfm_humidite;
                         data.cfm_diamcompr = values.cfm_diamcompr;
                         data.cfm_decision = cfm_decision;
                         data.hauteur = row.get("pro_taille");
@@ -138,7 +138,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_tca_fourni").setValue(responseParse.data.cfm_tca_fourni);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_tca_inter").setValue(responseParse.data.cfm_tca_inter);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_diamcompr").setValue(responseParse.data.cfm_diamcompr);
-                                    Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_humidite").setValue(responseParse.data.cfm_humidite);
+                                    //Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_humidite").setValue(responseParse.data.cfm_humidite);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_capilarite").setValue(responseParse.data.cfm_capilarite);
 
                                     var store = Ext.getCmp("gridarrivagecontrolemesures").getStore();
@@ -149,7 +149,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                         row.set("mes_longueur", responseParse.details[i]["mes_longueur"]);
                                         row.set("mes_diam", responseParse.details[i]["mes_diam"]);
                                         row.set("mes_diam2", responseParse.details[i]["mes_diam2"]);
-                                        //row.set("mes_humidite", responseParse.details[i]["mes_humidite"]);
+                                        row.set("mes_humidite", responseParse.details[i]["mes_humidite"]);
                                     }
 
                                 },                                    

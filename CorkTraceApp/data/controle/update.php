@@ -44,7 +44,14 @@
 	$hmMax = 8;
 	$hmMin = 4;
 	$toleranceDiamCompr = 90;
-	$nbToleranceHmMin = 10;
+	$nbToleranceHmMin = 0;
+
+	if( $data->{'module'} == "arrivage"){
+		$nbToleranceHmMin = 10;
+	}
+	if( $data->{'module'} == "livraison"){
+		$nbToleranceHmMin = 5;
+	}
 
 	$echantillonLg = array();
 	$echantillonDm = array();
@@ -56,7 +63,7 @@
 		array_push($echantillonLg, $detail->{'mes_longueur'});
 		array_push($echantillonDm, $detail->{'mes_diam'});
 		array_push($echantillonOv, abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}) );
-		array_push($echantillonHm, abs($detail->{'mes_humidite'} - $detail->{'mes_humidite'}) );
+		array_push($echantillonHm, $detail->{'mes_humidite'} );
 	}
 
 	$is_conforme = isEchantillonConforme(
@@ -94,6 +101,8 @@
 	foreach ($details as $detail) {
 
 		$cond = array('MES_ID' => $detail->{'mes_id'});
+
+
 		$newValue = array(
 			'MES_LONGUEUR'		=>	'"'.$detail->{'mes_longueur'}.'"',
 			'MES_DIAM'			=>	'"'.$detail->{'mes_diam'}.'"',

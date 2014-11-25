@@ -15,7 +15,6 @@
 	$tab_return["data"]["cfm_tca_fourni"] = $tab_arrivage[3];
 	$tab_return["data"]["cfm_tca_inter"] = $tab_arrivage[4];
 	$tab_return["data"]["cfm_gout"] = ($tab_arrivage[5])?"oui":"non";
-	$tab_return["data"]["cfm_humidite"] = $tab_arrivage[1];
 	$tab_return["data"]["cfm_diamcompr"] = $tab_arrivage[2];
 	$tab_return["data"]["cfm_capilarite"] = 0;
 
@@ -27,6 +26,15 @@
 		$detail["mes_longueur"]= $value[0];
 		$detail["mes_diam"]  = $value[1];
 		$detail["mes_diam2"]  = $value[2];
+
+		if( $i < 10){
+
+			$detail["mes_humidite"]  = $value[3];
+
+		}else{
+
+			$detail["mes_humidite"] = 0.00;
+		}
 
 		$tab_return["details"][$i] = $detail;
 		$i++;
