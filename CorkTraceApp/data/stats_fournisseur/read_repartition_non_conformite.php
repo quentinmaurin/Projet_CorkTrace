@@ -18,7 +18,9 @@
 	$toleranceTcaFou = 1;
 	$hmMax = 4;
 	$hmMin = 8;
-	$toleranceDiamCompr = 94;
+	$toleranceDiamComprMin = 5;
+	$dmCprMin=90;
+
 //////////////////////////////////////////////////////////////////////////////
 	
 	$db = new Db();
@@ -41,7 +43,6 @@
 		$o[$i]['cfm_tca_fourni']=$value['cfm_tca_fourni'];
 		$o[$i]['cfm_tca_inter']=$value['cfm_tca_inter'];
 		$o[$i]['cfm_gout']=$value['cfm_gout'];
-		$o[$i]['cfm_diamcompr']=$value['cfm_diamcompr'];
 		$o[$i]['cfm_capilarite']=$value['cfm_capilarite'];
 		$mesures = $db->executeQuery("
 			SELECT m.*
@@ -59,12 +60,14 @@
 			$mesuresDm[$j]=$mes['mes_diam'];
 			$mesuresOv[$j]=$mes['mes_oval'];
 			$mesuresHm[$j]=$mes['mes_humidite'];
+			$mesuresDmCpr[$j]=$mes['mes_compression'];
 			$j++;
 		}
 		$o[$i]['MesuresLg']=$mesuresLg;
 		$o[$i]['MesuresDm']=$mesuresDm;
 		$o[$i]['MesuresOv']=$mesuresOv;
 		$o[$i]['MesuresHm']=$mesuresHm;
+		$o[$i]['MesuresDmCpr']=$mesuresDmCpr;
 		$i++;
 	}
 	
@@ -80,7 +83,7 @@
 								   $o[$k]['cfm_tca_inter'],$toleranceTcaInt,
 								   $o[$k]['cfm_capilarite'],
 								   $o[$k]['MesuresHm'],$hmMax,$hmMin,$nbToleranceHmMin,
-								   $o[$k]['cfm_diamcompr'],$toleranceDiamCompr);
+								   $o[$k]['MesuresDmCpr'],$dmCprMin,$toleranceDiamComprMin);
 		$k++;
 	}
 	
