@@ -262,6 +262,13 @@ Ext.define('CT.view.arrivage.Controle', {
                             minValue: 0,
                             maxValue: 99999999
                         }},
+                        {header: 'Humidite', dataIndex: 'mes_humidite', flex: 1,
+                        field: {
+                            xtype: 'numberfield',
+                            allowBlank: false,
+                            minValue: 0,
+                            maxValue: 99999999
+                        }},
                         {header: 'Cfm id', dataIndex: 'cfm_id', flex: 1}
                     ]
                 }]
