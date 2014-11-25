@@ -35,20 +35,21 @@
 	$dmMin = 23.5;
 	$nbToleranceDm = 2;
 	$ovMax = 0.7;
-	$nbToleranceOv = 5;
+	$nbToleranceOv = 2;
 	$goutAcceptation = "oui";
 	$toleranceTcaInt = 2;
 	$toleranceTcaFou = 2;
 	$hmMax = 8;
 	$hmMin = 4;
-	$toleranceDiamCompr = 90;
-	$nbToleranceHmMin = 0;
+	$tailleEchantillonHm = 0;
+	$tailleEchantillonCpr = 5;
+	$dmCprMin = 90;
 
 	if( $data->{'module'} == "arrivage"){
-		$nbToleranceHmMin = 10;
+		$tailleEchantillonHm = 10;
 	}
 	if( $data->{'module'} == "livraison"){
-		$nbToleranceHmMin = 5;
+		$tailleEchantillonHm = 5;
 	}
 
 	$echantillonLg = array();
@@ -74,8 +75,8 @@
 	   $cfm_tca_fourni, $toleranceTcaFou,
 	   $cfm_tca_inter, $toleranceTcaInt,
 	   $cfm_capilarite,
-	   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
-	   $cfm_diamcompr, $toleranceDiamCompr
+	   $echantillonHm,$hmMax,$hmMin, 0, $tailleEchantillonHm,
+	   $echantillonDiamCompr,$dmCprMin, 0, $tailleEchantillonCpr
 	);
 
 	if( $is_conforme == 1 ){
