@@ -43,6 +43,23 @@
 		}
 	}
 	
+	function isHumiditeConforme($echantillon,$hmMax,$hmMin,$nbToleranceMin){
+		$nbOK=0;
+		$i=0;
+		while($i<$nbToleranceMin) {
+			$value = $echantillon[$i];
+			if($value<=$hmMax && $value>=$hmMin){
+				$nbOK++;
+			}
+			$i++;
+		}
+		if($nbOK>=$nbToleranceMin){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	
 	function sourcesNonConformite($echantillonLg,$lgMax,$lgMin,$nbToleranceLg,
 								   $echantillonDm,$dmMax,$dmMin,$nbToleranceDm,
 								   $echantillonOv,$ovMax,$nbToleranceOv,
@@ -50,7 +67,7 @@
 								   $tcaFou, $toleranceTcaFou,
 								   $tcaInt, $toleranceTcaInt,
 								   $capilarite,
-								   $humidite,$hmMax,$hmMin,
+								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
 								   $diamCompr, $toleranceDiamCompr){
 
 		$tabConfo['Longueur']=isLongueurConforme($echantillonLg,$lgMax,$lgMin,$nbToleranceLg);
@@ -60,7 +77,7 @@
 		$tabConfo['TCAFournisseur']=($tcaFou<$toleranceTcaFou)?1:0;
 		$tabConfo['TCAInterne']=($tcaInt<$toleranceTcaInt)?1:0;
 		$tabConfo['Capilarite']=($capilarite==1)?0:1;
-		$tabConfo['Humidite']=($humidite<$hmMax && $humidite>$hmMin)?1:0;
+		$tabConfo['Humidite']=isHumiditeConforme($echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin);
 		$tabConfo['DiametreCompression']=($diamCompr>$toleranceDiamCompr)?1:0;
 						   
 		return $tabConfo;
@@ -73,7 +90,7 @@
 								   $tcaFou, $toleranceTcaFou,
 								   $tcaInt, $toleranceTcaInt,
 								   $capilarite,
-								   $humidite,$hmMax,$hmMin,
+								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
 								   $diamCompr, $toleranceDiamCompr){
 			
 		$tabSourcesNonConformite=sourcesNonConformite($echantillonLg,$lgMax,$lgMin,$nbToleranceLg,
@@ -83,7 +100,7 @@
 								   $tcaFou,$toleranceTcaFou,
 								   $tcaInt,$toleranceTcaInt,
 								   $capilarite,
-								   $humidite,$hmMax,$hmMin,
+								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
 								   $diamCompr,$toleranceDiamCompr);
 		//print_r($tabSourcesNonConformite);
 
