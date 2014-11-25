@@ -12,7 +12,6 @@
 	$cfm_tca_inter	= isset ($data->{'cfm_tca_inter'}) ? $data->{'cfm_tca_inter'} : "undefined";
 	$cfm_gout 		= isset ($data->{'cfm_gout'}) ? $data->{'cfm_gout'} : "undefined";
 	$cfm_capilarite = isset ($data->{'cfm_capilarite'}) ? $data->{'cfm_capilarite'} : "undefined";
-	$cfm_diamcompr 	= isset ($data->{'cfm_diamcompr'}) ? $data->{'cfm_diamcompr'} : "undefined";
 	$cfm_decision 	= isset ($data->{'cfm_decision'}) ? $data->{'cfm_decision'} : "undefined";
 	$hauteur 		= isset ($data->{'hauteur'}) ? $data->{'hauteur'} : "undefined";
 	$details 		= isset ($data->{'details'}) ? $data->{'details'} : "undefined";
@@ -22,7 +21,6 @@
 		$cfm_tca_inter == "undefined" ||
 		$cfm_gout == "undefined" ||	
 		$cfm_capilarite == "undefined" ||	
-		$cfm_diamcompr == "undefined" ||
 		$cfm_decision == "undefined" ||
 		$hauteur == "undefined"
 	)
@@ -57,6 +55,7 @@
 	$echantillonDm = array();
 	$echantillonOv = array();
 	$echantillonHm = array();
+	$echantillonDiamCompr = array();
 
 	foreach ($details as $detail) {
 
@@ -64,6 +63,7 @@
 		array_push($echantillonDm, $detail->{'mes_diam'});
 		array_push($echantillonOv, abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}) );
 		array_push($echantillonHm, $detail->{'mes_humidite'} );
+		array_push($echantillonDiamCompr, $detail->{'mes_compression'} );
 	}
 
 	$is_conforme = isEchantillonConforme(
@@ -92,7 +92,7 @@
 		'CFM_GOUT'			=>	'"'.$cfm_gout.'"',
 		'CFM_CAPILARITE'	=>	'"'.$cfm_capilarite.'"',
 		'CFM_HUMIDITE'		=>	"0",
-		'CFM_DIAMCOMPR'	=>	'"'.$cfm_diamcompr.'"',
+		'CFM_DIAMCOMPR'		=>	"0",
 		'CFM_DECISION'		=>	'"'.$cfm_decision.'"'
 	);
 	$Conformite->updateRow($newValue, $cond);
@@ -108,7 +108,8 @@
 			'MES_DIAM'			=>	'"'.$detail->{'mes_diam'}.'"',
 			'MES_DIAM2'			=>	'"'.$detail->{'mes_diam2'}.'"',
 			'MES_OVAL'	=>	'"'.abs($detail->{'mes_diam2'} - $detail->{'mes_diam'}).'"',
-			'MES_HUMIDITE'	=>	'"'.$detail->{'mes_humidite'}.'"'
+			'MES_HUMIDITE'	=>	'"'.$detail->{'mes_humidite'}.'"',
+			'MES_COMPRESSION'	=>	'"'.$detail->{'mes_compression'}.'"'
 		);
 
 		$Mesure->updateRow($newValue, $cond);
