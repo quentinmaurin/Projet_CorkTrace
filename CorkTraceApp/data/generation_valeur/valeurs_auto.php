@@ -46,6 +46,7 @@
 				$array_valeurs[$i][1] = mt_rand(2350,2450) / 100;
 				$array_valeurs[$i][2] = mt_rand(2350,2450) / 100;
 				$array_valeurs[$i][3] = mt_rand(400,800) / 100;
+				$array_valeurs[$i][4] = mt_rand(9000,10000) / 100;
 			}
 		}
 		else
@@ -56,6 +57,7 @@
 				$array_valeurs[$i][1] = mt_rand(2300,2500) / 100;
 				$array_valeurs[$i][2] = mt_rand(2300,2500) / 100;
 				$array_valeurs[$i][3] = mt_rand(300,900) / 100;
+				$array_valeurs[$i][4] = mt_rand(6500,10000) / 100;
 			}
 		}
 

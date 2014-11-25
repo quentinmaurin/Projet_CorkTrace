@@ -64,6 +64,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                 "mes_diam" : record.get("mes_diam"),
                                 "mes_diam2" : record.get("mes_diam2"),
                                 "mes_humidite" : record.get("mes_humidite"),
+                                "mes_compression" : record.get("mes_compression"),
                                 "cfm_id" :  record.get("cfm_id")
                             });
                         });
@@ -79,7 +80,6 @@ Ext.define('CT.view.arrivage.Controle', {
                         data.cfm_tca_inter = values.cfm_tca_inter;
                         data.cfm_gout = values.cfm_gout;
                         data.cfm_capilarite = values.cfm_capilarite;
-                        data.cfm_diamcompr = values.cfm_diamcompr;
                         data.cfm_decision = cfm_decision;
                         data.hauteur = row.get("pro_taille");
                         data.details = details;
@@ -137,7 +137,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_gout").setValue(responseParse.data.cfm_gout);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_tca_fourni").setValue(responseParse.data.cfm_tca_fourni);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_tca_inter").setValue(responseParse.data.cfm_tca_inter);
-                                    Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_diamcompr").setValue(responseParse.data.cfm_diamcompr);
+                                    //Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_diamcompr").setValue(responseParse.data.cfm_diamcompr);
                                     //Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_humidite").setValue(responseParse.data.cfm_humidite);
                                     Ext.getCmp("form_controle_arrivage_details").getForm().findField("cfm_capilarite").setValue(responseParse.data.cfm_capilarite);
 
@@ -150,6 +150,7 @@ Ext.define('CT.view.arrivage.Controle', {
                                         row.set("mes_diam", responseParse.details[i]["mes_diam"]);
                                         row.set("mes_diam2", responseParse.details[i]["mes_diam2"]);
                                         row.set("mes_humidite", responseParse.details[i]["mes_humidite"]);
+                                        row.set("mes_compression", responseParse.details[i]["mes_compression"]);
                                     }
 
                                 },                                    
@@ -264,6 +265,13 @@ Ext.define('CT.view.arrivage.Controle', {
                             maxValue: 99999999
                         }},
                         {header: 'Humidite', dataIndex: 'mes_humidite', flex: 1,
+                        field: {
+                            xtype: 'numberfield',
+                            allowBlank: false,
+                            minValue: 0,
+                            maxValue: 99999999
+                        }},
+                        {header: 'Compr', dataIndex: 'mes_compression', flex: 1,
                         field: {
                             xtype: 'numberfield',
                             allowBlank: false,
