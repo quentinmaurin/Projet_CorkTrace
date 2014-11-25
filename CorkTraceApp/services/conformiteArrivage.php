@@ -147,6 +147,7 @@
 					<th>Diamètre</th>
 					<th>Ovalisation</th>
 					<th>Humidité</th>
+					<th>Compression</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -156,10 +157,12 @@
 					$rebusDiam    = 0;
 					$rebusOval    = 0;
 					$rebusHum    = 0;
+					$rebusComp    = 0;
 					$spanRougeH = 0;
 					$spanRougeD = 0;
 					$spanRougeO = 0;
 					$spanRougeHu = 0;
+					$spanRougeComp = 0;
 						
 						for($i=0; $i<count($mesures) ; $i++){
 						
@@ -192,6 +195,16 @@
 									$spanRougeHu = 1;	
 								}
 							}
+							
+							if($i < 5){
+								if($mesures[$i]['mes_compression'] >= 90){
+									$spanRougeComp = 0;
+								}else{
+									$rebusComp++;
+									$spanRougeComp = 1;	
+								}
+							}
+							
 							echo "
 								<tr>
 									<td>".($i+1)."</td>
@@ -199,6 +212,7 @@
 									<td><span class='".(($spanRougeD==1)?'rouge':'')."'>".$mesures[$i]['mes_diam']."</span></td>
 									<td><span class='".(($spanRougeO==1)?'rouge':'')."'>".$mesures[$i]['mes_oval']."</span></td>
 									<td><span class='".(($spanRougeHu==1)?'rouge':'')."'>".(($i >= 10)?'&nbsp;':$mesures[$i]['mes_humidite'].' %')." </span></td>
+									<td><span class='".(($spanRougeComp==1)?'rouge':'')."'>".(($i >= 5)?'&nbsp;':$mesures[$i]['mes_compression'].' %')." </span></td>
 								</tr>";
 						}
 
@@ -209,6 +223,7 @@
 								<td><span class='".(($rebusDiam>2)?'rouge':'')."'>".$rebusDiam."</span></td>
 								<td><span class='".(($rebusOval>2)?'rouge':'')."'>".$rebusOval."</span></td>
 								<td><span class='".(($rebusHum>0)?'rouge':'')."'>".$rebusHum."</span></td>
+								<td><span class='".(($rebusComp>0)?'rouge':'')."'>".$rebusComp."</span></td>
 							</tr>";
 					?>
 
@@ -253,7 +268,7 @@
 					</tr>
 					<tr>
 						<td>Humidité</td>
-						<td>Bouchon nn conforme : <?php echo "<span class='".(($rebusHum>0)?'rouge':'')."'>".$rebusHum."</span>" ?> </td>
+						<td>Bouchons nn conforme : <?php echo "<span class='".(($rebusHum>0)?'rouge':'')."'>".$rebusHum."</span>" ?> </td>
 						<td class="celluleCenter">
 							<?php
 								if($rebusHum < 1){
@@ -266,10 +281,10 @@
 					</tr>
 					<tr>
 						<td>Compression</td>
-						<td><?php echo $diamCompr;?> %</td>
+						<td>Bouchons nn conforme : <?php echo "<span class='".(($rebusComp>0)?'rouge':'')."'>".$rebusComp."</span>" ?> </td>
 						<td class="celluleCenter">
 							<?php
-								if($diamCompr>=90){
+								if($rebusComp < 1){
 									echo $cocheVerte;
 								}else{
 									echo $cocheRouge;
