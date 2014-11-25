@@ -1,9 +1,9 @@
 Ext.define('CT.controller.StatFournisseurs', {
     extend: 'Ext.app.Controller',
 
-    stores: ['Fournisseurs'],
+    stores: ['Fournisseurs', 'FournisseurRepartitionConformites', 'FournisseurProbaConformites'],
 	
-	models: ['Fournisseur'],
+	models: ['Fournisseur', 'PieChart'],
 	   
     views: [
     	'statfournisseur.List',

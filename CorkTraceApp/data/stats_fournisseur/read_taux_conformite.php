@@ -18,12 +18,17 @@
 		GROUP BY f.cfm_decision;
 	");
 
+	$tab = "";
+	$i = 0;
 	foreach ($res as $value) {
 		if($value['cfm_decision']=='Non Conforme'){
-			$o['QteNonConforme']=$value['sum(d.ard_quantite)'];
+			$tab['fournisseurs'][$i]['name'] =  "Non conforme";
+			$tab['fournisseurs'][$i]['data'] = $value['sum(d.ard_quantite)'];
 		}else{
-			$o['QteConforme']=$value['sum(d.ard_quantite)'];
+			$tab['fournisseurs'][$i]['name'] =  "Conforme";
+			$tab['fournisseurs'][$i]['data'] = $value['sum(d.ard_quantite)'];
 		}
+		$i++;
 	}
 	
 	$res = $db->executeQuery("
@@ -47,8 +52,8 @@
 		$i++;
 	}
 	
-	$o['Pente']=pente_courbe_regression($d);
+	//$o['Pente']=pente_courbe_regression($d);
 	
 	header('Content-Type: application/json');
-	echo json_encode($o);
+	echo json_encode($tab);
 ?>
