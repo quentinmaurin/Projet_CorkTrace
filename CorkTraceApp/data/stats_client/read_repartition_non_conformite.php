@@ -26,35 +26,33 @@
 	$db = new Db();
 	
 	$confo = $db->executeQuery("
-		SELECT p.pro_nom,f.*,sum(d.ard_quantite)
-		FROM t_cmdfourni_cfo c, t_arrivage_ari a, t_arrivagedetail_ard d, t_conformite_cfm f,t_produit_pro p
-		WHERE c.ari_id=a.ari_id
-		AND p.pro_id=d.pro_id
-		AND a.ari_id=d.ari_id
+		SELECT p.pro_nom,f.*,sum(d.lid_quantite)
+		FROM t_cmdclient_ccl c, t_livraison_liv l, t_livrdetail_lid d, t_conformite_cfm f, t_produit_pro p
+		WHERE c.ccl_id=l.ccl_id
+		AND l.liv_id=d.liv_id
 		AND d.cfm_id=f.cfm_id
-		AND c.fou_id=".$_GET['fou_id']."
+		AND c.clc_id=".$_GET['cli_id']."
         AND f.cfm_decision='Non Conforme'
+        AND d.pro_id=p.pro_id
         GROUP BY p.pro_nom;
 	");
 
 	$i=0;
 	$o;
 	foreach ($confo as $value) {
-	
 		$o[$i]['pro_nom']=$value['pro_nom'];
-		$o[$i]['volumeLot']=$value['sum(d.ard_quantite)'];
+		$o[$i]['volumeLot']=$value['sum(d.lid_quantite)'];
 		$o[$i]['cfm_tca_fourni']=$value['cfm_tca_fourni'];
 		$o[$i]['cfm_tca_inter']=$value['cfm_tca_inter'];
 		$o[$i]['cfm_gout']=$value['cfm_gout'];
 		$o[$i]['cfm_capilarite']=$value['cfm_capilarite'];
 		$mesures = $db->executeQuery("
 			SELECT m.*
-			FROM t_cmdfourni_cfo c, t_arrivage_ari a, t_arrivagedetail_ard d, t_conformite_cfm f, t_mesure_mes m
-			WHERE c.ari_id=a.ari_id
-			AND a.ari_id=d.ari_id
+			FROM t_cmdclient_ccl c, t_livraison_liv l, t_livrdetail_lid d, t_conformite_cfm f, t_mesure_mes m
+			WHERE c.ccl_id=l.ccl_id
+			AND l.liv_id=d.liv_id
 			AND d.cfm_id=f.cfm_id
-			AND f.cfm_id=m.cfm_id
-			AND c.fou_id=".$_GET['fou_id']."
+			AND c.clc_id=".$_GET['cli_id']."
 			AND m.cfm_id=".$value['cfm_id'].";
 		");
 		$j=0;
