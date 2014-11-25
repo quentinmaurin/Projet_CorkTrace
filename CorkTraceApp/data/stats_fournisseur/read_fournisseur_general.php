@@ -1,6 +1,5 @@
 <?php
 	
-	require_once("../statistiques/stats.php");
 	require_once("../orm/db.php");
 
 	$db = new Db();

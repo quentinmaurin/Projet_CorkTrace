@@ -121,12 +121,13 @@
 
 		return ($quantite_non_conforme / $quantite_totale);
 	}
-
+	
+/*
 	$array_qtt = array(150000,10000,150000,65800,50000,10000,10000,12000,15400,18700);
 	$array_conf = array(1,-1,-1,-1,1,1,1,-1,1,1);
 
 	echo "Le fournisseur propose des produits a " . taux_non_conformite($array_qtt,$array_conf) . "%, ";
 	if (pente_courbe_regression($array_conf) > 0) 	 echo "avec une qualite ascendante. <br>";
 	else 											 echo "avec une qualite descendante. <br>";
-
+*/
 ?>
