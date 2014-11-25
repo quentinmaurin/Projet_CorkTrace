@@ -28,7 +28,7 @@ class Db{
         $this->bd_name = "corktrace_bcpf";
 
         $this->user = "root";
-        $this->password = "";
+        $this->password = "root";
         $this->bd_name = "DB_CORKTRACE";
 
 		$this->link = mysqli_connect( $this->host , $this->user, $this->password, $this->bd_name) or die ("Connexion MYSQL => PROBLEME");

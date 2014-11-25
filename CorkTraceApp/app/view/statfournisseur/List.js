@@ -96,7 +96,7 @@ Ext.define('CT.view.statfournisseur.List' ,{
                             field: 'name',
                             display: 'rotate',
                             contrast: true,
-                            font: '16px Arial'
+                            font: '7px Arial'
                         }
                     }]
                 }]
@@ -108,7 +108,7 @@ Ext.define('CT.view.statfournisseur.List' ,{
             },{
                 xtype:"panel",
                 region:"east",
-                width:"30%",
+                width:"35%",
                 title:"Proba de conformité",
                 layout:"fit",
                 items:[{
@@ -119,6 +119,9 @@ Ext.define('CT.view.statfournisseur.List' ,{
                     id : "graph_fou_proba_conformite",
                     store: 'FournisseurProbaConformites',
                     theme: 'Base:gradients',
+                    legend: {
+                        position: 'right'
+                    },
                     series: [{
                         type: 'pie',
                         angleField: 'data',
@@ -145,7 +148,7 @@ Ext.define('CT.view.statfournisseur.List' ,{
                             field: 'name',
                             display: 'rotate',
                             contrast: true,
-                            font: '16px Arial'
+                            font: '7px Arial'
                         }
                     }]
                 }]
