@@ -35,7 +35,7 @@
 	foreach ($details as $detail) {
 		$cfm_id = $Conformite->insertRow('"NULL", "0", "0", "En attente", "En attente", "0", "0", "0"');
 		for($i=0; $i<16; $i++){
-			$Mesure->insertRow('"NULL", "0", "0", "0", "0", "0", "0", '.$cfm_id.'"');
+			$Mesure->insertRow('"NULL", "0", "0", "0", "0", "0", "0", "'.$cfm_id.'"');
 		}
 		$ArrivageDetail->insertRow('"NULL", "'.$recep_id.'", "'.$detail->{'pro_id'}.'", "'.$cfm_id.'", "'.$detail->{'ard_quantite'}.'"');
 	}

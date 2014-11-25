@@ -16,8 +16,8 @@
 
 	$i=0;
 	foreach ($res as $value) {
-		$o[$i]['name']=$value['cfm_decision'];
-		$o[$i]['data']=$value['sum(d.ard_quantite)'];
+		$o["fournisseurs"][$i]['name']=$value['cfm_decision'];
+		$o["fournisseurs"][$i]['data']=$value['sum(d.ard_quantite)'];
 		$i++;
 	}
 	
