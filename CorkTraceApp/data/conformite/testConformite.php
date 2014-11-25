@@ -60,6 +60,23 @@
 		}
 	}
 	
+	function isDiamComprConforme($echantillon,$dmCprMin,$nbToleranceMin){
+		$nbOK=0;
+		$i=0;
+		while($i<$nbToleranceMin) {
+			$value = $echantillon[$i];
+			if($value>=$dmCprMin){
+				$nbOK++;
+			}
+			$i++;
+		}
+		if($nbOK>=$nbToleranceMin){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	
 	function sourcesNonConformite($echantillonLg,$lgMax,$lgMin,$nbToleranceLg,
 								   $echantillonDm,$dmMax,$dmMin,$nbToleranceDm,
 								   $echantillonOv,$ovMax,$nbToleranceOv,
@@ -68,7 +85,7 @@
 								   $tcaInt, $toleranceTcaInt,
 								   $capilarite,
 								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
-								   $diamCompr, $toleranceDiamCompr){
+								   $echantillonDiamCompr, $dmCprMin, $toleranceDiamComprMin){
 
 		$tabConfo['Longueur']=isLongueurConforme($echantillonLg,$lgMax,$lgMin,$nbToleranceLg);
 		$tabConfo['Diametre']=isDiametreConforme($echantillonDm,$dmMax,$dmMin,$nbToleranceDm);
@@ -78,7 +95,7 @@
 		$tabConfo['TCAInterne']=($tcaInt<$toleranceTcaInt)?1:0;
 		$tabConfo['Capilarite']=($capilarite==1)?0:1;
 		$tabConfo['Humidite']=isHumiditeConforme($echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin);
-		$tabConfo['DiametreCompression']=($diamCompr>$toleranceDiamCompr)?1:0;
+		$tabConfo['DiametreCompression']=isDiamComprConforme($echantillonDiamCompr,$dmCprMin,$toleranceDiamComprMin);
 						   
 		return $tabConfo;
 	}
@@ -91,7 +108,7 @@
 								   $tcaInt, $toleranceTcaInt,
 								   $capilarite,
 								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
-								   $diamCompr, $toleranceDiamCompr){
+								   $echantillonDiamCompr,$dmCprMin,$toleranceDiamComprMin){
 			
 		$tabSourcesNonConformite=sourcesNonConformite($echantillonLg,$lgMax,$lgMin,$nbToleranceLg,
 								   $echantillonDm,$dmMax,$dmMin,$nbToleranceDm,
@@ -101,7 +118,7 @@
 								   $tcaInt,$toleranceTcaInt,
 								   $capilarite,
 								   $echantillonHm,$hmMax,$hmMin,$nbToleranceHmMin,
-								   $diamCompr,$toleranceDiamCompr);
+								   $echantillonDiamCompr,$dmCprMin,$toleranceDiamComprMin);
 		//print_r($tabSourcesNonConformite);
 
 		$conforme=1;					   
