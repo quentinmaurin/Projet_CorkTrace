@@ -20,6 +20,8 @@
 	$hmMin = 8;
 	$toleranceDiamComprMin = 5;
 	$dmCprMin=90;
+	$tailleEchantillonHm = 10;
+	$tailleEchantillonCpr = 5;
 
 //////////////////////////////////////////////////////////////////////////////
 	
@@ -82,8 +84,8 @@
 								   $o[$k]['cfm_tca_fourni'],$toleranceTcaFou,
 								   $o[$k]['cfm_tca_inter'],$toleranceTcaInt,
 								   $o[$k]['cfm_capilarite'],
-								   $o[$k]['MesuresHm'],$hmMax,$hmMin,$nbToleranceHmMin,
-								   $o[$k]['MesuresDmCpr'],$dmCprMin,$toleranceDiamComprMin);
+								   $o[$k]['MesuresHm'],$hmMax,$hmMin,$nbToleranceHmMin, $tailleEchantillonHm,
+								   $o[$k]['MesuresDmCpr'],$dmCprMin,$toleranceDiamComprMin, $tailleEchantillonCpr);
 		$k++;
 	}
 	

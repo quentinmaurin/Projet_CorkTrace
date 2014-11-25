@@ -107,7 +107,7 @@ Ext.define('CT.view.arrivage.Controle', {
 
                             },                                    
                             failure: function(){
-                                alert("echec ajout");
+                                alert("echec verif et sauvegarde");
                             }
                         });
 
@@ -155,7 +155,7 @@ Ext.define('CT.view.arrivage.Controle', {
 
                                 },                                    
                                 failure: function(){
-                                    alert("echec ajout");
+                                    alert("echec generation valeur");
                                 }
                             });
                         }
