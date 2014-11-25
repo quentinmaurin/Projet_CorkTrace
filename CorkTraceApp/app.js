@@ -17,7 +17,8 @@ Ext.application({
            'TracabiliteDescendantes',
            'Livraisons',
            'StatFournisseurs',
-           'StatClients'
+           'StatClients',
+           'StatCommercials'
     ],
 
     launch: function() {
