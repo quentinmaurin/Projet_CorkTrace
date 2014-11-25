@@ -45,6 +45,7 @@
 				$array_valeurs[$i][0] = mt_rand(($hauteur*100)-50,($hauteur*100)+50) / 100;
 				$array_valeurs[$i][1] = mt_rand(2350,2450) / 100;
 				$array_valeurs[$i][2] = mt_rand(2350,2450) / 100;
+				$array_valeurs[$i][3] = mt_rand(400,800) / 100;
 			}
 		}
 		else
@@ -54,6 +55,7 @@
 				$array_valeurs[$i][0] = mt_rand($hauteur*100-100,$hauteur*100+100) / 100;
 				$array_valeurs[$i][1] = mt_rand(2300,2500) / 100;
 				$array_valeurs[$i][2] = mt_rand(2300,2500) / 100;
+				$array_valeurs[$i][3] = mt_rand(300,900) / 100;
 			}
 		}
 
